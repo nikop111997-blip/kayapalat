@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import FloatingWhatsAppButton from './FloatingWhatsApp';
 
 // Helper component for the clean rollover animation
 const RolloverLink = ({ href, children, isExternal = false, className = "" }) => {
@@ -125,6 +126,7 @@ export default function Footer() {
         </div>
 
       </div>
+      <FloatingWhatsAppButton />
     </footer>
   );
 }
