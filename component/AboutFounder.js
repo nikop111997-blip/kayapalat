@@ -1,7 +1,8 @@
 
 import Image from 'next/image';
+import BookingComponent from './Booking2Comp';
 
-export default function AboutFounder() {
+export default function AboutFounder({landing=false}) {
   return (
     <section className="bg-[#F8F7F4] py-8 px-4 md:px-8 font-manrope text-gray-900 overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -99,7 +100,11 @@ export default function AboutFounder() {
           </div>
 
         </div>
+        
       </div>
+      {landing && <div className='flex justify-center items-center mt-8'>
+          <BookingComponent />
+          </div>}
     </section>
   );
 }

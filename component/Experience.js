@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { ActionButton } from "./HeroSection";
 
-export default function ExperienceDifference() {
+export default function ExperienceDifference({landing=false}) {
   const [activeVideo, setActiveVideo] = useState(null);
 
   // Add your YouTube video IDs here
@@ -151,9 +151,9 @@ export default function ExperienceDifference() {
           </div>
 
           {/* CTA */}
-          <ActionButton text="Explore Transformation" 
+          {!landing &&<ActionButton text="Explore Transformation" 
                           variant="primary" 
-                          href="/pricing" />
+                          href="/pricing" /> }
         </div>
       </section>
 

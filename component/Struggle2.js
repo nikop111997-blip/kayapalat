@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { ActionButton } from './HeroSection';
+import BookingComponent from './Booking2Comp';
 
 const cardsData = [
   {
@@ -26,7 +27,7 @@ const cardsData = [
   }
 ];
 
-export default function StruggleSection() {
+export default function StruggleSection({landing=false}) {
   return (
     <section id='why-kayapalat' className="w-full bg-[#F8F7F4] px-4 py-20 font-manrope sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1240px]">
@@ -88,9 +89,9 @@ export default function StruggleSection() {
           </p>
 
           {/* Primary Action Button (Reused from previous sections) */}
-          <ActionButton text="Start Your Transformation" 
+         {landing? <BookingComponent /> : <ActionButton text="Start Your Transformation" 
                 variant="primary" 
-                href="/pricing" />
+                href="/pricing" /> }
 
           {/* Social Proof Subtext */}
           <div className="flex items-center gap-1.5 text-[12px] font-medium text-gray-500 mt-4">

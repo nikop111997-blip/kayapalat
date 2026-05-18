@@ -1,3 +1,4 @@
+import BookingComponent from "./Booking2Comp";
 
 
 const faqs = [
@@ -39,7 +40,7 @@ const faqs = [
   }
 ];
 
-export default function FaqSectionServer() {
+export default function FaqSectionServer({landing=false}) {
   return (
     <section id="faq" className="bg-[#FAF8F5] py-10 px-4 md:px-8 font-manrope">
       <div className="max-w-4xl mx-auto">
@@ -92,7 +93,9 @@ export default function FaqSectionServer() {
             Now it's your turn to transform.
           </p>
         </div>
-
+          <div className="flex items-center justify-center my-8">
+            <BookingComponent />
+          </div>
       </div>
     </section>
   );
