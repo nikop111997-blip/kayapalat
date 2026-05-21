@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import BookingComponent from './Booking2Comp';
 
@@ -73,17 +72,20 @@ export default function AboutFounder({landing=false}) {
           </div>
 
           {/* Floating Badge 1: Left Side */}
-          <div className="absolute z-20 left-0 sm:-left-10 top-1/2 -translate-y-1/2 bg-white px-5 py-2.5 rounded-full shadow-lg border border-gray-100 flex items-center text-sm font-semibold text-gray-800">
+          {/* CHANGED: top-[65%] on mobile, sm:top-1/2 on larger screens */}
+          <div className="absolute z-20 left-0 sm:-left-10 top-[65%] sm:top-1/2 -translate-y-1/2 bg-white px-5 py-2.5 rounded-full shadow-lg border border-gray-100 flex items-center text-sm font-semibold text-gray-800">
             50+ Global Clients
           </div>
           
           {/* Floating Badge 2: Right Side Bottom */}
-          <div className="absolute z-20 right-0 sm:-right-6 bottom-1/4 bg-white px-5 py-2.5 rounded-full shadow-lg border border-gray-100 flex items-center text-sm font-semibold text-gray-800">
+          {/* CHANGED: bottom-6 on mobile, sm:bottom-1/4 on larger screens */}
+          <div className="absolute z-20 right-0 sm:-right-6 bottom-6 sm:bottom-1/4 bg-white px-5 py-2.5 rounded-full shadow-lg border border-gray-100 flex items-center text-sm font-semibold text-gray-800">
             12 Industry Sectors
           </div>
 
           {/* Floating Badge 3: Right Side Top */}
-          <div className="absolute z-20 right-0 sm:right-4 top-1/3 -translate-y-10 bg-white p-2 rounded-full shadow-lg border border-gray-100 flex items-center gap-3">
+          {/* CHANGED: top-[45%] on mobile, sm:top-1/3 on larger screens. Adjusted translation as well */}
+          <div className="absolute z-20 right-0 sm:right-4 top-[55%] sm:top-1/3 -translate-y-5 sm:-translate-y-10 bg-white p-2 rounded-full shadow-lg border border-gray-100 flex items-center gap-3">
              {/* Tiny Avatar Placeholders */}
              <div className="flex -space-x-2">
                 <div className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white overflow-hidden">
