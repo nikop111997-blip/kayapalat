@@ -107,7 +107,7 @@ export default function HeroEmailSection({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full h-[58px] pl-12 pr-4 rounded-2xl border border-gray-300 bg-white text-sm outline-none focus:border-black transition-colors"
+                className="w-full h-[58px] pl-12 pr-4 dark:text-gray-900 rounded-2xl border border-gray-300 bg-white text-sm outline-none focus:border-black transition-colors"
               />
             </div>
 

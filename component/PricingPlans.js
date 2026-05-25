@@ -110,7 +110,7 @@ export default function PricingPlans() {
 
               {/* Action Buttons */}
               <div className="flex flex-col gap-3 mb-10">
-                <Link href={index==0 ? 'https://imjo.in/bRW6Fa' : '#'} className="w-full text-center bg-[#FFD200] hover:bg-[#F2C94C] text-black py-3 rounded-full transition-colors duration-200">
+                <Link href={index==0 ? 'https://imjo.in/bRW6Fa' : '/pricing'} className="w-full text-center bg-[#FFD200] hover:bg-[#F2C94C] text-black py-3 rounded-full transition-colors duration-200">
                   {plan.primaryAction}
                 </Link>
                 <BookingComponent pricing={true} />

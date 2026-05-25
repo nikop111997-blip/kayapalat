@@ -287,7 +287,7 @@ export default function HealthQuiz({
                     onChange={(e) =>
                       handleInputChange("age", e.target.value)
                     }
-                    className="w-full h-14 px-5 rounded-xl border border-gray-200 bg-gray-50 outline-none focus:bg-white"
+                    className="w-full h-14 px-5 rounded-xl dark:text-gray-800 border border-gray-200 bg-gray-50 outline-none focus:bg-white"
                   />
 
                   <select
@@ -295,7 +295,7 @@ export default function HealthQuiz({
                     onChange={(e) =>
                       handleInputChange("schedule", e.target.value)
                     }
-                    className="w-full h-14 px-5 rounded-xl border border-gray-200 bg-gray-50 outline-none"
+                    className="w-full h-14 px-5 rounded-xl border dark:text-gray-800 border-gray-200 bg-gray-50 outline-none"
                   >
                     <option value="">Select Schedule</option>
 
@@ -315,7 +315,7 @@ export default function HealthQuiz({
                           onClick={() =>
                             handleInputChange("frustration", item)
                           }
-                          className={`w-full text-left p-4 rounded-xl border transition-all ${
+                          className={`w-full text-left p-4 rounded-xl dark:text-gray-800 border transition-all ${
                             selected
                               ? "bg-[#E8EFEA]"
                               : "bg-white"
@@ -361,7 +361,7 @@ export default function HealthQuiz({
                   Question {step} of 2
                 </p>
 
-                <h2 className="text-3xl font-semibold mb-8 leading-tight">
+                <h2 className="text-3xl font-semibold mb-8 dark:text-gray-800 leading-tight">
                   {quizQuestions[step - 1].prompt}
                 </h2>
 
@@ -383,7 +383,7 @@ export default function HealthQuiz({
                               nextStep();
                             }, 300);
                           }}
-                          className={`w-full p-5 rounded-xl border text-left transition-all ${
+                          className={`w-full p-5 rounded-xl dark:text-gray-800 border text-left transition-all ${
                             selected
                               ? "bg-[#E8EFEA]"
                               : "bg-white"
@@ -421,7 +421,7 @@ export default function HealthQuiz({
                 exit="exit"
               >
                 <h2
-                  className="text-3xl font-semibold mb-3"
+                  className="text-3xl font-semibold mb-3 dark:text-gray-800"
                   style={{ color: primaryColor }}
                 >
                   Your score is ready.
@@ -444,7 +444,7 @@ export default function HealthQuiz({
                       onChange={(e) =>
                         handleInputChange("name", e.target.value)
                       }
-                      className="w-full h-14 pl-12 pr-4 rounded-xl border border-gray-200 bg-gray-50"
+                      className="w-full h-14 pl-12 pr-4 dark:text-gray-800 rounded-xl border border-gray-200 bg-gray-50"
                     />
                   </div>
 
@@ -459,7 +459,7 @@ export default function HealthQuiz({
                       onChange={(e) =>
                         handleInputChange("email", e.target.value)
                       }
-                      className="w-full h-14 pl-12 pr-4 rounded-xl border border-gray-200 bg-gray-50"
+                      className="w-full h-14 pl-12 pr-4 dark:text-gray-800 rounded-xl border border-gray-200 bg-gray-50"
                     />
                   </div>
 
@@ -477,7 +477,7 @@ export default function HealthQuiz({
                           e.target.value
                         )
                       }
-                      className="w-full h-14 pl-12 pr-4 rounded-xl border border-gray-200 bg-gray-50"
+                      className="w-full h-14 pl-12 pr-4 dark:text-gray-800 rounded-xl border border-gray-200 bg-gray-50"
                     />
                   </div>
 

@@ -136,9 +136,9 @@ export default function Footer() {
           </div>
 
           {/* Social Icons */}
-          <div className="flex justify-start lg:justify-end space-x-6 text-gray-300">
+          <div className="flex justify-start lg:justify-end space-x-6 text-gray-300 dark:text-gray-50">
 
-            {/* Instagram */}
+            
             <a
               href="https://www.instagram.com/kayapalatwellness/"
               target="_blank"
@@ -146,7 +146,22 @@ export default function Footer() {
               className="hover:text-white hover:-translate-y-1 transition-all duration-200"
               aria-label="Instagram"
             >
-              {/* SVG */}
+              <svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" 
+     height="24" 
+     viewBox="0 0 24 24" 
+     fill="none">
+  <rect x="2" y="2" width="20" height="20" rx="6" 
+        stroke="currentColor" 
+        stroke-width="2"/>
+        
+  <circle cx="12" cy="12" r="4" 
+          stroke="currentColor" 
+          stroke-width="2"/>
+          
+  <circle cx="18" cy="6" r="1.2" 
+          fill="currentColor"/>
+</svg>
             </a>
 
             {/* YouTube */}
@@ -157,7 +172,20 @@ export default function Footer() {
               className="hover:text-white hover:-translate-y-1 transition-all duration-200"
               aria-label="YouTube"
             >
-              {/* SVG */}
+              <svg xmlns="http://www.w3.org/2000/svg" 
+     width="28" 
+     height="28" 
+     viewBox="0 0 24 24" 
+     fill="none">
+    
+  <path d="M21.8 7.2C21.6 6.4 21 5.8 20.2 5.6C18.7 5.2 12 5.2 12 5.2C12 5.2 5.3 5.2 3.8 5.6C3 5.8 2.4 6.4 2.2 7.2C1.8 8.7 1.8 12 1.8 12C1.8 12 1.8 15.3 2.2 16.8C2.4 17.6 3 18.2 3.8 18.4C5.3 18.8 12 18.8 12 18.8C12 18.8 18.7 18.8 20.2 18.4C21 18.2 21.6 17.6 21.8 16.8C22.2 15.3 22.2 12 22.2 12C22.2 12 22.2 8.7 21.8 7.2Z" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        fill="none"/>
+        
+  <path d="M10 15L16 12L10 9V15Z" 
+        fill="currentColor"/>
+</svg>
             </a>
 
             {/* Facebook */}
@@ -168,7 +196,20 @@ export default function Footer() {
               className="hover:text-white hover:-translate-y-1 transition-all duration-200"
               aria-label="Facebook"
             >
-              {/* SVG */}
+          <svg xmlns="http://www.w3.org/2000/svg"
+     width="24"
+     height="24"
+     viewBox="0 0 24 24"
+     fill="none">
+
+  <rect x="2" y="2" width="20" height="20" rx="5"
+        stroke="currentColor"
+        stroke-width="2"/>
+
+  <path d="M14 8H16V5H13.5C10.9 5 9 6.6 9 9.5V12H7V15H9V19H12V15H15L15.5 12H12V9.8C12 8.7 12.3 8 14 8Z"
+        fill="currentColor"/>
+
+</svg>
             </a>
           </div>
         </div>
@@ -178,7 +219,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col items-center justify-center space-y-3 text-sm text-gray-50 font-medium">
-          <p>© 2026 Kayapalat Wellness. All rights reserved.</p>
+         
 
           <div className="flex items-center space-x-4">
             <RolloverLink href="#" className="text-gray-50">
@@ -191,6 +232,13 @@ export default function Footer() {
               Terms of Service
             </RolloverLink>
           </div>
+          <div className='flex gap-4'>
+             <p>© 2026 Kayapalat Wellness. All rights reserved.</p>
+             <p>Created by <RolloverLink href="https://www.brandhubble.com/" className="text-gray-50">
+              Brand Hubble
+            </RolloverLink>.</p>
+          </div>
+          
         </div>
       </div>
 

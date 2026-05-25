@@ -268,9 +268,9 @@ const tracking = getTrackingData()
                 <div className="p-8 border-r border-gray-100 relative">
                   <button
                     onClick={closeModal}
-                    className="absolute top-7 right-5 hidden md:flex w-10 h-10 rounded-full hover:bg-gray-100 items-center justify-center transition"
+                    className="absolute top-7 right-5 hidden md:flex w-10 h-10 rounded-full bg-gray-600 hover:bg-gray-700 items-center justify-center transition"
                   >
-                    <X size={18} />
+                    <X size={18} className="text-white" />
                   </button>
 
                   <div className="flex items-center gap-3 text-sm font-medium text-gray-500 mb-6">
@@ -378,6 +378,12 @@ const tracking = getTrackingData()
                             24h
                           </button>
                         </div>
+                         <button
+                    onClick={closeModal}
+                    className="absolute top-7 right-5 hidden md:flex w-10 h-10 rounded-full bg-gray-600 hover:bg-gray-700 items-center justify-center transition"
+                  >
+                    <X size={18} className="text-white" />
+                  </button>
                       </div>
 
                       <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
@@ -398,7 +404,17 @@ const tracking = getTrackingData()
                       </div>
                     </>
                   ) : (
-                    <div className="h-full flex flex-col items-center justify-center text-center text-gray-400">
+                    <div className="h-full flex flex-col items-center justify-between text-center text-gray-400">
+                      <div className="flex items-center w-full justify-between">
+                        <div>.</div>
+                       <button
+                    onClick={closeModal}
+                    className=" md:flex w-10 h-10 rounded-full bg-gray-600 hover:bg-gray-700 items-center justify-center transition"
+                  >
+                    <X size={18} className="text-white" />
+                  </button>
+                  </div>
+                  <div className="flex flex-col items-center">
                       <Calendar
                         size={42}
                         strokeWidth={1.5}
@@ -409,6 +425,7 @@ const tracking = getTrackingData()
                         Select a date to view
                         available times
                       </p>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -428,7 +445,7 @@ const tracking = getTrackingData()
 
                 <button
                   onClick={closeModal}
-                  className="absolute top-8 right-8 hidden md:flex w-10 h-10 rounded-full hover:bg-gray-100 items-center justify-center transition"
+                  className="absolute top-8 right-8 dark:text-gray-950 hidden md:flex w-10 h-10 rounded-full hover:bg-gray-100 items-center justify-center transition"
                 >
                   <X size={18} />
                 </button>
@@ -502,7 +519,7 @@ const tracking = getTrackingData()
                           <input
                             readOnly
                             value={`${selectedDate?.toLocaleDateString()} - ${selectedTime}`}
-                            className="w-full border border-gray-200 rounded-2xl h-14 px-5 bg-gray-50 outline-none"
+                            className="w-full border border-gray-200 rounded-lg h-14 px-5 dark:text-gray-600 cursor-not-allowed bg-gray-50 outline-none"
                           />
 
                           <Calendar
@@ -549,7 +566,7 @@ const tracking = getTrackingData()
                         value={formData.notes}
                         onChange={handleInputChange}
                         placeholder="Write your message..."
-                        className="w-full border border-gray-200 rounded-2xl p-5 outline-none focus:border-[#003460]"
+                        className="w-full border border-gray-200 dark:text-gray-800 rounded-lg p-5 outline-none focus:border-[#003460]"
                       />
                     </div>
 
@@ -558,7 +575,7 @@ const tracking = getTrackingData()
                       whileTap={{ scale: 0.97 }}
                       type="submit"
                       disabled={isSubmitting}
-                      className="mt-8 inline-flex items-center gap-3 bg-[#003460] hover:bg-[#00284a] transition text-white px-8 py-4 rounded-full font-semibold"
+                      className="mt-8 inline-flex items-center gap-3 bg-[#003460] hover:bg-[#00284a] transition text-white px-12 py-4 rounded-lg font-semibold"
                     >
                       {isSubmitting
                         ? "Submitting..."
@@ -584,7 +601,7 @@ const tracking = getTrackingData()
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.96 }}
         onClick={() => setIsOpen(true)}
-        className={`group flex items-center cursor-pointer justify-center gap-3  border-black rounded-full px-7 ${pricing ? 'py-3 border-0 bg-[#FFD200]' : 'py-4 border-2'} font-medium hover:bg-black hover:text-white transition-all duration-300`}
+        className={`group flex items-center cursor-pointer justify-center gap-3 dark:text-gray-900  border-black rounded-full px-7 ${pricing ? 'py-3 border-0 bg-[#FFD200]' : 'py-4 border-2'} font-medium hover:bg-black hover:text-white transition-all duration-300`}
       >
         <span>Request A Callback</span>
 
@@ -614,7 +631,7 @@ function Input({
 
       <input
         {...props}
-        className="w-full border border-gray-200 rounded-2xl h-12 px-5 outline-none focus:border-[#003460] transition"
+        className="w-full border border-gray-200 rounded-lg h-12 px-5 dark:text-gray-900 outline-none focus:border-[#003460] transition"
       />
     </div>
   )
@@ -627,13 +644,13 @@ function Select({
 }) {
   return (
     <div>
-      <label className="text-sm font-semibold text-gray-700 mb-2 block">
+      <label className="text-sm font-semibold text-gray-700 dark:text-gray-800 mb-2 block">
         {label}
       </label>
 
       <select
         {...props}
-        className="w-full border border-gray-200 rounded-2xl h-12 px-5 outline-none focus:border-[#003460] transition"
+        className="w-full border border-gray-200 rounded-lg h-12 px-5 outline-none dark:text-gray-800 focus:border-[#003460] transition"
       >
         <option value="">Select...</option>
 
