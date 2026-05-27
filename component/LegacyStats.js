@@ -60,9 +60,9 @@ const StatCard = ({ target, suffix, text }) => {
   return (
     <div 
       ref={elementRef}
-      className="flex w-full flex-col items-center justify-center rounded-[24px] border border-yellow-100 bg-white p-8 px-4 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-md"
+      className="flex w-full flex-col items-center justify-center rounded-[24px] border border-gray-100 bg-white p-8 px-4 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-md"
     >
-      <h3 className="mb-4 text-4xl text-[#FFCE00] md:text-[42px]">
+      <h3 className="mb-4 text-4xl text-[#000] md:text-[42px] font-bold">
         {count.toLocaleString('en-US')}{suffix}
       </h3>
       <p className="text-center text-sm font-medium leading-relaxed text-gray-700">
@@ -105,7 +105,7 @@ export default function LegacySection() {
         
         {/* Heading */}
         <h2 className="mb-14 text-center text-[40px] leading-[1.0] font-semibold tracking-[-1px] text-black md:text-[40px] md:leading-[1.2] font-manrope">
-          A Legacy of Permanent <br className="hidden sm:block" /> Transformations
+          Results Speak for Themselves
         </h2>
 
         {/* Stats Grid */}

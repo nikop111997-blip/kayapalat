@@ -601,9 +601,9 @@ const tracking = getTrackingData()
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.96 }}
         onClick={() => setIsOpen(true)}
-        className={`group flex items-center cursor-pointer justify-center gap-3 dark:text-gray-900  border-black rounded-full px-7 ${pricing ? 'py-3 border-0 bg-[#FFD200]' : 'py-4 border-2'} font-medium hover:bg-black hover:text-white transition-all duration-300`}
+        className={`group flex items-center font-bold cursor-pointer justify-center gap-3 dark:text-gray-900  border-black rounded-full px-7 ${pricing ? 'py-3 border-0 bg-[#FFD200] font-bold' : 'py-4 border-2'} hover:bg-black hover:text-white transition-all duration-300`}
       >
-        <span>Request A Callback</span>
+        <span classname="font-bold">Request A Callback</span>
 
         <div className="transition-all duration-300 group-hover:bg-white group-hover:text-black rounded-full p-1">
           <ArrowUpRight

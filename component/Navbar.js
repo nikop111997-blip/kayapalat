@@ -40,7 +40,7 @@ export default function Navbar() {
             <Image
               src="https://framerusercontent.com/images/msjGzrRn1eu9rQWQOuvoSNpE2yE.png?scale-down-to=512&width=644&height=164"
               alt="Kayapalat Logo"
-              width={236}
+              width={200}
               height={36}
               priority
             />
