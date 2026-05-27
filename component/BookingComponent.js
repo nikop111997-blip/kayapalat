@@ -175,6 +175,14 @@ const tracking = getTrackingData()
 
       setSubmitSuccess(true)
 
+// Meta Pixel Lead Event
+if (typeof window !== "undefined" && window.fbq) {
+  window.fbq("track", "Lead", {
+    content_name: "Wellness Consultation",
+    status: "submitted",
+  })
+}
+
       setTimeout(() => {
         closeModal()
       }, 3000)
