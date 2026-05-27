@@ -649,9 +649,9 @@ if (typeof window !== "undefined" && window.fbq) {
 
     // Meta Pixel Event
     if (typeof window !== "undefined" && window.fbq) {
-      window.fbq("track", "InitiateConsulation", {
-        content_name: "Wellness Consultation",
-      })
+      window.fbq("track", "InitiateCheckout", {
+  content_name: "Wellness Consultation",
+})
     }
   }}
   className={`group flex items-center font-bold cursor-pointer justify-center gap-3 dark:text-gray-900 border-black rounded-full px-7 ${
