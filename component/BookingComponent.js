@@ -216,7 +216,17 @@ if (typeof window !== "undefined" && window.fbq) {
           whileTap={{ scale: 0.95 }}
           whileHover={{ scale: 1.05 }}
           key={i}
-          onClick={() => setSelectedDate(date)}
+          onClick={() => {
+  setSelectedDate(date)
+
+  // Meta Pixel Event
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("trackCustom", "DateSelected", {
+      selected_date: date.toLocaleDateString(),
+      content_name: "Wellness Consultation",
+    })
+  }
+}}
           className={`
             w-11 h-11 rounded-xl text-sm transition-all
             flex items-center justify-center
@@ -275,11 +285,20 @@ if (typeof window !== "undefined" && window.fbq) {
                 {/* LEFT SIDEBAR */}
                 <div className="p-8 border-r border-gray-100 relative">
                   <button
-                    onClick={closeModal}
-                    className="absolute top-7 right-5 hidden md:flex w-10 h-10 rounded-full bg-gray-600 hover:bg-gray-700 items-center justify-center transition"
-                  >
-                    <X size={18} className="text-white" />
-                  </button>
+  onClick={() => {
+    closeModal()
+
+    // Meta Pixel Event
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("trackCustom", "CloseConsultation", {
+        content_name: "Wellness Consultation",
+      })
+    }
+  }}
+  className="absolute top-7 right-5 hidden md:flex w-10 h-10 rounded-full bg-gray-600 hover:bg-gray-700 items-center justify-center transition"
+>
+  <X size={18} className="text-white" />
+</button>
 
                   <div className="flex items-center gap-3 text-sm font-medium text-gray-500 mb-6">
                     <div className="w-9 h-9 rounded-full bg-[#003460]/10 flex items-center justify-center text-[#003460]">
@@ -401,9 +420,17 @@ if (typeof window !== "undefined" && window.fbq) {
                             whileTap={{ scale: 0.98 }}
                             key={time}
                             onClick={() => {
-                              setSelectedTime(time)
-                              setStep(2)
-                            }}
+  setSelectedTime(time)
+  setStep(2)
+
+  // Meta Pixel Event
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("trackCustom", "TimeSelected", {
+      selected_time: time,
+      content_name: "Wellness Consultation",
+    })
+  }
+}}
                             className="w-full border border-[#003460]/20 bg-white hover:border-[#003460] hover:bg-[#003460]/5 transition rounded-2xl py-4 text-[#003460] font-medium"
                           >
                             {time}
@@ -416,11 +443,20 @@ if (typeof window !== "undefined" && window.fbq) {
                       <div className="flex items-center w-full justify-between">
                         <div>.</div>
                        <button
-                    onClick={closeModal}
-                    className=" md:flex w-10 h-10 rounded-full bg-gray-600 hover:bg-gray-700 items-center justify-center transition"
-                  >
-                    <X size={18} className="text-white" />
-                  </button>
+  onClick={() => {
+    closeModal()
+
+    // Meta Pixel Event
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("trackCustom", "CloseConsultation", {
+        content_name: "Wellness Consultation",
+      })
+    }
+  }}
+  className="absolute top-7 right-5 hidden md:flex w-10 h-10 rounded-full bg-gray-600 hover:bg-gray-700 items-center justify-center transition"
+>
+  <X size={18} className="text-white" />
+</button>
                   </div>
                   <div className="flex flex-col items-center">
                       <Calendar
@@ -606,11 +642,24 @@ if (typeof window !== "undefined" && window.fbq) {
   return (
     <>
       <motion.button
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.96 }}
-        onClick={() => setIsOpen(true)}
-        className={`group flex items-center font-bold cursor-pointer justify-center gap-3 dark:text-gray-900  border-black rounded-full px-7 ${pricing ? 'py-3 border-0 bg-[#FFD200] font-bold' : 'py-4 border-2'} hover:bg-black hover:text-white transition-all duration-300`}
-      >
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.96 }}
+  onClick={() => {
+    setIsOpen(true)
+
+    // Meta Pixel Event
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("track", "InitiateConsulation", {
+        content_name: "Wellness Consultation",
+      })
+    }
+  }}
+  className={`group flex items-center font-bold cursor-pointer justify-center gap-3 dark:text-gray-900 border-black rounded-full px-7 ${
+    pricing
+      ? "py-3 border-0 bg-[#FFD200] font-bold"
+      : "py-4 border-2"
+  } hover:bg-black hover:text-white transition-all duration-300`}
+>
         <span classname="font-bold">Request A Callback</span>
 
         <div className="transition-all duration-300 group-hover:bg-white group-hover:text-black rounded-full p-1">
