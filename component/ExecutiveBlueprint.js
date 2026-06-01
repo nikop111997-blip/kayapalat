@@ -4,23 +4,23 @@ const articles = [
   {
     id: 1,
     tag: 'Nutrition',
-    title: 'Smart supplements for peak recovery',
-    description: 'A focused guide on the essential vitamins and minerals that help your muscles recover faster after intense strength sessions.',
+    title: 'The Biggest Lie the Fitness Industry Sold You About Exercise',
+    description: 'Discover why the common belief that "exercise is the key to weight loss" is misleading, and learn how metabolic health and nutrition play a far more critical role in achieving sustainable fitness results.',
     // Replace with your actual image paths
     imageUrl: 'https://images.unsplash.com/photo-1579722820308-d74e571900a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 2,
     tag: 'Performance',
-    title: 'Why 1:1 human beats algorithms.',
-    description: 'Explore why personalized cues from a real trainer are essential for breaking through plateaus and preventing common gym injuries.',
+    title: 'Food Is Not the Problem. Your Relationship With Food Is..',
+    description: 'Uncover the psychological and emotional factors that drive unhealthy eating habits, and learn how to cultivate a positive relationship with food that supports long-term health and performance goals.',
     imageUrl: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 3,
     tag: 'Lifestyle',
-    title: 'Mastering the art of permanent consistency.',
-    description: 'Stop the cycle of quitting by building a mindset that prioritizes long-term health over short-term motivation and temporary fixes.',
+    title: 'Why Counting Calories Is Like Counting Bricks Instead of Building a House',
+    description: 'Explore why focusing solely on calorie counting is an oversimplified approach to health and fitness, and how building a strong foundation of metabolic health, nutrient quality, and lifestyle habits is essential for true transformation.',
     imageUrl: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   },
 ];

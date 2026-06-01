@@ -54,10 +54,9 @@ export default function PricingPlans() {
       features: [
         'All Pro plan benefits for 6 months',
         'FREE Kayapalat Wellness Retreat',
-        'Free Family Wellness Consultation',
+        'Free Family Wellness Consultation and access to events',
         'Priority Response from your Coach',
-        'Master coach support for advanced goals',
-        'Family access to events and Master Classes',
+        'Master coach support for goals',
         'Exclusive Platinum Member Merchandise',
       ],
     },
