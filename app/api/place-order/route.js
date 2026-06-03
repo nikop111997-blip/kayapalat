@@ -6,7 +6,7 @@ export async function POST(req) {
 console.log("Received order data:", body);
     // save customer data
     const orderRes = await fetch(
-      `http://localhost:3000/api/orders/create`,
+      `https://www.kayapalat.in/api/orders/create`,
       {
         method: "POST",
         headers: {
@@ -39,7 +39,7 @@ console.log("Received order data:", body);
 
     // create instamojo payment
     const paymentRes = await fetch(
-      `http://localhost:3000/api/payments/create`,
+      `https://www.kayapalat.in/api/payments/create`,
       {
         method: "POST",
         headers: {
