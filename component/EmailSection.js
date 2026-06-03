@@ -155,7 +155,7 @@ export default function HeroEmailSection({
 
             {/* IMAGE */}
             <Image
-              src="https://framerusercontent.com/images/r2FhVdgJMrYitkn9QiMl0yyQOU.png?width=727&height=826"
+              src="/ajay.jpg"
               alt="Ajay Sethi"
               fill
               className="w-full h-full object-cover"

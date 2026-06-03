@@ -23,7 +23,7 @@ export default function KPJournalLanding() {
   
   // Form State
   const [buyerData, setBuyerData] = useState({
-    firstName: '', lastName: '', email: '', phone: '',
+    name:"", email: '', phone: '',
     address: '', city: '', state: '', pincode: ''
   });
   const [formErrors, setFormErrors] = useState({});
@@ -68,17 +68,75 @@ export default function KPJournalLanding() {
     if (validateDetails()) setCheckoutStep('payment');
   };
 
-  const handlePlaceOrder = () => {
-    setCheckoutStep('processing');
-    setTimeout(() => setCheckoutStep('success'), 2500);
-  };
+ const handlePlaceOrder = async () => {
+  const errors = {};
+console.log("Validating buyer data:", buyerData);
+  if (!buyerData.name?.trim() || buyerData.name.trim().length < 4) {
+    errors.name = "Name must be at least 4 characters";
+  }
+
+  if (!buyerData.email?.trim()) {
+    errors.email = "Email is required";
+  }
+
+  if (!buyerData.phone || !/^\d{10}$/.test(buyerData.phone)) {
+    errors.phone = "Phone must be exactly 10 digits";
+  }
+
+  if (!buyerData.address?.trim()) {
+    errors.address = "Address is required";
+  }
+
+  if (!buyerData.city?.trim()) {
+    errors.city = "City is required";
+  }
+
+  if (!buyerData.pincode || !/^\d{6}$/.test(buyerData.pincode)) {
+    errors.pincode = "Valid pincode required";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    setFormErrors(errors);
+    return;
+  }
+console.log("Buyer data validated successfully:", buyerData);
+const totalPrice = selectedBundle.price * quantity;
+console.log("Placing order with data:", { buyerData, selectedBundle, quantity, totalPrice });
+  try {
+    setCheckoutStep("processing");
+
+    const response = await fetch("/api/place-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        customer: buyerData,
+        product: selectedBundle,
+        quantity,
+        amount: totalPrice,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!data.success) {
+      throw new Error(data.message);
+    }
+    window.location.href = data.paymentUrl;
+  } catch (error) {
+    console.error(error);
+    alert(error.message);
+    setCheckoutStep("details");
+  }
+};
 
   const resetCart = () => {
     setIsCartOpen(false);
     setTimeout(() => {
       setCheckoutStep('cart');
       setQuantity(1);
-      setBuyerData({ firstName: '', lastName: '', email: '', phone: '', address: '', city: '', state: '', pincode: '' });
+      setBuyerData({ name: '', email: '', phone: '', address: '', city: '', state: '', pincode: '' });
     }, 300);
   };
 

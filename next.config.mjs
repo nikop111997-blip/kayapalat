@@ -23,7 +23,12 @@ const nextConfig = {
         hostname: 'kayakalap.vercel.app',
       }
     ],
+    
+     
   },
+  allowedDevOrigins: [
+    "*.ngrok-free.app",
+  ],
 }
 
 export default nextConfig;

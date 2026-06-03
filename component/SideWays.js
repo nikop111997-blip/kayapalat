@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 // Helper to auto-increment the date by 1 day
 const getNextDayStr = (lastDateStr) => {
@@ -230,11 +231,14 @@ const KayapalatJournal = () => {
       <div className="absolute bottom-6 left-6 w-3 h-3 bg-[#d4af37]/50 rounded-sm"></div>
 
       <div className="relative z-10 flex flex-col h-full justify-center items-center mt-[-40px]">
-        <div className="flex items-center justify-center gap-2 mb-16">
-          <span className="text-[#ffffff] font-serif text-xl">*</span>
-          <span className="text-[#ffff]/80 font-medium tracking-widest text-xs uppercase">Kayapalat</span>
-        </div>
-        <h2 className="text-[3.5rem] leading-none font-serif text-[#d4af37] text-center mb-6 tracking-wide" style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}>
+         <Image
+                      src="https://framerusercontent.com/images/msjGzrRn1eu9rQWQOuvoSNpE2yE.png?scale-down-to=512&width=644&height=164"
+                      alt="Kayapalat Logo"
+                      width={120}
+                      height={36}
+                      priority
+                    />
+        <h2 className="text-[3.5rem] mt-4 leading-none font-serif text-[#d4af37] text-center mb-6 tracking-wide" style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}>
           KP<br />JOURNAL
         </h2>
         <div className="w-16 h-[2px] bg-[#d4af37]/50 mx-auto"></div>

@@ -69,7 +69,9 @@ export default function CartDrawer({
                   <span>₹{totalPrice.toLocaleString()}</span>
                 </div>
               </div>
-
+              <p className="text-xs text-gray-500 text-center">
+                18% GST and Convenience Fee will be added during checkout
+              </p>
               <div className="flex items-center gap-3 text-sm text-gray-500 justify-center">
                 <Shield className="w-4 h-4 text-green-600" /> Secure Checkout
               </div>
@@ -78,16 +80,10 @@ export default function CartDrawer({
 
           {checkoutStep === 'details' && (
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">First Name</label>
-                  <input type="text" name="firstName" value={buyerData.firstName} onChange={handleInputChange} className={`w-full p-3 rounded-xl border ${formErrors.firstName ? 'border-red-500' : 'border-gray-200'} focus:ring-2 focus:ring-[#ff6a3d]/20 outline-none`} />
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Name</label>
+                  <input type="text" name="name" value={buyerData.name} onChange={handleInputChange} className={`w-full p-3 rounded-xl border ${formErrors.firstName ? 'border-red-500' : 'border-gray-200'} focus:ring-2 focus:ring-[#ff6a3d]/20 outline-none`} />
                 </div>
-                <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">Last Name</label>
-                  <input type="text" name="lastName" value={buyerData.lastName} onChange={handleInputChange} className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#ff6a3d]/20 outline-none" />
-                </div>
-              </div>
               <div>
                 <label className="block text-xs font-medium text-gray-700 mb-1">Email Address</label>
                 <input type="email" name="email" value={buyerData.email} onChange={handleInputChange} className={`w-full p-3 rounded-xl border ${formErrors.email ? 'border-red-500' : 'border-gray-200'} focus:ring-2 focus:ring-[#ff6a3d]/20 outline-none`} />
@@ -113,46 +109,7 @@ export default function CartDrawer({
             </div>
           )}
 
-          {checkoutStep === 'payment' && (
-            <div className="space-y-4">
-              <div className="bg-[#1a1a1a] text-white p-6 rounded-2xl mb-6">
-                <p className="text-gray-400 text-sm mb-1">Amount to Pay</p>
-                <h3 className="text-3xl font-bold">₹{totalPrice.toLocaleString()}</h3>
-              </div>
-
-              <h4 className="font-semibold text-gray-800 mb-3">Select Payment Method</h4>
-
-              <label className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${paymentMethod === 'upi' ? 'border-[#ff6a3d] bg-[#ff6a3d]/5' : 'border-gray-100 bg-white hover:border-gray-200'}`}>
-                <input type="radio" name="payment" checked={paymentMethod === 'upi'} onChange={() => setPaymentMethod('upi')} className="hidden" />
-                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 text-blue-600"><Smartphone className="w-5 h-5" /></div>
-                <div className="flex-1">
-                  <h5 className="font-semibold text-sm">UPI (GPay, PhonePe, Paytm)</h5>
-                  <p className="text-xs text-gray-500">Fast & secure via UPI apps</p>
-                </div>
-                {paymentMethod === 'upi' && <CheckCircle2 className="w-5 h-5 text-[#ff6a3d]" />}
-              </label>
-
-              <label className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${paymentMethod === 'card' ? 'border-[#ff6a3d] bg-[#ff6a3d]/5' : 'border-gray-100 bg-white hover:border-gray-200'}`}>
-                <input type="radio" name="payment" checked={paymentMethod === 'card'} onChange={() => setPaymentMethod('card')} className="hidden" />
-                <div className="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center flex-shrink-0 text-purple-600"><CreditCard className="w-5 h-5" /></div>
-                <div className="flex-1">
-                  <h5 className="font-semibold text-sm">Credit / Debit Card</h5>
-                  <p className="text-xs text-gray-500">Visa, Mastercard, RuPay</p>
-                </div>
-                {paymentMethod === 'card' && <CheckCircle2 className="w-5 h-5 text-[#ff6a3d]" />}
-              </label>
-
-              <label className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${paymentMethod === 'cod' ? 'border-[#ff6a3d] bg-[#ff6a3d]/5' : 'border-gray-100 bg-white hover:border-gray-200'}`}>
-                <input type="radio" name="payment" checked={paymentMethod === 'cod'} onChange={() => setPaymentMethod('cod')} className="hidden" />
-                <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0 text-green-600"><Wallet className="w-5 h-5" /></div>
-                <div className="flex-1">
-                  <h5 className="font-semibold text-sm">Cash on Delivery</h5>
-                  <p className="text-xs text-gray-500">Pay when you receive</p>
-                </div>
-                {paymentMethod === 'cod' && <CheckCircle2 className="w-5 h-5 text-[#ff6a3d]" />}
-              </label>
-            </div>
-          )}
+      
 
           {checkoutStep === 'processing' && (
             <div className="h-full flex flex-col items-center justify-center space-y-6">
@@ -199,31 +156,14 @@ export default function CartDrawer({
               <div className="flex gap-3">
                 <button onClick={() => setCheckoutStep('cart')} className="px-6 py-4 rounded-xl border border-gray-200 font-medium hover:bg-gray-50 transition-colors">Back</button>
                 <button
-                  onClick={handleProceedToPayment}
+                  onClick={handlePlaceOrder}
                   className="flex-1 bg-[#1a1a1a] hover:bg-[#ff6a3d] text-white font-bold py-4 rounded-xl transition-colors shadow-lg flex justify-center items-center gap-2"
                 >
                   Continue to Payment <ArrowRight className="w-5 h-5" />
                 </button>
               </div>
             )}
-            {checkoutStep === 'payment' && (
-              <div className="flex gap-3">
-                <button onClick={() => setCheckoutStep('details')} className="px-6 py-4 rounded-xl border border-gray-200 font-medium hover:bg-gray-50 transition-colors">Back</button>
-                <button
-                  onClick={handlePlaceOrder}
-                  className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl transition-colors shadow-lg shadow-green-600/20 flex justify-center items-center gap-2"
-                >
-                  <Lock className="w-4 h-4" /> Pay ₹{totalPrice.toLocaleString()}
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-        {checkoutStep === 'success' && (
-          <div className="p-6 bg-white border-t border-gray-100">
-            <button onClick={resetCart} className="w-full bg-[#1a1a1a] hover:bg-gray-800 text-white font-bold py-4 rounded-xl transition-colors">
-              Return to Website
-            </button>
+           
           </div>
         )}
       </div>
