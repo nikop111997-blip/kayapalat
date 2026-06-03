@@ -63,7 +63,8 @@ console.log("Received Order ID:", orderId);
             order.customer.email,
           phone:
             order.customer.phone,
-
+send_email: true,
+  send_sms: true,
           redirect_url:
             `https://www.kayapalat.in/success`,
              webhook:
