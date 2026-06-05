@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, User2 } from "lucide-react";
 
 export default function PaymentButton({
   amount,
@@ -19,6 +19,7 @@ export default function PaymentButton({
     name: "",
     email: "",
     mobile: "",
+      refferBy: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -54,50 +55,69 @@ export default function PaymentButton({
     setApiError("");
   };
 
-  const startPayment = async () => {
-    if (!validate()) return;
+ const startPayment = async () => {
+  if (!validate()) return;
 
-    try {
-      setLoading(true);
-      setApiError("");
+  try {
+    setLoading(true);
+    setApiError("");
 
-      const orderRes = await fetch("/api/orders/create", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          amount,
-          plan:purpose,
-          name: form.name,
-          email: form.email,
-          phone: form.mobile,
-        }),
-      });
+    // Get UTM params
+    const params = new URLSearchParams(window.location.search);
 
-      const orderData = await orderRes.json();
+    const utm = {
+      utm_source: params.get("utm_source") || "",
+      utm_medium: params.get("utm_medium") || "",
+      utm_campaign: params.get("utm_campaign") || "",
+      utm_term: params.get("utm_term") || "",
+      utm_content: params.get("utm_content") || "",
+    };
 
-      if (!orderData.success) {
-        throw new Error(orderData.error || "Order creation failed");
-      }
+    const orderRes = await fetch("/api/orders/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        amount,
+        plan: purpose,
+        name: form.name,
+        email: form.email,
+        phone: form.mobile,
+        refferBy: form.refferBy || "Organic",
 
-      const paymentRes = await fetch("/api/payments/create", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ orderId: orderData.orderId }),
-      });
+        // UTM Data
+        utm,
+        landingPage: window.location.href,
+        referrer: document.referrer,
+      }),
+    });
 
-      const paymentData = await paymentRes.json();
+    const orderData = await orderRes.json();
 
-      if (paymentData.success && paymentData.paymentUrl) {
-        window.location.href = paymentData.paymentUrl;
-      } else {
-        throw new Error("Payment URL not received from the server");
-      }
-    } catch (error) {
-      setApiError(error.message);
-    } finally {
-      setLoading(false);
+    if (!orderData.success) {
+      throw new Error(orderData.error || "Order creation failed");
     }
-  };
+
+    const paymentRes = await fetch("/api/payments/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        orderId: orderData.orderId,
+      }),
+    });
+
+    const paymentData = await paymentRes.json();
+
+    if (paymentData.success && paymentData.paymentUrl) {
+      window.location.href = paymentData.paymentUrl;
+    } else {
+      throw new Error("Payment URL not received from the server");
+    }
+  } catch (error) {
+    setApiError(error.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
   // Reusable error message component
   const ErrorMessage = ({ message }) => (
@@ -251,6 +271,23 @@ export default function PaymentButton({
                     />
                   </div>
                   <ErrorMessage message={errors.mobile} />
+                </div>
+                <div>
+                  <div className="relative flex items-center">
+                    <User2 size={16} className="text-gray-400 absolute left-3.5 pointer-events-none" />
+                    <input
+                      type="text"
+                      placeholder="Learned about Kayapalat from"
+                      value={form.refferBy}
+                      disabled={loading}
+                      onChange={(e) => {
+                        setForm({ ...form, refferBy: e.target.value });
+                      }}
+                      className={`w-full bg-[#f4f5f7] rounded-xl py-3.5 pl-11 pr-4 text-[15px] text-gray-900 placeholder-gray-400 outline-none transition-all ${
+                        errors.refferBy ? "ring-2 ring-red-400 bg-red-50/30" : "focus:bg-white focus:ring-2 focus:ring-gray-200"
+                      }`}
+                    />
+                  </div>
                 </div>
               </div>
 

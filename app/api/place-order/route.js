@@ -5,28 +5,33 @@ export async function POST(req) {
     const body = await req.json();
 console.log("Received order data:", body);
     // save customer data
-    const orderRes = await fetch(
-      `https://www.kayapalat.in/api/orders/create`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type":
-            "application/json",
-        },
-        body: JSON.stringify({
-        name: body.customer.name,
-        plan: body.product.name,
-        customer: body.customer,
-        quantity: body.quantity,
-        amount: body.amount,
-        address: body.customer.address,
-        city: body.customer.city,
-        pincode: body.customer.pincode,
-        product:
-            body.product,
-        }),
-      }
-    );
+   const orderRes = await fetch(
+  "https://www.kayapalat.in/api/orders/create",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: body.customer.name,
+      plan: body.product.name,
+      customer: body.customer,
+      quantity: body.quantity,
+      amount: body.amount,
+      address: body.customer.address,
+      city: body.customer.city,
+      pincode: body.customer.pincode,
+      product: body.product,
+
+      utm: body.utm,
+      utm_source: body.utm?.utm_source,
+      utm_medium: body.utm?.utm_medium,
+      utm_campaign: body.utm?.utm_campaign,
+      utm_term: body.utm?.utm_term,
+      utm_content: body.utm?.utm_content,
+    }),
+  }
+);
 
     const order =
       await orderRes.json();

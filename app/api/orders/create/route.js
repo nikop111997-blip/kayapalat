@@ -16,6 +16,11 @@ export async function POST(req) {
     const phone =
       body.phone ||
       body.customer?.phone;
+    
+    const refferBy =
+      body.refferBy ||
+      body.customer?.refferBy ||
+      "Organic"; // Default to "Organic" if not provided
 
     const plan =
       body.plan ||
@@ -36,34 +41,63 @@ export async function POST(req) {
     const db =
       client.db("kayakalap");
 
-    const order = {
-      name,
-      plan,
-      email,
-      phone,
-      amount,
-      quantity,
+   const order = {
+  name,
+  plan,
+  email,
+  phone,
+  amount,
+  quantity,
+  refferBy,
 
-      customer: {
-        name,
-        email,
-        phone,
-        address:body.address || "",
-        city: body.city || "",
-        pincode: body.pincode || "",
-      },
+  customer: {
+    name,
+    email,
+    phone,
+    address: body.address || "",
+    city: body.city || "",
+    pincode: body.pincode || "",
+  },
 
-      product:
-        body.product || null,
+  product: body.product || null,
+landingPage: body.landingPage || "",
+referrer: body.referrer || "",
+  // UTM Tracking
+  utm: body.utm || {},
 
-      status: "pending",
+  utm_source:
+    body.utm_source ||
+    body.utm?.utm_source ||
+    "",
 
-      paymentRequestId: null,
-      paymentId: null,
+  utm_medium:
+    body.utm_medium ||
+    body.utm?.utm_medium ||
+    "",
 
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    };
+  utm_campaign:
+    body.utm_campaign ||
+    body.utm?.utm_campaign ||
+    "",
+
+  utm_term:
+    body.utm_term ||
+    body.utm?.utm_term ||
+    "",
+
+  utm_content:
+    body.utm_content ||
+    body.utm?.utm_content ||
+    "",
+
+  status: "pending",
+
+  paymentRequestId: null,
+  paymentId: null,
+
+  createdAt: new Date(),
+  updatedAt: new Date(),
+};
 
     const result =
       await db

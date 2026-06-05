@@ -9,12 +9,12 @@ import BookingComponent from './Booking2Comp';
 
 const navLinks = [
   { name: 'Why Kayapalat', href: 'https://kayapalat.in/#why-kayapalat' },
-  { name: 'How it works', href: 'https://kayapalat.in/#how-it-works' },
   { name: 'Programs', href: '/pricing' },
   { name: 'Transformations', href: 'https://kayapalat.in/#transformations' },
   { name: 'About', href: '/about' },
   { name: 'Blogs', href: '/blogs' },
   { name: 'FAQ', href: 'https://kayapalat.in/#faq' },
+   { name: 'Journal', href: '/journal' },
 ];
 
 export default function Navbar() {

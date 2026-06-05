@@ -70,7 +70,7 @@ export default function KPJournalLanding() {
 
  const handlePlaceOrder = async () => {
   const errors = {};
-console.log("Validating buyer data:", buyerData);
+
   if (!buyerData.name?.trim() || buyerData.name.trim().length < 4) {
     errors.name = "Name must be at least 4 characters";
   }
@@ -99,9 +99,20 @@ console.log("Validating buyer data:", buyerData);
     setFormErrors(errors);
     return;
   }
-console.log("Buyer data validated successfully:", buyerData);
-const totalPrice = selectedBundle.price * quantity;
-console.log("Placing order with data:", { buyerData, selectedBundle, quantity, totalPrice });
+
+  const totalPrice = selectedBundle.price * quantity;
+
+  // Get UTM parameters
+  const params = new URLSearchParams(window.location.search);
+
+  const utm = {
+    utm_source: params.get("utm_source") || "",
+    utm_medium: params.get("utm_medium") || "",
+    utm_campaign: params.get("utm_campaign") || "",
+    utm_term: params.get("utm_term") || "",
+    utm_content: params.get("utm_content") || "",
+  };
+
   try {
     setCheckoutStep("processing");
 
@@ -115,6 +126,9 @@ console.log("Placing order with data:", { buyerData, selectedBundle, quantity, t
         product: selectedBundle,
         quantity,
         amount: totalPrice,
+        utm,
+        landingPage: window.location.href,
+        referrer: document.referrer,
       }),
     });
 
@@ -123,6 +137,7 @@ console.log("Placing order with data:", { buyerData, selectedBundle, quantity, t
     if (!data.success) {
       throw new Error(data.message);
     }
+
     window.location.href = data.paymentUrl;
   } catch (error) {
     console.error(error);

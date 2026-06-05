@@ -12,6 +12,8 @@ export default function PricingPlans() {
         type: 'primary',
       },
       idealFor: 'Beginners, homemakers, new moms, busy professionals, and anyone ready to take control of their health without stepping out of the home.',
+      price: '₹8500',
+      priceSuffix: '/month',
       primaryAction: 'Request A Call Back',
       secondaryAction: 'Request A Call Back',
       features: [
@@ -32,6 +34,8 @@ export default function PricingPlans() {
         type: 'secondary',
       },
       idealFor: 'Highly placed individuals with demanding schedules who want privacy, personalised coaching, and structured accountability for complete makeover.',
+      price: '₹8400',
+      priceSuffix: '/month',
       primaryAction: 'Request A Call Back',
       secondaryAction: 'Request A Call Back',
       features: [
@@ -52,6 +56,8 @@ export default function PricingPlans() {
         type: 'secondary',
       },
       idealFor: 'Members committed to becoming their healthiest, fittest, most confident selves with deeper support, exclusive benefits, and lasting results.',
+      price: "₹15000",
+      priceSuffix: '/month', // Left blank for custom text
       primaryAction: 'Request A Call Back',
       secondaryAction: 'Request A Call Back',
       features: [
@@ -82,7 +88,7 @@ export default function PricingPlans() {
         {/* Pricing Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {plans.map((plan, index) => {
-            // Highlighting the 3rd card based on the reference image
+            // Highlighting the 2nd card based on your current code logic
             const isHighlighted = index === 1; 
 
             return (
@@ -100,7 +106,7 @@ export default function PricingPlans() {
                     className={`inline-block px-5 py-2 rounded-full text-[15px] font-semibold tracking-wide ${
                       isHighlighted 
                         ? 'bg-white text-black shadow-sm' 
-                        : 'bg-[#f9cf01] text-black' // Purple pill matching the image
+                        : 'bg-[#f9cf01] text-black' 
                     }`}
                   >
                     {plan.title}
@@ -108,9 +114,21 @@ export default function PricingPlans() {
                 </div>
 
                 {/* Ideal For Text */}
-                <p className={`text-[18px] leading-relaxed mb-8 min-h-[90px] ${isHighlighted ? 'text-[#1b1b1b]' : 'text-[#1c1d1d]'}`}>
+                <p className={`text-[18px] leading-relaxed mb-6 min-h-[90px] ${isHighlighted ? 'text-[#1b1b1b]' : 'text-[#1c1d1d]'}`}>
                   {plan.idealFor}
                 </p>
+
+                {/* Pricing Display */}
+                <div className="mb-6 flex items-baseline gap-1">
+                  <h3 className={`text-5xl font-bold tracking-tight ${isHighlighted ? 'text-black' : 'text-[#111]'}`}>
+                    {plan.price}
+                  </h3>
+                  {plan.priceSuffix && (
+                    <span className="text-[16px] font-medium text-gray-800">
+                      {plan.priceSuffix}
+                    </span>
+                  )}
+                </div>
 
                 {/* Divider Line */}
                 <hr className={`border-t-2 mb-8 ${isHighlighted ? 'border-[#f9cf01]/60' : 'border-[#F3F4F6]'}`} />
@@ -137,22 +155,17 @@ export default function PricingPlans() {
 
                 {/* Contrasting Action Buttons */}
                 <div className="flex flex-col gap-3 mt-auto">
-                  {/* Primary Action Button */}
-                 
-
-                  {/* Know More Button (Navigates to details page) */}
+                  {/* Know More Button */}
                   <Link 
                     href={plan.link} 
-                    className={`w-full py-3.5 rounded-[12px] border border-gray-100 font-semibold text-[16px] text-center transition-all duration-200 bg-white text-black hover:bg-gray-50 shadow-sm
-                    }`}
+                    className="w-full py-3.5 rounded-[12px] border border-gray-100 font-semibold text-[16px] text-center transition-all duration-200 bg-white text-black hover:bg-gray-50 shadow-sm"
                   >
                     Know More
                   </Link>
- <button 
-                    className={`w-full py-3.5 rounded-[12px] font-semibold text-[16px] transition-all duration-200 flex justify-center items-center
-                      bg-[#080808] text-white hover:bg-black' // Dark button for gradient card
-                        
-                    }`}
+
+                  {/* Primary Action Button */}
+                  <button 
+                    className="w-full py-3.5 rounded-[12px] font-semibold text-[16px] transition-all duration-200 flex justify-center items-center bg-[#080808] text-white hover:bg-black"
                   >
                     {plan.primaryAction}
                   </button>
@@ -163,7 +176,6 @@ export default function PricingPlans() {
             );
           })}
         </div>
-
       </div>
     </section>
   );

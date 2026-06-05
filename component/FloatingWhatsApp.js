@@ -15,7 +15,7 @@ export default function FloatingWhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 flex items-center justify-center gap-2.5 bg-[#25D366] text-gray-900 px-5 py-3 md:px-6 md:py-3.5 rounded-full shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.23)] hover:-translate-y-1 transition-all duration-300 font-sans font-medium text-[15px]"
+      className="fixed bottom-16 right-6 md:bottom-24 md:right-8 z-50 flex items-center justify-center gap-2.5 bg-[#25D366] text-gray-900 px-5 py-3 md:px-6 md:py-3.5 rounded-full shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.23)] hover:-translate-y-1 transition-all duration-300 font-sans font-medium text-[15px]"
     >
       {/* WhatsApp Icon SVG */}
       <svg 
