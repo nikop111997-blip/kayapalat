@@ -18,7 +18,7 @@ const CoverDesign = ({ hintText }) => (
   <div
     className="relative group"
     style={{
-      width: "300px",
+      width: "400px",
       height: "520px",
       display: "flex",
       alignItems: "stretch",
