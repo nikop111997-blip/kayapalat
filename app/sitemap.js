@@ -26,6 +26,30 @@ export default async function sitemap() {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/pro-plan`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/elite-plan`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/platinum-plan`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+     {
+      url: `${baseUrl}/journal`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/blogs`,
       lastModified: new Date(),
       changeFrequency: "monthly",

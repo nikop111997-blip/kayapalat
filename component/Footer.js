@@ -118,6 +118,9 @@ export default function Footer() {
             <RolloverLink href="https://kayapalat.in/pricing">
               Programs
             </RolloverLink>
+            <RolloverLink href="https://kayapalat.in/Journal">
+              Journal
+            </RolloverLink>
           </div>
 
           {/* Column 3 */}
@@ -234,9 +237,6 @@ export default function Footer() {
           </div>
           <div className='flex gap-4'>
              <p>© 2026 Kayapalat Wellness. All rights reserved.</p>
-             <p>Created by <RolloverLink href="https://www.brandhubble.com/" className="text-gray-50">
-              Brand Hubble
-            </RolloverLink>.</p>
           </div>
           
         </div>

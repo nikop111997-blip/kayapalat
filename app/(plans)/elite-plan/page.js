@@ -6,8 +6,120 @@ import {
 import PaymentButton from '@/component/PayButton';
 import BookingComponent from '@/component/Booking2Comp';
 
-/* Tailwind-only — no inline style props anywhere */
-/* Incorporating high-end glassmorphism and cinematic spacing for the Elite tier */
+export const metadata = {
+  title:
+    "Kayapalat Elite | Private Personalised Fitness & Health Transformation Coaching",
+
+  description:
+    "Experience the highest level of transformation coaching with Kayapalat Elite. Enjoy personalised coaching, priority coach access, private consultations, nutrition guidance, accountability, and a bespoke health transformation plan designed around your lifestyle.",
+
+  keywords: [
+    "Kayapalat Elite",
+    "elite fitness coaching",
+    "private fitness coach",
+    "personal transformation coach",
+    "executive fitness coaching",
+    "weight loss coaching",
+    "health transformation program",
+    "personalized nutrition coaching",
+    "elite wellness program",
+    "Ajay Singh Sethi",
+    "fitness coach India",
+    "executive health coaching",
+    "VIP fitness program",
+    "private health coaching",
+    "body transformation",
+    "fitness accountability",
+    "metabolic health",
+    "entrepreneur fitness coaching",
+    "professional wellness coaching",
+    "high performance health",
+    "lifestyle transformation",
+    "elite wellness retreat",
+  ],
+
+  authors: [
+    {
+      name: "Kayapalat",
+      url: "https://www.kayapalat.in/",
+    },
+  ],
+
+  creator: "Kayapalat",
+
+  publisher: "Kayapalat",
+
+  metadataBase: new URL("https://www.kayapalat.in"),
+
+  alternates: {
+    canonical: "https://www.kayapalat.in/elite",
+  },
+
+  openGraph: {
+    title:
+      "Kayapalat Elite | Private, Personalised & High-Touch Transformation Coaching",
+
+    description:
+      "Designed for professionals, entrepreneurs, executives, and individuals who want exceptional results with maximum privacy, accountability, and personalised support.",
+
+    url: "https://www.kayapalat.in/elite",
+
+    siteName: "Kayapalat",
+
+    images: [
+      {
+        url: "https://www.kayapalat.in/images/elite-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Kayapalat Elite Transformation Program",
+      },
+    ],
+
+    locale: "en_IN",
+
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title:
+      "Kayapalat Elite | Bespoke Health & Fitness Transformation",
+
+    description:
+      "Private coaching, personalised nutrition, priority support, weekly master coaching, and complete transformation designed around your lifestyle.",
+
+    images: [
+      "https://www.kayapalat.in/images/elite-og.jpg",
+    ],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+
+  category: "Health & Fitness",
+
+  other: {
+    "application-name": "Kayapalat Elite",
+    "apple-mobile-web-app-title": "Kayapalat Elite",
+  },
+};
 
 export default function KayapalatElitePlan() {
   return (
@@ -36,7 +148,7 @@ export default function KayapalatElitePlan() {
             </p>
 
             <div className="flex flex-wrap items-center gap-4 mb-12">
-              <PaymentButton plan="Elite" amount={200} purpose="elite_apply" buttonText="Apply For Elite" variant="primary" />
+              <PaymentButton plan="Elite" amount={24024} purpose="elite_apply" buttonText="Apply For Elite" variant="primary" />
               <BookingComponent pricing={false} navbar={true} customText="Book A Private Consultation" />
             </div>
 
@@ -366,7 +478,7 @@ export default function KayapalatElitePlan() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                <PaymentButton plan="Elite" purpose="elite_apply" amount={200} buttonText="Apply For Elite" variant="primary" />
+                <PaymentButton plan="Elite" purpose="elite_apply" amount={24024} buttonText="Apply For Elite" variant="primary" />
                 <span className="text-white/60 font-medium italic">or</span>
                 <BookingComponent pricing={false} navbar={false} customText="Book A Private Consultation" />
               </div>

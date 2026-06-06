@@ -7,23 +7,138 @@ import {
 import PaymentButton from '@/component/PayButton';
 import BookingComponent from '@/component/Booking2Comp';
 
-/* Tailwind-only — no inline style props anywhere */
-/* Utilizing high-end glassmorphism and cinematic scroll layouts */
+export const metadata = {
+  title:
+    "Kayapalat Legacy | Long-Term Wellness, Accountability & Lifestyle Transformation",
 
-export default function KayapalatPlatinumPlan() {
+  description:
+    "The Kayapalat Legacy Plan helps you maintain your results for life through long-term coaching, accountability, wellness retreats, family wellness support, advanced fitness guidance, and a sustainable lifestyle transformation approach.",
+
+  keywords: [
+    "Kayapalat Legacy",
+    "lifestyle transformation",
+    "long term weight maintenance",
+    "wellness coaching",
+    "health accountability program",
+    "fitness lifestyle program",
+    "sustainable health transformation",
+    "advanced fitness coaching",
+    "wellness retreat India",
+    "fitness maintenance program",
+    "healthy lifestyle coaching",
+    "long term wellness plan",
+    "body transformation maintenance",
+    "fitness coaching India",
+    "Ajay Singh Sethi",
+    "wellness membership",
+    "health transformation program",
+    "metabolic health",
+    "fitness accountability",
+    "personal wellness coach",
+    "lifetime wellness",
+    "habit transformation",
+    "weight loss maintenance",
+    "wellness community",
+    "family wellness coaching",
+  ],
+
+  authors: [
+    {
+      name: "Kayapalat",
+      url: "https://www.kayapalat.in/",
+    },
+  ],
+
+  creator: "Kayapalat",
+
+  publisher: "Kayapalat",
+
+  metadataBase: new URL("https://www.kayapalat.in"),
+
+  alternates: {
+    canonical: "https://www.kayapalat.in/legacy-plan",
+  },
+
+  openGraph: {
+    title:
+      "Kayapalat Legacy | Don't Just Transform. Stay Transformed.",
+
+    description:
+      "Designed for members committed to making wellness a lifelong lifestyle. Continue your transformation journey with coaching, accountability, retreats, community support, and advanced performance guidance.",
+
+    url: "https://www.kayapalat.in/legacy-plan",
+
+    siteName: "Kayapalat",
+
+    images: [
+      {
+        url: "https://www.kayapalat.in/images/legacy-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Kayapalat Legacy Long-Term Wellness Program",
+      },
+    ],
+
+    locale: "en_IN",
+
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title:
+      "Kayapalat Legacy | Lifelong Health & Wellness Transformation",
+
+    description:
+      "Maintain your results, deepen your habits, and build a sustainable lifestyle with long-term coaching, accountability, wellness retreats, and community support.",
+
+    images: [
+      "https://www.kayapalat.in/images/legacy-og.jpg",
+    ],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+
+  category: "Health & Fitness",
+
+  other: {
+    "application-name": "Kayapalat Legacy",
+    "apple-mobile-web-app-title": "Kayapalat Legacy",
+  },
+};
+
+export default function KayapalatLegacyPlan() {
   return (
     <main className="min-h-screen bg-[#f8fafc] text-[#003460] font-sans overflow-x-hidden">
 
       {/* ── HERO ── */}
       <section className="relative max-w-7xl mx-auto px-6 pt-24 pb-24">
-        {/* Platinum/Silver decorative glows */}
+        {/* Legacy/Silver decorative glows */}
         <div className="absolute top-0 left-10 w-[500px] h-[500px] bg-slate-300/20 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute top-40 right-10 w-[400px] h-[400px] bg-[#003460]/5 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
           {/* Left */}
           <div>
-            <Tag text="Kayapalat Platinum" />
+            <Tag text="Kayapalat Legacy" />
             <h1 className="mt-6 mb-6 text-5xl lg:text-7xl font-semibold tracking-tighter leading-[1.05] text-[#003460]">
               Don't Just Transform.<br />
               <span className="relative inline-block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-slate-400 via-slate-600 to-slate-400">
@@ -33,14 +148,14 @@ export default function KayapalatPlatinumPlan() {
             </h1>
             <p className="text-lg text-[#0d0d0d] leading-relaxed max-w-lg mb-6 font-medium">
               For members who are ready to make wellness a lifestyle—not a temporary phase. 
-              The Platinum Plan is designed for individuals who have already experienced the power of the Kayapalat Method and are now committed to becoming the healthiest, fittest, and most confident version of themselves for life.
+              The Legacy Plan is designed for individuals who have already experienced the power of the Kayapalat Method and are now committed to becoming the healthiest, fittest, and most confident version of themselves for life.
             </p>
             <p className="text-base text-[#003460] font-bold mb-10">
               This is not about losing weight. This is about becoming the kind of person who never has to start over again.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 mb-12">
-              <PaymentButton plan="Platinum" amount={300} purpose="platinum_upgrade" buttonText="Upgrade To Platinum" variant="primary" />
+              <PaymentButton plan="Legacy" amount={50900} purpose="Legacy_upgrade" buttonText="Upgrade To Legacy" variant="primary" />
               <BookingComponent pricing={false} navbar={true} customText="Book A Call" />
             </div>
           </div>
@@ -50,7 +165,7 @@ export default function KayapalatPlatinumPlan() {
             <div className="rounded-[2.5rem] overflow-hidden relative shadow-[0_20px_50px_rgba(0,52,96,0.15)] transition-all duration-700 transform hover:rotate-y-2 hover:scale-[1.02]">
               <img
                 src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80"
-                alt="Platinum Lifestyle"
+                alt="Legacy Lifestyle"
                 className="w-full h-[550px] sm:h-[750px] object-cover block"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#003460]/90 via-[#003460]/20 to-transparent" />
@@ -107,7 +222,7 @@ export default function KayapalatPlatinumPlan() {
                 Wellness Is Not A Destination.<br/>It's A Lifestyle.
               </h3>
               <p className="text-[#0d0d0d] font-medium leading-relaxed mb-6">
-                At Kayapalat, we believe the goal isn't simply transformation. The goal is lifelong transformation. The Platinum Plan was created to help you stay there.
+                At Kayapalat, we believe the goal isn't simply transformation. The goal is lifelong transformation. The Legacy Plan was created to help you stay there.
               </p>
               <p className="text-[#0d0d0d] font-medium leading-relaxed">
                 You have built momentum. You have experienced results. Now it's time to strengthen the habits, systems, and identity that make those results permanent. This is where transformation becomes a way of life.
@@ -117,11 +232,11 @@ export default function KayapalatPlatinumPlan() {
         </div>
       </section>
 
-      {/* ── THE PLATINUM ADVANTAGE (FEATURES) ── */}
+      {/* ── THE Legacy ADVANTAGE (FEATURES) ── */}
       <section className="bg-[#f8fafc] py-24 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <Tag text="Platinum Advantage" />
+            <Tag text="Legacy Advantage" />
             <h2 className="mt-6 text-4xl lg:text-5xl font-semibold tracking-tight text-[#003460] max-w-2xl mx-auto">
               Everything you need to make it <span className="border-b-[4px] border-slate-400">permanent.</span>
             </h2>
@@ -153,16 +268,16 @@ export default function KayapalatPlatinumPlan() {
                    <Award className="w-8 h-8 text-slate-300" />
                 </div>
                 <div>
-                   <h3 className="text-xl font-bold text-[#003460] mb-1">Exclusive Platinum Recognition</h3>
+                   <h3 className="text-xl font-bold text-[#003460] mb-1">Exclusive Legacy Recognition</h3>
                    <p className="text-sm text-[#0d0d0d] font-medium">Your commitment deserves recognition. Receive exclusive merchandise and access to experiences designed specifically for long-term members.</p>
                 </div>
              </div>
-             <PaymentButton plan="Platinum" amount={300} purpose="platinum_upgrade" buttonText="Upgrade Now" variant="primary" />
+             <PaymentButton plan="Legacy" amount={50900} purpose="Legacy_upgrade" buttonText="Upgrade Now" variant="primary" />
           </div>
         </div>
       </section>
 
-      {/* ── THE PLATINUM DIFFERENCE (IDENTITY SHIFT) ── */}
+      {/* ── THE Legacy DIFFERENCE (IDENTITY SHIFT) ── */}
       <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
            <div className="bg-[#f8fafc] rounded-[3rem] p-6 lg:p-16 border border-slate-200 shadow-xl flex flex-col lg:flex-row gap-16 items-center">
@@ -170,7 +285,7 @@ export default function KayapalatPlatinumPlan() {
                 <Tag text="The Difference" />
                 <h2 className="mt-6 mb-6 text-3xl lg:text-5xl font-semibold tracking-tight leading-[1.1] text-[#003460]">
                   Most programs focus on helping you achieve a goal.<br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-600">Platinum helps you become a different person.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-600">Legacy helps you become a different person.</span>
                 </h2>
                 <p className="text-[#0d0d0d] text-lg font-medium mb-8">This is the difference between temporary success and lasting transformation.</p>
               </div>
@@ -258,7 +373,7 @@ export default function KayapalatPlatinumPlan() {
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                   <Check className="w-6 h-6 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#003460]">Who The Platinum Plan Is For</h3>
+                <h3 className="text-2xl font-bold text-[#003460]">Who The Legacy Plan Is For</h3>
               </div>
               <ul className="space-y-5">
                 {[
@@ -312,7 +427,7 @@ export default function KayapalatPlatinumPlan() {
               The Ripple Effect Of Transformation
            </h2>
            <p className="text-xl text-white/90 leading-relaxed mb-8 font-medium">
-              The greatest benefit of Platinum isn't what happens to you. It's what happens around you.
+              The greatest benefit of Legacy isn't what happens to you. It's what happens around you.
            </p>
            <div className="flex flex-wrap justify-center gap-4 mb-10">
               {['Your family notices.', 'Your friends notice.', 'Your colleagues notice.', 'Your energy changes.', 'Your confidence grows.', 'Your standards rise.'].map((text, i) => (
@@ -338,14 +453,14 @@ export default function KayapalatPlatinumPlan() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { q: 'Who is eligible for the Platinum Plan?', a: 'Available to members who have completed at least 3 months with Kayapalat and are ready to commit to long-term transformation.' },
-              { q: 'Why is Platinum offered as a 6-month commitment?', a: 'Because lasting change takes time. The six-month structure allows habits, routines, and behaviours to become deeply ingrained, significantly increasing the likelihood of maintaining results long term.' },
-              { q: 'Is the Wellness Retreat included?', a: 'Yes. The Platinum Plan includes a complimentary Kayapalat Wellness Retreat as part of your membership benefits. Please check current retreat schedules with your Coach.' },
-              { q: 'What makes Platinum different from Elite?', a: 'Elite focuses on accelerated transformation through personalised coaching and accountability. Platinum focuses on sustaining results, deepening habits, and making wellness a permanent lifestyle.' },
-              { q: 'Can I join Platinum directly?', a: 'No. Platinum is reserved for members who have already completed at least 3 months within the Kayapalat ecosystem. This ensures members have a strong foundation before progressing.' },
-              { q: 'What if I have already reached my Ideal Body Weight?', a: 'That\'s often when Platinum becomes most valuable. The goal is not simply to reach a result. The goal is to maintain and build upon it for life.' },
-              { q: 'Will I continue receiving coaching support?', a: 'Absolutely. Platinum Members continue to receive coaching, accountability, guidance, and community support throughout their membership.' },
-              { q: 'Why do members choose Platinum?', a: 'Because they no longer want wellness to be something they start and stop. They want health, fitness, and happiness to become part of who they are.' },
+              { q: 'Who is eligible for the Legacy Plan?', a: 'Available to members who have completed at least 3 months with Kayapalat and are ready to commit to long-term transformation.' },
+              { q: 'Why is Legacy offered as a 6-month commitment?', a: 'Because lasting change takes time. The six-month structure allows habits, routines, and behaviours to become deeply ingrained, significantly increasing the likelihood of maintaining results long term.' },
+              { q: 'Is the Wellness Retreat included?', a: 'Yes. The Legacy Plan includes a complimentary Kayapalat Wellness Retreat as part of your membership benefits. Please check current retreat schedules with your Coach.' },
+              { q: 'What makes Legacy different from Elite?', a: 'Elite focuses on accelerated transformation through personalised coaching and accountability. Legacy focuses on sustaining results, deepening habits, and making wellness a permanent lifestyle.' },
+              { q: 'Can I join Legacy directly?', a: 'No. Legacy is reserved for members who have already completed at least 3 months within the Kayapalat ecosystem. This ensures members have a strong foundation before progressing.' },
+              { q: 'What if I have already reached my Ideal Body Weight?', a: 'That\'s often when Legacy becomes most valuable. The goal is not simply to reach a result. The goal is to maintain and build upon it for life.' },
+              { q: 'Will I continue receiving coaching support?', a: 'Absolutely. Legacy Members continue to receive coaching, accountability, guidance, and community support throughout their membership.' },
+              { q: 'Why do members choose Legacy?', a: 'Because they no longer want wellness to be something they start and stop. They want health, fitness, and happiness to become part of who they are.' },
             ].map((faq, i) => (
               <div key={i} className="bg-[#f8fafc] border border-slate-200 rounded-2xl p-7 hover:shadow-md transition-all">
                 <h3 className="font-bold text-lg text-[#003460] mb-3 leading-snug">{faq.q}</h3>
@@ -377,7 +492,7 @@ export default function KayapalatPlatinumPlan() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                <PaymentButton plan="Platinum" amount={300} purpose="platinum_upgrade" buttonText="Upgrade To Platinum" variant="primary" />
+                <PaymentButton plan="Legacy" amount={50900} purpose="Legacy_upgrade" buttonText="Upgrade To Legacy" variant="primary" />
                 <span className="text-white/60 font-medium italic">or</span>
                 <BookingComponent pricing={false} navbar={false} customText="Book A Call" />
               </div>

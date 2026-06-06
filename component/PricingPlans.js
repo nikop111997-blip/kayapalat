@@ -1,75 +1,84 @@
 import React from 'react';
 import BookingComponent from './BookingComponent';
 import Link from 'next/link';
+import { IndianRupee } from 'lucide-react';
+import PaymentButton from './PayButton';
 
 export default function PricingPlans() {
-  const plans = [
-    {
-      title: 'Pro',
-      link: "/pro-plan",
-      badge: {
-        text: 'Recommended',
-        type: 'primary',
-      },
-      idealFor: 'Beginners, homemakers, new moms, busy professionals, and anyone ready to take control of their health without stepping out of the home.',
-      price: '₹8500',
-      priceSuffix: '/month',
-      primaryAction: 'Request A Call Back',
-      secondaryAction: 'Request A Call Back',
-      features: [
-        '12 Live FIT Hours every month',
-        '12 easy-to-follow structured WODs',
-        'Daily Live Coaching (Mon-Sat)',
-        'Personal Coach Support',
-        'Weekly Reviews & Clarity Calls',
-        'Access to KP Community',
-        'Nutrition Support',
-      ],
+ const plans = [
+  {
+    title: 'Gold',
+    link: "/gold-plan",
+    purpose: "gold_plan",
+    badge: {
+      text: 'Recommended',
+      type: 'primary',
     },
-    {
-      title: 'Elite',
-      link: "/elite-plan",
-      badge: {
-        text: 'Limited seats only',
-        type: 'secondary',
-      },
-      idealFor: 'Highly placed individuals with demanding schedules who want privacy, personalised coaching, and structured accountability for complete makeover.',
-      price: '₹8400',
-      priceSuffix: '/month',
-      primaryAction: 'Request A Call Back',
-      secondaryAction: 'Request A Call Back',
-      features: [
-        'Everything in Pro plan',
-        '1:1 Coaching (Thrice Weekly)',
-        'Personalised Nutrition Kit',
-        'Advance Support from Master Coach',
-        'Access to Preferred Member Training',
-        'Priority Support for Progress',
-        'Retreat with 6-month Commitment',
-      ],
+    idealFor: 'Build healthy habits, regain your energy, and create lasting transformation. Perfect for busy professionals, homemakers, new moms, and anyone ready to take control of their health from home.',
+    price: 8484,
+    priceSuffix: '/per month',
+    primaryAction: 'Join Now',
+    secondaryAction: 'Join Now',
+    features: [
+      '12 Live FIT Hours Every Month',
+      '12 Structured Workouts You Can Do Anywhere',
+      'Daily Coaching & Accountability (Mon–Sat)',
+      'Personal Coach Support',
+      'Weekly Reviews & Clarity Calls',
+      'Access to the Kayapalat Community',
+      'Nutrition Guidance & Support',
+    ],
+  },
+  {
+    title: 'Elite',
+    link: "/elite-plan",
+    purpose: "elite_plan",
+    badge: {
+      text: 'Limited seats only',
+      type: 'secondary',
     },
-    {
-      title: 'Platinum',
-      link: "/platinum-plan",
-      badge: {
-        text: 'Limited seats only',
-        type: 'secondary',
-      },
-      idealFor: 'Members committed to becoming their healthiest, fittest, most confident selves with deeper support, exclusive benefits, and lasting results.',
-      price: "₹15000",
-      priceSuffix: '/month', // Left blank for custom text
-      primaryAction: 'Request A Call Back',
-      secondaryAction: 'Request A Call Back',
-      features: [
-        'All Pro plan benefits for 6 months',
-        'FREE Kayapalat Wellness Retreat',
-        'Free Family Wellness Consultation and access to events',
-        'Priority Response from your Coach',
-        'Master coach support for goals',
-        'Exclusive Platinum Member Merchandise',
-      ],
+    idealFor: 'Private coaching, personalised guidance, and deeper accountability for faster transformation. Ideal for professionals, entrepreneurs, and leaders who value privacy, personal attention, and results.',
+    price: 24024,
+    priceSuffix: '/per month',
+    primaryAction: 'Join Now',
+    secondaryAction: 'Join Now',
+    features: [
+      'Everything Included in GOLD',
+      '1:1 Coaching Three Times Every Week',
+      'Bespoke Transformation Blueprint',
+      'Personalised Nutrition Support',
+      'Priority Coach Access',
+      'Weekly Support from Master Coach',
+      'Access to Preferred Member Training',
+      'Access to Body Transformation Marathon (BTM)',
+      'Complimentary Wellness Retreat with Eligible Commitment',
+    ],
+  },
+  {
+    title: 'Legacy',
+    link: "/legacy-plan",
+    purpose: "legacy_plan",
+    badge: {
+      text: 'Limited seats only',
+      type: 'secondary',
     },
-  ];
+    idealFor: 'Make wellness a lifestyle. Exclusive for committed members who want to deepen their health, fitness, and happiness journey with long-term support and special privileges. (Available exclusively to members who have completed 3 months with Kayapalat).',
+    price: 50900,
+    priceSuffix: '/ for 6 months',
+    primaryAction: 'Join Now',
+    secondaryAction: 'Join Now',
+    features: [
+      'All GOLD Benefits for 6 Months',
+      'Complimentary Kayapalat Wellness Retreat Every 6 Months',
+      'Family Wellness Consultation',
+      'Priority Coach Access',
+      'Early Access to Events, Masterclasses & Performance Clinics',
+      'Advanced Fitness & Performance Guidance',
+      'Legacy Member Recognition',
+      'Exclusive Legacy Member Merchandise',
+    ],
+  },
+];
 
   return (
     <section className="bg-[#F8F9FA] py-16 px-4 md:px-8 font-manrope">
@@ -120,8 +129,8 @@ export default function PricingPlans() {
 
                 {/* Pricing Display */}
                 <div className="mb-6 flex items-baseline gap-1">
-                  <h3 className={`text-5xl font-bold tracking-tight ${isHighlighted ? 'text-black' : 'text-[#111]'}`}>
-                    {plan.price}
+                  <h3 className={`text-5xl font-bold tracking-tight flex items-center ${isHighlighted ? 'text-black' : 'text-[#111]'}`}>
+                   <IndianRupee /> {plan.price}
                   </h3>
                   {plan.priceSuffix && (
                     <span className="text-[16px] font-medium text-gray-800">
@@ -162,13 +171,9 @@ export default function PricingPlans() {
                   >
                     Know More
                   </Link>
-
+<PaymentButton plan={plan.title} amount={plan.price} purpose={plan.purpose} buttonText="Join Now" variant="plans" />
                   {/* Primary Action Button */}
-                  <button 
-                    className="w-full py-3.5 rounded-[12px] font-semibold text-[16px] transition-all duration-200 flex justify-center items-center bg-[#080808] text-white hover:bg-black"
-                  >
-                    {plan.primaryAction}
-                  </button>
+                 
                   {/* NOTE: You can swap the primary action button above with your BookingComponent if needed, e.g.: */}
                   {/* <BookingComponent pricing={true} /> */}
                 </div>

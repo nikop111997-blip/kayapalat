@@ -7,10 +7,122 @@ import {
 import PaymentButton from '@/component/PayButton';
 import FeaturesTabs from '@/component/FeturesTabs';
 import BookingComponent from '@/component/Booking2Comp';
+export const metadata = {
+  title:
+    "Kayapalat Gold Plan | Sustainable Weight Loss, Fitness & Health Transformation",
 
-/* Tailwind-only — no inline style props anywhere */
+  description:
+    "Join the Kayapalat Gold Plan and achieve lasting weight loss, imGoldved health, higher energy, and greater confidence with expert coaching, personalized guidance, live workouts, nutrition support, and accountability.",
 
-export default function KayapalatProPlan() {
+  keywords: [
+    "Kayapalat Gold Plan",
+    "weight loss Program",
+    "health transformation",
+    "fitness coaching",
+    "online fitness coach",
+    "fat loss Program",
+    "nutrition coaching",
+    "wellness coaching",
+    "Ajay Singh Sethi",
+    "body transformation",
+    "health coach India",
+    "lifestyle transformation",
+    "personal coach support",
+    "fitness accountability",
+    "healthy lifestyle",
+    "live fitness sessions",
+    "metabolic health",
+    "fitness for Goldfessionals",
+    "fitness for homemakers",
+    "fitness for entrepreneurs",
+    "sustainable weight loss",
+    "online wellness Program",
+  ],
+
+  authors: [
+    {
+      name: "Kayapalat",
+      url: "https://www.kayapalat.in/",
+    },
+  ],
+
+  creator: "Kayapalat",
+
+  publisher: "Kayapalat",
+
+  metadataBase: new URL("https://www.kayapalat.in"),
+
+  alternates: {
+    canonical: "https://www.kayapalat.in/gold-plan",
+  },
+
+  openGraph: {
+    title:
+      "Kayapalat Gold Plan | Finally Get Healthy, Fit & Confident Without Putting Your Life on Hold",
+
+    description:
+      "Designed for busy Goldfessionals, entrepreneurs, homemakers, and parents. Get expert coaching, nutrition guidance, live workouts, accountability, and community support for lasting transformation.",
+
+    url: "https://www.kayapalat.in/gold-plan",
+
+    siteName: "Kayapalat",
+
+    images: [
+      {
+        url: "https://www.kayapalat.in/images/gold-plan-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Kayapalat Gold Plan Transformation program",
+      },
+    ],
+
+    locale: "en_IN",
+
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title:
+      "Kayapalat Gold Plan | Sustainable Health & Fitness Transformation",
+
+    description:
+      "Lose weight, imGoldve energy, build confidence, and create lifelong healthy habits with expert coaching and accountability.",
+
+    images: [
+      "https://www.kayapalat.in/images/Gold-plan-og.jpg",
+    ],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+
+  category: "Health & Fitness",
+
+  other: {
+    "application-name": "Kayapalat Gold Plan",
+    "apple-mobile-web-app-title": "Kayapalat Gold Plan",
+  },
+};
+
+export default function KayapalatGoldPlan() {
   return (
     <main className="min-h-screen bg-white text-[#003460] font-sans overflow-x-hidden">
 
@@ -32,7 +144,7 @@ export default function KayapalatProPlan() {
               ,<br />Fit &amp; Confident
             </h1>
             <p className="text-base text-[#0d0d0d] leading-relaxed max-w-md mb-7 font-medium">
-              Without putting your life on hold. Built for busy professionals, homemakers, and anyone tired of trying without lasting results.
+              Without putting your life on hold. Built for busy Goldfessionals, homemakers, and anyone tired of trying without lasting results.
             </p>
 
             {/* Stars */}
@@ -48,7 +160,7 @@ export default function KayapalatProPlan() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3 mb-10">
-              <PaymentButton plan="Pro" amount={8484} purpose="pro_plan" buttonText="Buy Now — Join the Pro Plan" variant="primary" />
+              <PaymentButton plan="Gold" amount={8484} purpose="Gold_plan" buttonText="Buy Now — Join the Gold Plan" variant="primary" />
               <BookingComponent pricing={false} navbar={true} />
             </div>
 
@@ -76,7 +188,7 @@ export default function KayapalatProPlan() {
               />
               <div className="absolute inset-0 bg-[#003460]/10" />
               <div className="absolute bottom-5 left-0 right-0 flex justify-center">
-              <PaymentButton plan="Pro" amount={8484} purpose="pro_plan" buttonText="Join the Pro Plan" variant="secondary" />
+              <PaymentButton plan="Gold" amount={8484} purpose="Gold_plan" buttonText="Join the Gold Plan" variant="secondary" />
               </div>
             </div>
 
@@ -118,7 +230,7 @@ export default function KayapalatProPlan() {
                 <span className="border-b-[5px] border-[#ffce00]">Kayapalat Method</span>
               </h2>
               <p className="text-[#0d0d0d] text-base leading-relaxed max-w-md mb-8 font-medium">
-                Lasting transformation requires more than diet and exercise. Most programs focus on one piece — we cover all three.
+                Lasting transformation requires more than diet and exercise. Most Programs focus on one piece — we cover all three.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-8">
@@ -138,7 +250,7 @@ export default function KayapalatProPlan() {
                 ))}
               </div>
 
-             <PaymentButton plan="Pro" amount={8484} purpose="pro_plan" buttonText="Buy Now - Start Today" variant="primary" />
+             <PaymentButton plan="Gold" amount={8484} purpose="Gold_plan" buttonText="Buy Now - Start Today" variant="primary" />
             </div>
           </div>
         </div>
@@ -148,17 +260,17 @@ export default function KayapalatProPlan() {
       <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
-            <Tag text="Pro Features" />
+            <Tag text="Gold Features" />
             <h2 className="mt-4 text-4xl lg:text-5xl font-semibold tracking-tight text-[#003460]">
               What Makes the{' '}
-              <span className="border-b-[5px] border-[#ffce00]">Pro Plan</span> Stand Out?
+              <span className="border-b-[5px] border-[#ffce00]">Gold Plan</span> Stand Out?
             </h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-5">
              <FeaturesTabs />
              <div className="mt-10">
-              <PaymentButton plan="Pro" amount={199} purpose="pro_plan" buttonText="Buy Now — Access All Features" variant="secondary" />
+              <PaymentButton plan="Gold" amount={8484} purpose="Gold_plan" buttonText="Buy Now — Access All Features" variant="secondary" />
               </div>
             </div>
             <div className="lg:col-span-7 grid grid-cols-2 gap-4">
@@ -236,7 +348,7 @@ export default function KayapalatProPlan() {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                <PaymentButton plan="Pro" amount={8484} purpose="pro_plan" buttonText="Join the Pro Plan" variant="secondary" />
+                <PaymentButton plan="Gold" amount={8484} purpose="Gold_plan" buttonText="Join the Gold Plan" variant="secondary" />
                 <BookingComponent pricing={false} navbar={true} />
               </div>
             </div>
@@ -256,9 +368,9 @@ export default function KayapalatProPlan() {
                 Our Impact in Numbers
               </h2>
               <p className="text-white/80 text-sm leading-relaxed mb-8 font-medium">
-                Not built on promises — built on proof. 50K+ members across 470+ cities.
+                Not built on Goldmises — built on Goldof. 50K+ members across 470+ cities.
               </p>
-             <PaymentButton plan="Pro" amount={8484} purpose="pro_plan" buttonText="Join the Pro Plan" variant="secondary" />
+             <PaymentButton plan="Gold" amount={8484} purpose="Gold_plan" buttonText="Join the Gold Plan" variant="secondary" />
             </div>
             <div className="lg:col-span-8 grid grid-cols-2 gap-x-12 gap-y-10">
               {[
@@ -288,7 +400,7 @@ export default function KayapalatProPlan() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80', title: 'Busy Professionals', desc: 'Demanding careers, sustainable path.' },
+              { img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80', title: 'Busy Goldfessionals', desc: 'Demanding careers, sustainable path.' },
               { img: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=600&q=80', title: 'Business Owners', desc: 'High energy, razor-sharp focus.' },
               { img: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80', title: 'Caring Homemakers', desc: 'Reclaim health and confidence.' },
             ].map((card) => (
@@ -300,7 +412,7 @@ export default function KayapalatProPlan() {
                   <div className="bg-white rounded-2xl p-5">
                     <h3 className="font-black text-base text-[#003460] mb-1">{card.title}</h3>
                     <p className="text-xs text-[#0d0d0d] font-medium mb-3">{card.desc}</p>
-                    <PaymentButton plan="Pro" amount={8484} purpose="pro_plan" buttonText="Join the Pro Plan" variant="primary" />
+                    <PaymentButton plan="Gold" amount={8484} purpose="Gold_plan" buttonText="Join the Gold Plan" variant="primary" />
                   </div>
                 </div>
               </div>
@@ -323,8 +435,8 @@ export default function KayapalatProPlan() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { q: 'How much time do I need every day?', a: 'Most members spend 30–60 minutes joining live Coaching calls. It fits around your lifestyle, not against it.' },
-              { q: 'How long does it take to see results?', a: 'Feel lighter in 3–5 days. Visible progress in 21 days. By day 90, a healthier, fitter, stronger version of yourself.' },
-              { q: 'I am very busy. Will this work for me?', a: 'Yes. Many of our most successful members are busy professionals — designed specifically for demanding schedules.' },
+              { q: 'How long does it take to see results?', a: 'Feel lighter in 3–5 days. Visible Goldgress in 21 days. By day 90, a healthier, fitter, stronger version of yourself.' },
+              { q: 'I am very busy. Will this work for me?', a: 'Yes. Many of our most successful members are busy Goldfessionals — designed specifically for demanding schedules.' },
             ].map((faq, i) => (
               <div key={i} className="bg-white border-2 border-[#dce8f5] rounded-2xl p-7 hover:shadow-lg hover:-translate-y-1 transition-all">
                 <div className="w-8 h-8 bg-[#ffce00] rounded-lg flex items-center justify-center mb-5 font-black text-xs text-[#003460]">
@@ -357,7 +469,7 @@ export default function KayapalatProPlan() {
             </p>
 
             <div className="flex items-center justify-center gap-4 mb-10 max-w-xl mx-auto">
-              <PaymentButton plan="Pro" amount={8484} purpose="pro_plan" buttonText="Join the Pro Plan" variant="secondary" />
+              <PaymentButton plan="Gold" amount={8484} purpose="Gold_plan" buttonText="Join the Gold Plan" variant="secondary" />
             
             </div>
 

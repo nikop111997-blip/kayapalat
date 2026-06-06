@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import CoverDesign from "./CoverDesign";
 
 // Helper to auto-increment the date by 1 day
 const getNextDayStr = (lastDateStr) => {
@@ -222,37 +223,7 @@ const KayapalatJournal = () => {
   const flippingFrontIndex = flipState?.direction === 'next' ? flipState.from : flipState?.to;
   const flippingBackIndex = flipState?.direction === 'next' ? flipState.to : flipState?.from;
 
-  const CoverDesign = ({ hintText }) => (
-    <div className="absolute inset-0 [backface-visibility:hidden] bg-[#141414] rounded-r-2xl rounded-l-md shadow-2xl border-l-[12px] border-[#0a0a0a] border-y border-r border-gray-800 p-8 flex flex-col justify-between overflow-hidden group">
-      <div className="absolute top-4 right-4 bottom-4 left-4 border border-[#d4af37]/30 rounded-lg pointer-events-none"></div>
-      <div className="absolute top-6 right-6 w-3 h-3 bg-[#d4af37]/50 rounded-sm"></div>
-      <div className="absolute top-6 left-6 w-3 h-3 bg-[#d4af37]/50 rounded-sm"></div>
-      <div className="absolute bottom-6 right-6 w-3 h-3 bg-[#d4af37]/50 rounded-sm"></div>
-      <div className="absolute bottom-6 left-6 w-3 h-3 bg-[#d4af37]/50 rounded-sm"></div>
 
-      <div className="relative z-10 flex flex-col h-full justify-center items-center mt-[-40px]">
-         <Image
-                      src="https://framerusercontent.com/images/msjGzrRn1eu9rQWQOuvoSNpE2yE.png?scale-down-to=512&width=644&height=164"
-                      alt="Kayapalat Logo"
-                      width={120}
-                      height={36}
-                      priority
-                    />
-        <h2 className="text-[3.5rem] mt-4 leading-none font-serif text-[#d4af37] text-center mb-6 tracking-wide" style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}>
-          KP<br />JOURNAL
-        </h2>
-        <div className="w-16 h-[2px] bg-[#d4af37]/50 mx-auto"></div>
-      </div>
-      
-      <div className="text-center space-y-3 relative z-10 pb-4">
-        <p className="text-[#d4af37]/80 text-sm tracking-wide">Your Daily Discipline System</p>
-        <p className="text-[#d4af37]/50 text-xs italic font-serif">by - Ajay Sethi</p>
-      </div>
-      <div className="absolute bottom-6 left-0 right-0 text-center text-white text-[10px] font-bold uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-opacity animate-pulse">
-        {hintText}
-      </div>
-    </div>
-  );
 
   return (
     <>
