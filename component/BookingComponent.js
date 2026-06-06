@@ -660,7 +660,7 @@ if (typeof window !== "undefined" && window.fbq) {
       : "py-4 border-2"
   } hover:bg-black hover:text-white transition-all duration-300`}
 >
-        <span classname="font-bold">Request A Callback</span>
+        <span classname="font-bold">Book A Clarity Call</span>
 
         <div className="transition-all duration-300 group-hover:bg-white group-hover:text-black rounded-full p-1">
           <ArrowUpRight

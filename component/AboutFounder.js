@@ -15,7 +15,7 @@ export default function AboutFounder({landing=false}) {
           
           {/* Heading */}
           <h2 className="text-4xl md:text-[48px] font-bold leading-tight tracking-[-3px]">
-            Meet your <span className="text-[#FFCE00]">Wellness</span> and <br/>
+            Meet your <span className="text-[#FFCE00]">Wellness</span> and <br className='hidden sm:block'/>
             <span className="text-[#FFCE00]">Transformation</span> coach!
           </h2>
           
@@ -31,7 +31,7 @@ export default function AboutFounder({landing=false}) {
               Known as India's <strong className='font-bold text-gray-700'>Fitness Lifestyle Coach</strong>, Ajay has helped clients lose up to <strong className='font-bold text-gray-700'>65+ kilos of weight</strong>, break <strong className='font-bold text-gray-700'>50K and 100K course records</strong>, and even run <strong className='font-bold text-gray-700'>200+ km in 24 hours</strong>. His students have won bodybuilding competitions and beauty pageants, proving that transformation can look different for everyone, but the foundation is always the same: sustainable results.
             </p>
             <p>
-              Today, through Kayapalat, Ajay leads a thriving global community across <strong className='font-bold text-gray-700'>418 cities</strong> and <strong className='font-bold text-gray-700'>18+ countries</strong>, with members collectively losing over <strong className='font-bold text-gray-700'>65,000 kilos</strong> in just 51 months.
+              Today, through Kayapalat, Ajay leads a thriving global community across <strong className='font-bold text-gray-700'>478 cities</strong> and <strong className='font-bold text-gray-700'>21+ countries</strong>, with members collectively losing over <strong className='font-bold text-gray-700'>65,000 kilos</strong> in just 51 months.
             </p>
             <p className="italic font-medium text-gray-700">
               An incurable optimist, Ajay believes: "If you focus on getting better at something, you actually get better." This philosophy powers the Kayapalat Method, aligning the body, mind, and emotions to create lasting change.
@@ -49,10 +49,7 @@ export default function AboutFounder({landing=false}) {
                 className="object-contain drop-shadow-md"
               />
             </div>
-            <div className="font-bold text-lg">Ajay Singh Sethi</div>
-            <div className="text-sm text-gray-500 font-medium">
-              Wellness Coach, Exercise<br/>and Movement Specialist
-            </div>
+            
           </div>
         </div>
 

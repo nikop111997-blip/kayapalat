@@ -89,9 +89,9 @@ export default function StruggleSection({landing=false}) {
           </p>
 
           {/* Primary Action Button (Reused from previous sections) */}
-         {landing? <BookingComponent /> : <ActionButton text="Start Your Transformation" 
+         {landing? <BookingComponent /> : <ActionButton text="Start Your Transformations" 
                 variant="primary" 
-                href="/pricing" /> }
+                href="https://kayapalat.in/#transformations" /> }
 
           {/* Social Proof Subtext */}
           <div className="flex items-center gap-1.5 text-[12px] font-medium text-gray-500 mt-4">

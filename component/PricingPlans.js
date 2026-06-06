@@ -8,14 +8,17 @@ export default function PricingPlans() {
  const plans = [
   {
     title: 'Gold',
+    subtitle:"Universal Membership",
     link: "/gold-plan",
     purpose: "gold_plan",
     badge: {
       text: 'Recommended',
       type: 'primary',
     },
-    idealFor: 'Build healthy habits, regain your energy, and create lasting transformation. Perfect for busy professionals, homemakers, new moms, and anyone ready to take control of their health from home.',
+    idealFor: 'Build healthy habits, regain your energy, and create lasting transformation.',
+    extra:' Perfect for busy professionals, homemakers, new moms, and anyone ready to take control of their health from home.',
     price: 8484,
+    note:"Everything You Need To Succeed",
     priceSuffix: '/per month',
     primaryAction: 'Join Now',
     secondaryAction: 'Join Now',
@@ -31,13 +34,16 @@ export default function PricingPlans() {
   },
   {
     title: 'Elite',
+    subtitle:"Private Coaching Membership",
     link: "/elite-plan",
     purpose: "elite_plan",
     badge: {
       text: 'Limited seats only',
       type: 'secondary',
     },
-    idealFor: 'Private coaching, personalised guidance, and deeper accountability for faster transformation. Ideal for professionals, entrepreneurs, and leaders who value privacy, personal attention, and results.',
+    idealFor: 'Personalised guidance, and deeper accountability for faster transformation.',
+    extra:"Ideal for professionals, entrepreneurs, and leaders who value privacy, personal attention, and results.",
+    note:"Your Personal Transformation Team",
     price: 24024,
     priceSuffix: '/per month',
     primaryAction: 'Join Now',
@@ -50,26 +56,30 @@ export default function PricingPlans() {
       'Priority Coach Access',
       'Weekly Support from Master Coach',
       'Access to Preferred Member Training',
-      'Access to Body Transformation Marathon (BTM)',
+      'Access to Body Transformation Marathon',
       'Complimentary Wellness Retreat with Eligible Commitment',
     ],
   },
   {
     title: 'Legacy',
+    subtitle:"Lifestyle Membership",
     link: "/legacy-plan",
     purpose: "legacy_plan",
     badge: {
       text: 'Limited seats only',
       type: 'secondary',
     },
-    idealFor: 'Make wellness a lifestyle. Exclusive for committed members who want to deepen their health, fitness, and happiness journey with long-term support and special privileges. (Available exclusively to members who have completed 3 months with Kayapalat).',
+    idealFor: 'Make wellness a lifestyle and stay transformed for life.',
+    extra: "Exclusive for committed members who want to deepen their health, fitness, and happiness journey with long-term support and special privileges.",
+    note:"Designed For Lifelong Transformation",
     price: 50900,
+    ex:"(Available exclusively to members who have completed 3 months with Kayapalat.)",
     priceSuffix: '/ for 6 months',
     primaryAction: 'Join Now',
     secondaryAction: 'Join Now',
     features: [
       'All GOLD Benefits for 6 Months',
-      'Complimentary Kayapalat Wellness Retreat Every 6 Months',
+      'Complimentary Kayapalat Wellness Retreat',
       'Family Wellness Consultation',
       'Priority Coach Access',
       'Early Access to Events, Masterclasses & Performance Clinics',
@@ -82,7 +92,7 @@ export default function PricingPlans() {
 
   return (
     <section className="bg-[#F8F9FA] py-16 px-4 md:px-8 font-manrope">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1400px] mx-auto">
         
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -110,30 +120,30 @@ export default function PricingPlans() {
                 }`}
               >
                 {/* Top Pill / Badge */}
-                <div className="mb-5">
+                <div className="mb-2">
                   <span 
-                    className={`inline-block px-5 py-2 rounded-full text-[15px] font-semibold tracking-wide ${
-                      isHighlighted 
-                        ? 'bg-white text-black shadow-sm' 
-                        : 'bg-[#f9cf01] text-black' 
-                    }`}
+                    className={`text-[28px] font-bold tracking-wide`}
                   >
                     {plan.title}
                   </span>
                 </div>
-
+<p className={`text-[14px] font-bold leading-relaxed mb-6 ${isHighlighted ? 'text-[#595757]' : 'text-[#595757]'}`}>
+                  {plan.subtitle}
+                </p>
                 {/* Ideal For Text */}
-                <p className={`text-[18px] leading-relaxed mb-6 min-h-[90px] ${isHighlighted ? 'text-[#1b1b1b]' : 'text-[#1c1d1d]'}`}>
+                <p className={`text-[16px] leading-relaxed mb-6 min-h-[40px] ${isHighlighted ? 'text-[#1b1b1b]' : 'text-[#1c1d1d]'}`}>
                   {plan.idealFor}
                 </p>
-
+<p className={`text-[16px] font-bold leading-relaxed mb-6 min-h-[90px] ${isHighlighted ? 'text-[#1b1b1b]' : 'text-[#1c1d1d]'}`}>
+                  {plan.extra}
+                </p>
                 {/* Pricing Display */}
-                <div className="mb-6 flex items-baseline gap-1">
+                <div className="mb-6 items-baseline gap-1">
                   <h3 className={`text-5xl font-bold tracking-tight flex items-center ${isHighlighted ? 'text-black' : 'text-[#111]'}`}>
                    <IndianRupee /> {plan.price}
                   </h3>
                   {plan.priceSuffix && (
-                    <span className="text-[16px] font-medium text-gray-800">
+                    <span className="text-[16px] font-medium text-gray-800 ml-2">
                       {plan.priceSuffix}
                     </span>
                   )}
@@ -141,9 +151,11 @@ export default function PricingPlans() {
 
                 {/* Divider Line */}
                 <hr className={`border-t-2 mb-8 ${isHighlighted ? 'border-[#f9cf01]/60' : 'border-[#F3F4F6]'}`} />
-
+<p className={`text-[18px] font-bold leading-relaxed mb-6 ${isHighlighted ? 'text-[#1b1b1b]' : 'text-[#1c1d1d]'}`}>
+                  {plan.note}
+                </p>
                 {/* Features List */}
-                <ul className="flex flex-col gap-4 mb-10 flex-grow">
+                <ul className="flex flex-col gap-4 mb-4 flex-grow">
                   {plan.features.map((feature, fIndex) => (
                     <li key={fIndex} className="flex items-start gap-3">
                       <svg 
@@ -161,7 +173,9 @@ export default function PricingPlans() {
                     </li>
                   ))}
                 </ul>
-
+<p className={`text-[12px] font-bold leading-relaxed mb-3 ${isHighlighted ? 'text-[#1b1b1b]' : 'text-[#1c1d1d]'}`}>
+                  {plan.ex}
+                </p>
                 {/* Contrasting Action Buttons */}
                 <div className="flex flex-col gap-3 mt-auto">
                   {/* Know More Button */}
@@ -172,10 +186,7 @@ export default function PricingPlans() {
                     Know More
                   </Link>
 <PaymentButton plan={plan.title} amount={plan.price} purpose={plan.purpose} buttonText="Join Now" variant="plans" />
-                  {/* Primary Action Button */}
                  
-                  {/* NOTE: You can swap the primary action button above with your BookingComponent if needed, e.g.: */}
-                  {/* <BookingComponent pricing={true} /> */}
                 </div>
               </div>
             );

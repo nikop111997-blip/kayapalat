@@ -7,6 +7,7 @@ import {
 import PaymentButton from '@/component/PayButton';
 import FeaturesTabs from '@/component/FeturesTabs';
 import BookingComponent from '@/component/Booking2Comp';
+import Image from 'next/image';
 export const metadata = {
   title:
     "Kayapalat Gold Plan | Sustainable Weight Loss, Fitness & Health Transformation",
@@ -182,7 +183,7 @@ export default function KayapalatGoldPlan() {
           <div className="relative">
             <div className="rounded-[2rem] overflow-hidden relative">
               <img
-                src="https://images.unsplash.com/photo-1599552683573-9dc48255fe85?auto=format&fit=crop&w=700&q=80"
+                src="/1.jpg"
                 alt="Coaching"
                 className="w-full h-[400px] sm:h-[620px] object-cover block"
               />
@@ -215,7 +216,7 @@ export default function KayapalatGoldPlan() {
 
             <div className="relative rounded-[2rem] overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=700&q=80"
+                src="/2.jpg"
                 alt="Method"
                 className="w-full h-[400px] sm:h-[640px] object-cover block"
               />
@@ -275,7 +276,7 @@ export default function KayapalatGoldPlan() {
             </div>
             <div className="lg:col-span-7 grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-4">
-                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80"
+                <img src="https://ajaysethi.vercel.app/dswa.jpg"
                   alt="Training" className="w-full h-56 object-cover rounded-[1.5rem] rounded-tr-lg" />
                 <div className="bg-[#003460] rounded-[1.5rem] p-7 flex-1 flex flex-col justify-between min-h-[170px]">
                   <div className="w-10 h-10 bg-[#ffce00]/15 rounded-xl flex items-center justify-center">
@@ -285,7 +286,7 @@ export default function KayapalatGoldPlan() {
                 </div>
               </div>
               <div className="flex flex-col gap-4 pt-10">
-                <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=600&q=80"
+                <img src="https://ajaysethi.vercel.app/engage.webp"
                   alt="Coaching" className="w-full h-72 object-cover rounded-[1.5rem] rounded-tl-lg" />
                 <div className="bg-white border border-[#dce8f5] rounded-[1.5rem] p-5 text-center">
                   <div className="text-4xl font-black text-[#003460] tracking-tight leading-none">90</div>
@@ -327,15 +328,15 @@ export default function KayapalatGoldPlan() {
 
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { label: 'Company Mission', icon: <HeartPulse className="w-4 h-4 text-[#e6b800]" />, text: 'Help people achieve lifetime health through clarity, coaching & community.' },
+                  { label: 'Company Mission', icon: <HeartPulse className="w-4 h-4 text-[#e6b800]" />, text: 'Help people achieve lifetime health, fitness and happiness through clarity, coaching & community.' },
                   { label: 'Company Vision', icon: <TrendingUp className="w-4 h-4 text-[#e6b800]" />, text: 'Transform 1 million lives with consistent coaching.' },
                 ].map((item, i) => (
                   <div key={i} className="bg-white border border-[#dce8f5] rounded-2xl p-4 hover:shadow-md transition-all">
                     <div className="flex items-center gap-2 mb-2">
                       {item.icon}
-                      <span className="text-[10px] font-black text-[#003460] uppercase tracking-widest">{item.label}</span>
+                      <span className="text-[12px] font-black text-[#003460] uppercase tracking-widest">{item.label}</span>
                     </div>
-                    <p className="text-xs text-[#0d0d0d] leading-relaxed">{item.text}</p>
+                    <p className="text-sm text-[#0d0d0d] leading-relaxed">{item.text}</p>
                   </div>
                 ))}
               </div>
@@ -400,9 +401,9 @@ export default function KayapalatGoldPlan() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80', title: 'Busy Goldfessionals', desc: 'Demanding careers, sustainable path.' },
-              { img: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=600&q=80', title: 'Business Owners', desc: 'High energy, razor-sharp focus.' },
-              { img: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80', title: 'Caring Homemakers', desc: 'Reclaim health and confidence.' },
+              { img: '/5.jpg', title: 'Busy Professionals', desc: 'Demanding careers, sustainable path.' },
+              { img: '/3.jpg', title: 'Caring Homemakers', desc: 'Reclaim health and confidence.' },
+              { img: '/4.jpg', title: 'Business Owners', desc: 'High energy, razor-sharp focus.' },
             ].map((card) => (
               <div key={card.title} className="relative h-[420px] rounded-[1.75rem] overflow-hidden group">
                 <img src={card.img} alt={card.title}

@@ -25,9 +25,7 @@ export default async function ExecutiveBlueprint() {
 
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl md:text-[48px] font-bold text-gray-900 mb-4 tracking-tight">
-            The Executive Blueprint: Insights
-            <br className="hidden md:block" />
-            on Longevity & Performance.
+            Kayapalat Blogs
           </h2>
 
           <p className="text-lg text-gray-500 leading-relaxed font-semibold">

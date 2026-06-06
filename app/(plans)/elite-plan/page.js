@@ -172,19 +172,18 @@ export default function KayapalatElitePlan() {
           <div className="relative group">
             <div className="rounded-[2.5rem] overflow-hidden relative shadow-[0_20px_50px_rgba(0,52,96,0.15)] transition-transform duration-700 hover:scale-[1.02]">
               <img
-                src="https://images.unsplash.com/photo-1630415187965-236477b0b659"
+                src="/6.jpg"
                 alt="Elite Coaching"
-                className="w-full h-[500px] sm:h-[700px] object-cover block"
+                className="w-full h-[500px] sm:h-[600px] object-cover block"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#003460]/80 via-[#003460]/20 to-transparent" />
               
               {/* Glassmorphic overlay card */}
-              <div className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 text-white">
+              {/* <div className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 text-white">
                 <h3 className="font-semibold text-lg mb-2">Highest Level of Coaching</h3>
                 <p className="text-sm text-white/80 leading-relaxed">
                   Lose weight, reclaim energy, and completely transform your body with personal attention available exclusively at Kayapalat.
                 </p>
-              </div>
+              </div> */}
             </div>
 
             {/* Floating top-left */}
@@ -383,7 +382,7 @@ export default function KayapalatElitePlan() {
 
             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1599552683573-9dc48255fe85?auto=format&fit=crop&w=800&q=80"
+                src="https://ajaysethi.vercel.app/tad.jpg"
                 alt="Methodology"
                 className="w-full h-[600px] object-cover block"
               />

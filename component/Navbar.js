@@ -30,7 +30,7 @@ export default function Navbar() {
   return (
     <nav className={`w-full ${bgColor} text-white font-manrope sticky top-0 z-50`}>
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-14">
+        <div className="flex justify-between items-center h-12 sm:h-14">
 
           {/* Logo */}
           <Link
@@ -40,7 +40,7 @@ export default function Navbar() {
             <Image
               src="https://framerusercontent.com/images/msjGzrRn1eu9rQWQOuvoSNpE2yE.png?scale-down-to=512&width=644&height=164"
               alt="Kayapalat Logo"
-              width={180}
+              width={140}
               height={36}
               priority
             />

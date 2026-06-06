@@ -7,7 +7,7 @@ export default function PillarsSection() {
         
         {/* Header Section */}
         <div className="mb-8 sm:mb-20 text-center">
-          <h2 className="mb-2 text-[32px] font-bold tracking-tight text-black md:text-[40px] lg:text-[48px]">
+          <h2 className="mb-2 text-[30px] font-bold tracking-tight text-black md:text-[40px] lg:text-[48px]">
             Why Kayapalat Works (When other things fail)
           </h2>
           <p className="font-semibold text-[24px] text-gray-900 md:text-[28px]">

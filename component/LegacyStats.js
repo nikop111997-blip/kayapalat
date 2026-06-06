@@ -78,12 +78,12 @@ const StatCard = ({ target, suffix, text }) => {
 export default function LegacySection() {
   const stats = [
     {
-      target: 11000,
+      target: 11950,
       suffix: '+',
       text: 'Executive Lives Transformed',
     },
     {
-      target: 70000,
+      target: 73365,
       suffix: '+',
       text: 'Kilos Permanently Lost',
     },

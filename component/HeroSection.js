@@ -79,18 +79,18 @@ export default function HeroSection() {
             
             {/* The heading text with the specified animation */}
             <h1 className="animate-reveal-ease-in mb-6 text-[40px] font-bold lg:tracking-[-2px] leading-[110%] text-[#0E1728] lg:text-[48px]">
-              Reclaim Your Body's <br className='hidden sm:block'/> True Vitality and<br className='hidden sm:block'/>  Strength with <br className='hidden sm:block'/> Kayapalat.
+              Unlock your body's true  <br className='hidden sm:block'/> beauty and strength.
             </h1>
             
             {/* Paragraph appears statically */}
             <p className="mb-10 max-w-lg text-md font-medium leading-relaxed text-gray-600">
-              Stop fighting daily burnout and a stalling metabolism. A clinical, 3-pillar wellness protocol designed to help driven individuals lose stubborn weight, restore natural energy, and build lifelong physical resilience.
+              No starvation diets. No exhausting workouts. Just personalised support, daily accountability, and real results from the comfort of your home.
             </p>
 
             {/* The action buttons with the specified animation, delayed slightly */}
-            <div className="animate-reveal-ease-in flex flex-col gap-4 sm:flex-row sm:items-center mb-12 [animation-delay:200ms]">
+            <div className="animate-reveal-ease-in flex flex-col gap-4 items-center sm:flex-row mb-12 [animation-delay:200ms] w-full">
               <ActionButton 
-                text="Start Your Transformation" 
+                text="Join Now" 
                 variant="primary" 
                 href="/pricing" 
               />

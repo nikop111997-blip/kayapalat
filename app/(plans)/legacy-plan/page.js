@@ -164,7 +164,7 @@ export default function KayapalatLegacyPlan() {
           <div className="relative group perspective-1000">
             <div className="rounded-[2.5rem] overflow-hidden relative shadow-[0_20px_50px_rgba(0,52,96,0.15)] transition-all duration-700 transform hover:rotate-y-2 hover:scale-[1.02]">
               <img
-                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80"
+                src="https://ajaysethi.vercel.app/tad.jpg"
                 alt="Legacy Lifestyle"
                 className="w-full h-[550px] sm:h-[750px] object-cover block"
               />
@@ -316,7 +316,7 @@ export default function KayapalatLegacyPlan() {
             
             <div className="order-2 lg:order-1 relative rounded-[2.5rem] overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1599552683573-9dc48255fe85?auto=format&fit=crop&w=800&q=80"
+                src="https://ajaysethi.vercel.app/dswa.jpg"
                 alt="Methodology"
                 className="w-full h-[600px] object-cover block"
               />

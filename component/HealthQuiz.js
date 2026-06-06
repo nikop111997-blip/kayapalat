@@ -80,7 +80,7 @@ const quizQuestions = [
 
 export default function HealthQuiz({
   primaryColor = "#000000",
-  apiEndpoint = "https://kayakalap.vercel.app/api/questions",
+  apiEndpoint = "https://admin.kayapalat.in/api/questions",
 }) {
   const [step, setStep] = useState(0);
 
