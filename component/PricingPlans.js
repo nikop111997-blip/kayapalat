@@ -3,6 +3,7 @@ import BookingComponent from './BookingComponent';
 import Link from 'next/link';
 import { IndianRupee } from 'lucide-react';
 import PaymentButton from './PayButton';
+import PlanButton from './PlanButton';
 
 export default function PricingPlans() {
  const plans = [
@@ -19,9 +20,10 @@ export default function PricingPlans() {
     extra:' Perfect for busy professionals, homemakers, new moms, and anyone ready to take control of their health from home.',
     price: 8484,
     note:"Everything You Need To Succeed",
+    ex:"(Trusted by 11,000+ members across 470+ cities.)",
     priceSuffix: '/per month',
     primaryAction: 'Join Now',
-    secondaryAction: 'Join Now',
+    secondaryAction: 'Apply Now',
     features: [
       '12 Live FIT Hours Every Month',
       '12 Structured Workouts You Can Do Anywhere',
@@ -46,8 +48,9 @@ export default function PricingPlans() {
     note:"Your Personal Transformation Team",
     price: 24024,
     priceSuffix: '/per month',
-    primaryAction: 'Join Now',
-    secondaryAction: 'Join Now',
+    primaryAction: 'Apply Now',
+    ex:"(Trusted by 11,000+ members across 470+ cities.)",
+    secondaryAction: 'Apply Now',
     features: [
       'Everything Included in GOLD',
       '1:1 Coaching Three Times Every Week',
@@ -75,8 +78,8 @@ export default function PricingPlans() {
     price: 50900,
     ex:"(Available exclusively to members who have completed 3 months with Kayapalat.)",
     priceSuffix: '/ for 6 months',
-    primaryAction: 'Join Now',
-    secondaryAction: 'Join Now',
+    primaryAction: 'Apply Now',
+    secondaryAction: 'Apply Now',
     features: [
       'All GOLD Benefits for 6 Months',
       'Complimentary Kayapalat Wellness Retreat',
@@ -113,21 +116,23 @@ export default function PricingPlans() {
             return (
               <div 
                 key={index}
-                className={`rounded-[24px] p-8 flex flex-col h-full transition-transform duration-300 hover:-translate-y-1 ${
+                className={`rounded-[24px] p-8 flex flex-col h-full transition-transform duration-300 hover:-translate-y-1
+                  ${index===0 && 'bg-gradient-to-b from-[#fff7c6] to-white shadow-sm'}
+                  ${
                   isHighlighted 
-                    ? 'bg-gradient-to-b from-[#f9cf01] to-white shadow-sm' 
+                    ? 'bg-gradient-to-b from-[#d4d4d4] to-white shadow-sm' 
                     : 'bg-white shadow-[0_4px_24px_rgba(0,0,0,0.03)]'
                 }`}
               >
                 {/* Top Pill / Badge */}
                 <div className="mb-2">
                   <span 
-                    className={`text-[28px] font-bold tracking-wide`}
+                    className={`text-[36px] font-black tracking-wide`}
                   >
                     {plan.title}
                   </span>
                 </div>
-<p className={`text-[14px] font-bold leading-relaxed mb-6 ${isHighlighted ? 'text-[#595757]' : 'text-[#595757]'}`}>
+<p className={`text-[14px] font-bold leading-relaxed mb-6 ${isHighlighted ? 'text-[#000000]' : 'text-[#595757]'}`}>
                   {plan.subtitle}
                 </p>
                 {/* Ideal For Text */}
@@ -150,7 +155,7 @@ export default function PricingPlans() {
                 </div>
 
                 {/* Divider Line */}
-                <hr className={`border-t-2 mb-8 ${isHighlighted ? 'border-[#f9cf01]/60' : 'border-[#F3F4F6]'}`} />
+                <hr className={`border-t-2 mb-8 ${isHighlighted ? 'border-[#999999]/60' : 'border-[#F3F4F6]'}`} />
 <p className={`text-[18px] font-bold leading-relaxed mb-6 ${isHighlighted ? 'text-[#1b1b1b]' : 'text-[#1c1d1d]'}`}>
                   {plan.note}
                 </p>
@@ -173,9 +178,7 @@ export default function PricingPlans() {
                     </li>
                   ))}
                 </ul>
-<p className={`text-[12px] font-bold leading-relaxed mb-3 ${isHighlighted ? 'text-[#1b1b1b]' : 'text-[#1c1d1d]'}`}>
-                  {plan.ex}
-                </p>
+
                 {/* Contrasting Action Buttons */}
                 <div className="flex flex-col gap-3 mt-auto">
                   {/* Know More Button */}
@@ -185,9 +188,15 @@ export default function PricingPlans() {
                   >
                     Know More
                   </Link>
-<PaymentButton plan={plan.title} amount={plan.price} purpose={plan.purpose} buttonText="Join Now" variant="plans" />
+                  {index===0? 
+<PaymentButton plan={plan.title} amount={plan.price} purpose={plan.purpose} buttonText={plan.primaryAction} variant="plans" /> :
+<PlanButton planName={plan.title}/>
+                  }
                  
                 </div>
+                <p className={`text-[12px] font-bold text-center mt-4 leading-relaxed mb-3 ${isHighlighted ? 'text-[#1b1b1b]' : 'text-[#1c1d1d]'}`}>
+                  {plan.ex}
+                </p>
               </div>
             );
           })}
