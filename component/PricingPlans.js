@@ -127,7 +127,7 @@ export default function PricingPlans() {
                 {/* Top Pill / Badge */}
                 <div className="mb-2">
                   <span 
-                    className={`text-[36px] font-black tracking-wide`}
+                    className={`text-[36px] font-black tracking-wide dark:text-black`}
                   >
                     {plan.title}
                   </span>
