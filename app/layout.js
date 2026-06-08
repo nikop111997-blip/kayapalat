@@ -4,7 +4,7 @@ import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,6 +25,9 @@ const montserrat = Montserrat({
 export const metadata = {
   title: "Kayapalat Wellness",
   description: "Transform your well-being with Kayapalat Wellness - Your ultimate destination for holistic health solutions. Discover personalized wellness programs, expert guidance, and a supportive community dedicated to helping you achieve optimal health and vitality. Join us on a journey to a healthier, happier you with Kayapalat Wellness.",
+  verification: {
+    google: "JHwZTFGpNjsXmKKQM7xa6hQoTMstdNrwMG1VxjiO-z0",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -36,6 +39,8 @@ export default function RootLayout({ children }) {
       <Toaster />
       <Navbar />
       <body className="min-h-full flex flex-col">
+          
+
          <Script id="facebook-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -69,6 +74,7 @@ export default function RootLayout({ children }) {
         </noscript>
         
         {children}</body>
+        <GoogleAnalytics gaId="G-5GT5HXDNTL" />
       <Footer />
     </html>
   );
