@@ -1,202 +1,202 @@
-'use client'
-import React, { useState, useEffect } from 'react';
-import { BUNDLES } from '@/lib/data';
-import Hero from '@/component/HeroForJpunrel';
-import Features from '@/component/Feature';
-import LookInside from '@/component/LookInside';
-import Pricing from '@/component/Pricing';
+import KPJournalLanding from "./Journal";
 import Testimonials from '@/component/Testimonials';
 import AboutAuthor from '@/component/Author';
 import FAQ from '@/component/FAQs';
-import MobileStickyCart from '@/component/MobileStickyCart';
-import CartDrawer from '@/component/CartDrawer';
 
-export default function KPJournalLanding() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  
-  // Cart & Checkout States
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [checkoutStep, setCheckoutStep] = useState('cart'); // 'cart' | 'details' | 'payment' | 'processing' | 'success'
-  const [selectedBundle, setSelectedBundle] = useState(BUNDLES[0]);
-  const [quantity, setQuantity] = useState(1);
-  const [paymentMethod, setPaymentMethod] = useState('upi'); // 'upi' | 'card' | 'cod'
-  
-  // Form State
-  const [buyerData, setBuyerData] = useState({
-    name:"", email: '', phone: '',
-    address: '', city: '', state: '', pincode: ''
-  });
-  const [formErrors, setFormErrors] = useState({});
+export const metadata = {
+  title:
+    "KP Journal by Ajay Sethi | Daily Discipline Planner for Focus, Growth & Productivity",
 
-  // --- EFFECTS ---
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  description:
+    "Transform your daily habits with the KP Journal by Ajay Sethi. A premium daily discipline system featuring time-blocking, top priorities, gratitude, reflection, and habit tracking. Trusted by 10,000+ users across India.",
 
-  // Prevent body scroll when cart is open
-  useEffect(() => {
-    if (isCartOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'unset';
-    return () => { document.body.style.overflow = 'unset'; }
-  }, [isCartOpen]);
+  keywords: [
+    "KP Journal",
+    "Ajay Sethi",
+    "Daily Planner",
+    "Productivity Journal",
+    "Discipline Journal",
+    "Time Blocking Planner",
+    "Goal Setting Journal",
+    "Gratitude Journal",
+    "Habit Tracker",
+    "Self Improvement Journal",
+    "Personal Growth",
+    "Success Planner",
+    "Wellness Journal",
+    "Kayapalat Journal",
+    "Daily Reflection Journal",
+  ],
 
-  // --- HANDLERS ---
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setBuyerData(prev => ({ ...prev, [name]: value }));
-    if (formErrors[name]) setFormErrors(prev => ({ ...prev, [name]: null }));
-  };
+  metadataBase: new URL("https://www.kayapalat.in"),
 
-  const validateDetails = () => {
-    const errors = {};
-    if (!buyerData.firstName.trim()) errors.firstName = 'Required';
-    if (!buyerData.email.trim() || !/^\S+@\S+\.\S+$/.test(buyerData.email)) errors.email = 'Valid email required';
-    if (!buyerData.phone.trim() || buyerData.phone.length < 10) errors.phone = 'Valid phone required';
-    if (!buyerData.address.trim()) errors.address = 'Required';
-    if (!buyerData.city.trim()) errors.city = 'Required';
-    if (!buyerData.pincode.trim() || buyerData.pincode.length < 6) errors.pincode = 'Valid pincode required';
-    
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
+  alternates: {
+    canonical: "https://www.kayapalat.in/journal",
+  },
 
-  const handleProceedToDetails = () => setCheckoutStep('details');
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 
-  const handleProceedToPayment = () => {
-    if (validateDetails()) setCheckoutStep('payment');
-  };
+  openGraph: {
+    title:
+      "KP Journal by Ajay Sethi | Your Daily Discipline System",
+    description:
+      "Build discipline, stay consistent, and transform daily. The KP Journal combines planning, productivity, gratitude, and reflection into one powerful daily system.",
 
- const handlePlaceOrder = async () => {
-  const errors = {};
+    url: "https://www.kayapalat.in/journal",
 
-  if (!buyerData.name?.trim() || buyerData.name.trim().length < 4) {
-    errors.name = "Name must be at least 4 characters";
-  }
+    siteName: "Kayapalat",
 
-  if (!buyerData.email?.trim()) {
-    errors.email = "Email is required";
-  }
+    type: "website",
 
-  if (!buyerData.phone || !/^\d{10}$/.test(buyerData.phone)) {
-    errors.phone = "Phone must be exactly 10 digits";
-  }
+    locale: "en_IN",
 
-  if (!buyerData.address?.trim()) {
-    errors.address = "Address is required";
-  }
-
-  if (!buyerData.city?.trim()) {
-    errors.city = "City is required";
-  }
-
-  if (!buyerData.pincode || !/^\d{6}$/.test(buyerData.pincode)) {
-    errors.pincode = "Valid pincode required";
-  }
-
-  if (Object.keys(errors).length > 0) {
-    setFormErrors(errors);
-    return;
-  }
-
-  const totalPrice = selectedBundle.price * quantity;
-
-  // Get UTM parameters
-  const params = new URLSearchParams(window.location.search);
-
-  const utm = {
-    utm_source: params.get("utm_source") || "",
-    utm_medium: params.get("utm_medium") || "",
-    utm_campaign: params.get("utm_campaign") || "",
-    utm_term: params.get("utm_term") || "",
-    utm_content: params.get("utm_content") || "",
-  };
-
-  try {
-    setCheckoutStep("processing");
-
-    const response = await fetch("/api/place-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    images: [
+      {
+        url: "https://www.kayapalat.in/journal.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "KP Journal by Ajay Sethi",
       },
-      body: JSON.stringify({
-        customer: buyerData,
-        product: selectedBundle,
-        quantity,
-        amount: totalPrice,
-        utm,
-        landingPage: window.location.href,
-        referrer: document.referrer,
-      }),
-    });
+    ],
+  },
 
-    const data = await response.json();
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "KP Journal by Ajay Sethi | Daily Discipline Planner",
+    description:
+      "A premium productivity and discipline journal designed to help you execute, reflect and grow every day.",
 
-    if (!data.success) {
-      throw new Error(data.message);
-    }
+    images: [
+      "https://www.kayapalat.in/journal.jpeg",
+    ],
+  },
 
-    window.location.href = data.paymentUrl;
-  } catch (error) {
-    console.error(error);
-    alert(error.message);
-    setCheckoutStep("details");
-  }
+  authors: [
+    {
+      name: "Ajay Sethi",
+      url: "https://www.kayapalat.in",
+    },
+  ],
+
+  creator: "Ajay Sethi",
+
+  publisher: "Kayapalat",
+
+  category: "Productivity",
+
+  other: {
+    "product:name": "KP Journal",
+    "product:brand": "Kayapalat",
+    "product:availability": "in stock",
+  },
 };
 
-  const resetCart = () => {
-    setIsCartOpen(false);
-    setTimeout(() => {
-      setCheckoutStep('cart');
-      setQuantity(1);
-      setBuyerData({ name: '', email: '', phone: '', address: '', city: '', state: '', pincode: '' });
-    }, 300);
-  };
-
-  const openCartWithBundle = (bundle) => {
-    setSelectedBundle(bundle);
-    setIsCartOpen(true);
-  };
-
-  const totalPrice = selectedBundle.price * quantity;
-
-  return (
-    <div className="min-h-screen font-sans text-[#1a1a1a] selection:bg-[#ff6a3d] selection:text-white pb-20 md:pb-0">
-      
-      <CartDrawer 
-        isCartOpen={isCartOpen}
-        setIsCartOpen={setIsCartOpen}
-        checkoutStep={checkoutStep}
-        setCheckoutStep={setCheckoutStep}
-        selectedBundle={selectedBundle}
-        quantity={quantity}
-        setQuantity={setQuantity}
-        totalPrice={totalPrice}
-        buyerData={buyerData}
-        handleInputChange={handleInputChange}
-        formErrors={formErrors}
-        paymentMethod={paymentMethod}
-        setPaymentMethod={setPaymentMethod}
-        handleProceedToDetails={handleProceedToDetails}
-        handleProceedToPayment={handleProceedToPayment}
-        handlePlaceOrder={handlePlaceOrder}
-        resetCart={resetCart}
-      />
-
-      <Hero openCartWithBundle={openCartWithBundle} />
-      <Features />
-      <LookInside />
-      <Pricing openCartWithBundle={openCartWithBundle} />
-      <Testimonials />
-      <AboutAuthor />
-      <FAQ />
-      
-      <MobileStickyCart 
-        isScrolled={isScrolled} 
-        openCartWithBundle={openCartWithBundle} 
-      />
-    </div>
-  );
+export default function Page(){
+    const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "KP Journal",
+  image: [
+    "https://www.kayapalat.in/journal.jpeg"
+  ],
+  description:
+    "Premium daily discipline journal created by Ajay Sethi featuring time blocking, gratitude, reflection, goal setting and habit tracking.",
+  brand: {
+    "@type": "Brand",
+    name: "Kayapalat"
+  },
+  manufacturer: {
+    "@type": "Organization",
+    name: "Kayapalat"
+  },
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "INR",
+    price: "899",
+    availability: "https://schema.org/InStock",
+    url: "https://www.kayapalat.in/journal"
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "10000"
+  }
+};
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does one KP Journal last?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each KP Journal is designed to last for approximately 90 days of daily use. For a complete year of planning and reflection, we recommend purchasing multiple journals or the Discipline Mastery bundle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the KP Journal suitable for beginners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The KP Journal is designed for both beginners and experienced planners. Its structured daily planning, gratitude, reflection, and habit tracking system makes it easy to build discipline and consistency from day one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When will I receive my order?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Orders are typically processed within 24 to 48 hours and delivered across India within 3 to 7 business days depending on your location."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the return policy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your journal arrives damaged or defective, please contact our support team within the specified return period. We will assist with a replacement or resolution according to our return policy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes the KP Journal different from other planners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The KP Journal combines time-blocking, top priorities, daily reflection, gratitude practice, and habit-building into one integrated system developed by wellness coach Ajay Sethi to help users stay disciplined and achieve meaningful personal growth."
+      }
+    }
+  ]
+};
+    return(
+        <>
+        <KPJournalLanding/>
+         <Testimonials />
+              <AboutAuthor />
+              <FAQ />
+        <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(productSchema),
+  }}
+/>
+<script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(faqSchema),
+    }}
+  />
+        </>
+    )
 }
