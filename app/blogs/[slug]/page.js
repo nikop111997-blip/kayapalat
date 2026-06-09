@@ -39,7 +39,7 @@ export async function generateMetadata({ params }) {
 
   const title = blog.metaTitle || blog.title;
   const description = blog.metaDescription;
-  const url = `https://kayapalat.in/blogs/${slug}`;
+  const url = `https://www.kayapalat.in/blogs/${slug}`;
   const image = `${blog.featuredImage}`;
 
   return {
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }) {
         "Kayapalat blog",
     ],
 
-    metadataBase: new URL("https://kayapalat.in"),
+    metadataBase: new URL("https://www.kayapalat.in"),
 
     alternates: {
       canonical: url,
@@ -121,7 +121,7 @@ export default async function BlogPage({ params }) {
   if (!blog) return notFound();
   // Extract headings for Table of Contents
   const headings = blog?.content?.blocks?.filter((b) => b.type === "header") || [];
-  const currentUrl = `https://kayapalat.in/blogs/${slug}`;
+  const currentUrl = `https://www.kayapalat.in/blogs/${slug}`;
 
   // Comprehensive SEO Schema (Breadcrumbs + Article)
   const jsonLd = {
@@ -144,25 +144,51 @@ export default async function BlogPage({ params }) {
         "headline": blog.metaTitle || blog.title,
         "description": blog.metaDescription,
         "image": `${blog.featuredImage}`,
+         "wordCount": JSON.stringify(blog.content).split(" ").length,
+         "inLanguage": "en-IN",
+  "isAccessibleForFree": true,
         "datePublished": blog.createdAt,
         "dateModified": blog.updatedAt || blog.createdAt,
         "author": { 
           "@type": "Organization", 
           "name": "Kayapalat Editorial Team",
-          "url": "https://kayapalat.in"
+          "url": "https://www.kayapalat.in"
         },
         "publisher": {
           "@type": "Organization",
           "name": "Kayapalat",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://kayapalat.in/logo.png" // Update with your actual logo URL
+            "url": "https://www.kayapalat.in/logo.webp" // Update with your actual logo URL
           }
         }
-      }
+      },
+      {
+  "@type": "ItemList",
+  "name": "Table of Contents",
+  "itemListElement": headings.map((h, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": h.data.text,
+    "url": `${currentUrl}#section-${i}`
+  }))
+},
+{
+  "@type": "SpeakableSpecification",
+  "cssSelector": [
+    "h1",
+    ".article-summary"
+  ]
+}
     ]
   };
+const wordCount =
+  JSON.stringify(blog.content).split(" ").length;
 
+const readingTime = Math.max(
+  1,
+  Math.ceil(wordCount / 200)
+);
   return (
     <div className="min-h-screen bg-[#F8F7F4] font-manrope selection:bg-[#f9cf01]/20 selection:text-green-900 ">
       {/* Inject Schema */}
@@ -216,7 +242,7 @@ export default async function BlogPage({ params }) {
                    {new Date(blog.createdAt || Date.now()).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                  </span>
                  <span className="flex items-center gap-1">
-                   <Clock className="w-3.5 h-3.5" /> 5 min read
+                   <Clock className="w-3.5 h-3.5" /> {readingTime} min read
                  </span>
                </div>
             </div>
@@ -231,7 +257,7 @@ export default async function BlogPage({ params }) {
             {blog.title}
           </h1>
           
-          <p className=" text-gray-500 leading-relaxed max-w-7xl italic border-l-4 border-[#f9cf01] pl-6">
+          <p className="article-summary text-gray-500 leading-relaxed max-w-7xl italic border-l-4 border-[#f9cf01] pl-6">
             {blog.metaDescription}
           </p>
         </header>

@@ -53,7 +53,7 @@ export const metadata = {
   metadataBase: new URL("https://kayapalat.in/"),
 
   alternates: {
-    canonical: "/",
+    canonical: "https://www.kayapalat.in/",
   },
 
   openGraph: {
@@ -130,7 +130,6 @@ export default function Home() {
       <ExperienceDifference />
       <PricingPlans />
       <ExploreEvents />
-      <HealthQuiz />
       <HeroEmailSection />
       <ExecutiveBlueprint />
       <FaqSectionServer />

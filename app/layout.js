@@ -29,17 +29,32 @@ export const metadata = {
     google: "JHwZTFGpNjsXmKKQM7xa6hQoTMstdNrwMG1VxjiO-z0",
   },
 };
-
+ const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://www.kayapalat.in/#organization",
+    name: "Kayapalat",
+    url: "https://www.kayapalat.in",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://www.kayapalat.in/logo.png",
+    },
+    sameAs: [
+      "https://www.instagram.com/kayapalat",
+      "https://www.facebook.com/kayapalat",
+      "https://www.youtube.com/@kayapalat"
+    ]
+  };
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${montserrat.variable} h-full antialiased scroll-smooth`}
     >
-      <Toaster />
-      <Navbar />
+     
       <body className="min-h-full flex flex-col">
-          
+           <Toaster />
+      <Navbar />
 
          <Script id="facebook-pixel" strategy="afterInteractive">
           {`
@@ -73,9 +88,19 @@ export default function RootLayout({ children }) {
           />
         </noscript>
         
-        {children}</body>
+        {children}
         <GoogleAnalytics gaId="G-5GT5HXDNTL" />
-      <Footer />
+        
+         <Footer />
+         <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        </body>
+        
+     
     </html>
   );
 }

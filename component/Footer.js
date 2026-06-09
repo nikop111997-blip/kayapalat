@@ -156,11 +156,11 @@ export default function Footer() {
      fill="none">
   <rect x="2" y="2" width="20" height="20" rx="6" 
         stroke="currentColor" 
-        stroke-width="2"/>
+        strokeWidth="2"/>
         
   <circle cx="12" cy="12" r="4" 
           stroke="currentColor" 
-          stroke-width="2"/>
+          strokeWidth="2"/>
           
   <circle cx="18" cy="6" r="1.2" 
           fill="currentColor"/>
@@ -183,7 +183,7 @@ export default function Footer() {
     
   <path d="M21.8 7.2C21.6 6.4 21 5.8 20.2 5.6C18.7 5.2 12 5.2 12 5.2C12 5.2 5.3 5.2 3.8 5.6C3 5.8 2.4 6.4 2.2 7.2C1.8 8.7 1.8 12 1.8 12C1.8 12 1.8 15.3 2.2 16.8C2.4 17.6 3 18.2 3.8 18.4C5.3 18.8 12 18.8 12 18.8C12 18.8 18.7 18.8 20.2 18.4C21 18.2 21.6 17.6 21.8 16.8C22.2 15.3 22.2 12 22.2 12C22.2 12 22.2 8.7 21.8 7.2Z" 
         stroke="currentColor" 
-        stroke-width="2" 
+        strokeWidth="2" 
         fill="none"/>
         
   <path d="M10 15L16 12L10 9V15Z" 
@@ -207,7 +207,7 @@ export default function Footer() {
 
   <rect x="2" y="2" width="20" height="20" rx="5"
         stroke="currentColor"
-        stroke-width="2"/>
+        strokeWidth="2"/>
 
   <path d="M14 8H16V5H13.5C10.9 5 9 6.6 9 9.5V12H7V15H9V19H12V15H15L15.5 12H12V9.8C12 8.7 12.3 8 14 8Z"
         fill="currentColor"/>
