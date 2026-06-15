@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   AlertCircle,
 } from "lucide-react"
+import Link from "next/link"
 
 const getTrackingData = () => {
   const params = new URLSearchParams(window.location.search)
@@ -37,6 +38,7 @@ export default function BookingComponent({ pricing = false, navbar=false }) {
     goal: "",
     currentWeight: "",
     source: "",
+    consent: false, // Added consent state
   })
 
   useEffect(() => {
@@ -44,7 +46,8 @@ export default function BookingComponent({ pricing = false, navbar=false }) {
   }, [])
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
+    // UPDATED: Destructured type and checked to handle checkboxes
+    const { name, value, type, checked } = e.target
 
     // Specific validation for phone number input
     if (name === "phone") {
@@ -63,7 +66,8 @@ export default function BookingComponent({ pricing = false, navbar=false }) {
 
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      // UPDATED: Dynamically handle boolean for checkbox, otherwise use text value
+      [name]: type === "checkbox" ? checked : value,
     }))
   }
 
@@ -80,7 +84,8 @@ export default function BookingComponent({ pricing = false, navbar=false }) {
         city: "",
         goal: "",
         currentWeight: "",
-        knowusFrom: "",
+        source: "",
+        consent: false, // Reset consent on close
       })
     }, 300)
   }
@@ -111,6 +116,9 @@ export default function BookingComponent({ pricing = false, navbar=false }) {
           utm_source: tracking.source,
           utm_medium: tracking.medium,
           utm_campaign: tracking.campaign,
+          // UPDATED: Send consent details to backend
+          consentGiven: formData.consent,
+          consentDate: new Date().toISOString(),
         }),
       })
 
@@ -161,7 +169,7 @@ export default function BookingComponent({ pricing = false, navbar=false }) {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="bg-white w-full max-w-2xl rounded-[32px] overflow-hidden shadow-2xl max-h-[90vh] flex flex-col"
+            className="bg-white w-full max-w-2xl rounded-[16px] overflow-hidden shadow-2xl max-h-[90vh] flex flex-col"
           >
             {/* HEADER */}
             <div className="flex items-center justify-between p-6 md:px-8 border-b border-gray-100">
@@ -270,13 +278,29 @@ export default function BookingComponent({ pricing = false, navbar=false }) {
                     options={sourceOptions}
                     required
                   />
+                  
+                  {/* UPDATED: Added name, checked, and onChange handler to the checkbox */}
+                  <label className="flex items-start gap-3 text-sm mt-4 cursor-pointer">
+                    <input 
+                      type="checkbox" 
+                      name="consent"
+                      checked={formData.consent}
+                      onChange={handleInputChange}
+                      required 
+                      className="mt-1 w-4 h-4 text-blue-600 rounded focus:ring-blue-500 cursor-pointer flex-shrink-0"
+                    />
+                    <span className="text-gray-600 leading-relaxed">
+                      I agree to the <Link href="/privacy-policy" target="_blank" className="text-yellow-600 hover:underline font-medium">Privacy Policy</Link> and consent to the processing
+                      of my personal data for service delivery and marketing communications.
+                    </span>
+                  </label>
 
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full mt-8 flex items-center justify-center gap-3 bg-[#003460] hover:bg-[#00284a] transition text-white px-8 py-4 rounded-full font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full mt-8 flex items-center justify-center gap-3 bg-[#003460] hover:bg-[#00284a] transition text-white px-8 py-4 rounded-lg font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Submitting..." : "Request Callback"}
 
@@ -325,7 +349,7 @@ function Input({ label, ...props }) {
 
       <input
         {...props}
-        className="w-full border border-gray-200 rounded-2xl h-12 px-5 outline-none focus:border-[#003460] transition bg-white"
+        className="w-full border border-gray-200 rounded-lg h-12 px-5 outline-none focus:border-[#003460] transition bg-white"
       />
     </div>
   )
@@ -340,7 +364,7 @@ function Select({ label, options, ...props }) {
 
       <select
         {...props}
-        className="w-full border border-gray-200 rounded-2xl h-12 px-5 outline-none focus:border-[#003460] transition bg-white"
+        className="w-full border border-gray-200 rounded-lg h-12 px-5 outline-none focus:border-[#003460] transition bg-white"
       >
         <option value="" disabled>
           Select...

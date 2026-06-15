@@ -8,6 +8,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroEmailSection({
   apiUrl = "https://kayakalap.vercel.app/api/newsletter",
@@ -110,7 +111,29 @@ export default function HeroEmailSection({
                 className="w-full h-[58px] pl-12 pr-4 dark:text-gray-900 rounded-2xl border border-gray-300 bg-white text-sm outline-none focus:border-black transition-colors"
               />
             </div>
+<div className="flex items-start gap-3">
+  <input
+    type="checkbox"
+    id="consent"
+    required
+    className="mt-1 h-4 w-4 accent-[#F9CF01]"
+  />
 
+  <label
+    htmlFor="consent"
+    className="text-xs leading-5 text-gray-600"
+  >
+    I have read and agree to the{" "}
+    <Link
+      href="/privacy-policy"
+      target="_blank"
+      className="font-medium text-black underline"
+    >
+      Privacy Policy
+    </Link>{" "}
+    and consent to receive updates from Kayapalat.
+  </label>
+</div>
             {/* Button */}
             <button
               type="submit"

@@ -10,7 +10,7 @@ import BookingComponent from './Booking2Comp';
 const navLinks = [
   { name: 'Why Kayapalat', href: 'https://kayapalat.in/#why-kayapalat' },
   { name: 'Programs', href: '/pricing' },
-  { name: 'Transformations', href: 'https://kayapalat.in/#transformations' },
+  { name: 'Transformations', href: '/transformation' },
   { name: 'About', href: '/about' },
   { name: 'Blogs', href: '/blogs' },
   { name: 'FAQ', href: 'https://kayapalat.in/#faq' },

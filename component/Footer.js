@@ -125,7 +125,7 @@ export default function Footer() {
 
           {/* Column 3 */}
           <div className="flex flex-col space-y-4 text-[15px] font-medium text-gray-300">
-            <RolloverLink href="https://kayapalat.in#transformations">
+            <RolloverLink href="/transformation">
               Transformations
             </RolloverLink>
 

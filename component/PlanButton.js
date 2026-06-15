@@ -63,7 +63,8 @@ const formConfigs = {
       {
         id: "section_7", title: "Section 7: Final Question",
         fields: [
-          { name: "anythingElse", label: "Is there anything else you would like us to know before our conversation?", type: "textarea" }
+          { name: "anythingElse", label: "Is there anything else you would like us to know before our conversation?", type: "textarea" },
+          { name: "consent", type: "consent" } // Added consent field
         ]
       }
     ]
@@ -102,7 +103,8 @@ const formConfigs = {
         id: "section_4", title: "Section 4: Your Commitment",
         fields: [
           { name: "bestDescribesYouLegacy", label: "Which statement best describes you?", type: "radio", options: ["I want to maintain my results.", "I want to continue improving.", "I want wellness to become a permanent lifestyle."] },
-          { name: "readyToCommit", label: "Legacy Membership is a 6-month commitment to your long-term health and well-being. Are you ready to make that commitment?", type: "radio", options: ["Yes", "I would like to know more first"] }
+          { name: "readyToCommit", label: "Legacy Membership is a 6-month commitment to your long-term health and well-being. Are you ready to make that commitment?", type: "radio", options: ["Yes", "I would like to know more first"] },
+          { name: "consent", type: "consent" } // Added consent field
         ]
       }
     ]
@@ -180,6 +182,7 @@ export default function PlanButton({ planName }) {
   const handleInputChange = (e) => {
     setErrorMsg(""); // Clear errors on input
     const { name, value, type, checked } = e.target;
+    
     if (type === "checkbox") {
       setFormData((prev) => {
         const currentList = prev[name] || [];
@@ -196,6 +199,17 @@ export default function PlanButton({ planName }) {
     const fields = formConfig.steps[currentStep].fields;
     for (let field of fields) {
       const val = formData[field.name];
+
+      // Explicitly validate the new consent boolean type
+      if (field.type === "consent") {
+        if (val !== true) {
+          setErrorMsg("You must agree to the Privacy Policy to proceed.");
+          return false;
+        }
+        continue;
+      }
+
+      // Validate standard fields
       if (!val || val.length === 0) {
         setErrorMsg(`Please fill out: ${field.label}`);
         return false;
@@ -218,33 +232,33 @@ export default function PlanButton({ planName }) {
     setViewState("submitting");
 
     try {
-      // TODO: Replace this timeout with your actual API fetch call
-      // Example: await fetch('/api/submit', { method: 'POST', body: JSON.stringify(formData) })
-    const payload = {
-  plan: planName,
-  ...formData,
-};
+      const payload = {
+        plan: planName,
+        ...formData,
+        // Explicitly format consent data for your backend tracking
+        consentGiven: formData.consent,
+        consentDate: new Date().toISOString(),
+      };
 
-const response = await fetch("/api/plan-application", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(payload),
-});
+      const response = await fetch("/api/plan-application", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-const result = await response.json();
+      const result = await response.json();
 
-if (!response.ok || !result.success) {
-  throw new Error(result.message || "Submission failed");
-}
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Submission failed");
+      }
 
-setViewState("success");
+      setViewState("success");
 
-setTimeout(() => {
-  setIsModalOpen(false);
-}, 5000);
-
+      setTimeout(() => {
+        setIsModalOpen(false);
+      }, 5000);
 
     } catch (error) {
       console.error("Submission failed", error);
@@ -254,6 +268,24 @@ setTimeout(() => {
   };
 
   const renderField = (field) => {
+    // Render Custom Consent Checkbox
+    if (field.type === "consent") {
+      return (
+        <label className="flex items-start gap-3 text-sm mt-6 cursor-pointer">
+          <input
+            type="checkbox"
+            name={field.name}
+            checked={!!formData[field.name]}
+            onChange={(e) => setFormData(prev => ({ ...prev, [field.name]: e.target.checked }))}
+            className="mt-1 w-4 h-4 text-blue-600 rounded focus:ring-blue-500 cursor-pointer flex-shrink-0"
+          />
+          <span className="text-gray-600 font-normal leading-relaxed">
+            I have read and agree to the <a href="/privacy-policy" target="_blank" className="text-blue-600 hover:underline">Privacy Policy</a> and consent to the collection, storage, and processing of my personal data for consultation booking, service delivery, customer support, and marketing communications.
+          </span>
+        </label>
+      );
+    }
+
     if (field.type === "textarea") {
       return (
         <textarea name={field.name} onChange={handleInputChange} value={formData[field.name] || ""} rows={3}
@@ -369,23 +401,22 @@ setTimeout(() => {
                     {formConfig.steps[currentStep].title}
                   </h3>
                   {errorMsg && (
-                    <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-md text-sm font-medium">
+                    <div className="mt-4 mb-6 p-3 bg-red-50 border border-red-200 text-red-600 rounded-md text-sm font-medium">
                       ⚠️ {errorMsg}
                     </div>
                   )}
                   <div className="space-y-6 pb-4 max-h-[50vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300">
                     {formConfig.steps[currentStep].fields.map((field) => (
                       <div key={field.name}>
-                        <label className="text-base font-medium text-gray-900">
-                          {field.label} <span className="text-red-500">*</span>
-                        </label>
+                        {field.label && (
+                          <label className="text-base font-medium text-gray-900">
+                            {field.label} <span className="text-red-500">*</span>
+                          </label>
+                        )}
                         {renderField(field)}
                       </div>
                     ))}
                   </div>
-
-                  {/* Error Message Display */}
-                  
 
                 </motion.div>
               </AnimatePresence>

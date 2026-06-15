@@ -16,17 +16,19 @@ import {
   CheckCircle2,
   AlertCircle,
 } from "lucide-react"
+import Link from "next/link"
 
 const getTrackingData = () => {
-        const params = new URLSearchParams(window.location.search)
+  const params = new URLSearchParams(window.location.search)
 
-        return {
-            source: params.get("utm_source") || "direct",
-            medium: params.get("utm_medium") || "website",
-            campaign: params.get("utm_campaign") || "default",
-        }
-    }
-export default function BookingComponent({pricing = false}) {
+  return {
+    source: params.get("utm_source") || "direct",
+    medium: params.get("utm_medium") || "website",
+    campaign: params.get("utm_campaign") || "default",
+  }
+}
+
+export default function BookingComponent({ pricing = false }) {
   const [mounted, setMounted] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
@@ -54,6 +56,7 @@ export default function BookingComponent({pricing = false}) {
     fitnessGoal: "",
     program: "",
     notes: "",
+    consent: false,
   })
 
   useEffect(() => {
@@ -126,12 +129,13 @@ export default function BookingComponent({pricing = false}) {
     }
   }
 
+  // UPDATED: Now handles both text inputs and checkboxes perfectly
   const handleInputChange = (e) => {
-    const { name, value } = e.target
+    const { name, value, type, checked } = e.target
 
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     }))
   }
 
@@ -152,7 +156,8 @@ export default function BookingComponent({pricing = false}) {
 
     setIsSubmitting(true)
     setSubmitError("")
-const tracking = getTrackingData()
+    const tracking = getTrackingData()
+    
     try {
       const response = await fetch("https://kayakalap.vercel.app/api/contact", {
         method: "POST",
@@ -166,6 +171,9 @@ const tracking = getTrackingData()
           source: tracking.source,
           medium: tracking.medium,
           campaign: tracking.campaign,
+          // UPDATED: Sends the actual boolean state from your form
+          consentGiven: formData.consent, 
+          consentDate: new Date().toISOString(),
         }),
       })
 
@@ -175,13 +183,13 @@ const tracking = getTrackingData()
 
       setSubmitSuccess(true)
 
-// Meta Pixel Lead Event
-if (typeof window !== "undefined" && window.fbq) {
-  window.fbq("track", "Lead", {
-    content_name: "Wellness Consultation",
-    status: "submitted",
-  })
-}
+      // Meta Pixel Lead Event
+      if (typeof window !== "undefined" && window.fbq) {
+        window.fbq("track", "Lead", {
+          content_name: "Wellness Consultation",
+          status: "submitted",
+        })
+      }
 
       setTimeout(() => {
         closeModal()
@@ -217,16 +225,16 @@ if (typeof window !== "undefined" && window.fbq) {
           whileHover={{ scale: 1.05 }}
           key={i}
           onClick={() => {
-  setSelectedDate(date)
+            setSelectedDate(date)
 
-  // Meta Pixel Event
-  if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("trackCustom", "DateSelected", {
-      selected_date: date.toLocaleDateString(),
-      content_name: "Wellness Consultation",
-    })
-  }
-}}
+            // Meta Pixel Event
+            if (typeof window !== "undefined" && window.fbq) {
+              window.fbq("trackCustom", "DateSelected", {
+                selected_date: date.toLocaleDateString(),
+                content_name: "Wellness Consultation",
+              })
+            }
+          }}
           className={`
             w-11 h-11 rounded-xl text-sm transition-all
             flex items-center justify-center
@@ -285,27 +293,27 @@ if (typeof window !== "undefined" && window.fbq) {
                 {/* LEFT SIDEBAR */}
                 <div className="p-8 border-r border-gray-100 relative">
                   <button
-  onClick={() => {
-    closeModal()
+                    onClick={() => {
+                      closeModal()
 
-    // Meta Pixel Event
-    if (typeof window !== "undefined" && window.fbq) {
-      window.fbq("trackCustom", "CloseConsultation", {
-        content_name: "Wellness Consultation",
-      })
-    }
-  }}
-  className="absolute top-7 right-5 hidden md:flex w-10 h-10 rounded-full bg-gray-600 hover:bg-gray-700 items-center justify-center transition"
->
-  <X size={18} className="text-white" />
-</button>
+                      // Meta Pixel Event
+                      if (typeof window !== "undefined" && window.fbq) {
+                        window.fbq("trackCustom", "CloseConsultation", {
+                          content_name: "Wellness Consultation",
+                        })
+                      }
+                    }}
+                    className="absolute top-7 right-5 hidden md:flex w-10 h-10 rounded-full bg-gray-600 hover:bg-gray-700 items-center justify-center transition"
+                  >
+                    <X size={18} className="text-white" />
+                  </button>
 
                   <div className="flex items-center gap-3 text-sm font-medium text-gray-500 mb-6">
                     <div className="w-9 h-9 rounded-full bg-[#003460]/10 flex items-center justify-center text-[#003460]">
                       <Clock3 size={16} />
                     </div>
 
-                    Kayakal Wellness
+                    Kayapalat Wellness
                   </div>
 
                   <h2 className="text-2xl font-bold text-gray-900 leading-tight mb-5">
@@ -420,17 +428,17 @@ if (typeof window !== "undefined" && window.fbq) {
                             whileTap={{ scale: 0.98 }}
                             key={time}
                             onClick={() => {
-  setSelectedTime(time)
-  setStep(2)
+                              setSelectedTime(time)
+                              setStep(2)
 
-  // Meta Pixel Event
-  if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("trackCustom", "TimeSelected", {
-      selected_time: time,
-      content_name: "Wellness Consultation",
-    })
-  }
-}}
+                              // Meta Pixel Event
+                              if (typeof window !== "undefined" && window.fbq) {
+                                window.fbq("trackCustom", "TimeSelected", {
+                                  selected_time: time,
+                                  content_name: "Wellness Consultation",
+                                })
+                              }
+                            }}
                             className="w-full border border-[#003460]/20 bg-white hover:border-[#003460] hover:bg-[#003460]/5 transition rounded-2xl py-4 text-[#003460] font-medium"
                           >
                             {time}
@@ -613,13 +621,30 @@ if (typeof window !== "undefined" && window.fbq) {
                         className="w-full border border-gray-200 dark:text-gray-800 rounded-lg p-5 outline-none focus:border-[#003460]"
                       />
                     </div>
+                    {/* UPDATED: Added name="consent", checked attribute, and handleInputChange */}
+                    <label className="flex items-start gap-3 text-sm mt-6">
+                      <input 
+                        type="checkbox" 
+                        name="consent"
+                        checked={formData.consent} 
+                        onChange={handleInputChange}
+                        required 
+                        className="mt-1"
+                      />
+                      <span className="text-gray-600">
+                        I have read and agree to the <Link href="/privacy-policy" target="_blank" className="text-yellow-500 hover:underline">Privacy Policy</Link> and consent to
+                        the collection, storage, and processing of my personal data
+                        for consultation booking, service delivery, customer support,
+                        and marketing communications.
+                      </span>
+                    </label>
 
                     <motion.button
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                       type="submit"
                       disabled={isSubmitting}
-                      className="mt-8 inline-flex items-center gap-3 bg-[#003460] hover:bg-[#00284a] transition text-white px-12 py-4 rounded-lg font-semibold"
+                      className="mt-8 inline-flex items-center justify-center w-full md:w-auto gap-3 bg-[#003460] hover:bg-[#00284a] transition text-white px-12 py-4 rounded-lg font-semibold"
                     >
                       {isSubmitting
                         ? "Submitting..."
@@ -642,25 +667,25 @@ if (typeof window !== "undefined" && window.fbq) {
   return (
     <>
       <motion.button
-  whileHover={{ scale: 1.03 }}
-  whileTap={{ scale: 0.96 }}
-  onClick={() => {
-    setIsOpen(true)
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.96 }}
+        onClick={() => {
+          setIsOpen(true)
 
-    // Meta Pixel Event
-    if (typeof window !== "undefined" && window.fbq) {
-      window.fbq("track", "InitiateCheckout", {
-  content_name: "Wellness Consultation",
-})
-    }
-  }}
-  className={`group flex items-center font-bold cursor-pointer justify-center gap-3 dark:text-gray-900 border-black rounded-full px-7 ${
-    pricing
-      ? "py-3 border-0 bg-[#FFD200] font-bold"
-      : "py-4 border-2"
-  } hover:bg-black hover:text-white transition-all duration-300`}
->
-        <span classname="font-bold">Book A Clarity Call</span>
+          // Meta Pixel Event
+          if (typeof window !== "undefined" && window.fbq) {
+            window.fbq("track", "InitiateCheckout", {
+              content_name: "Wellness Consultation",
+            })
+          }
+        }}
+        className={`group flex items-center font-bold cursor-pointer justify-center gap-3 dark:text-gray-900 border-black rounded-full px-7 ${
+          pricing
+            ? "py-3 border-0 bg-[#FFD200] font-bold"
+            : "py-4 border-2"
+        } hover:bg-black hover:text-white transition-all duration-300`}
+      >
+        <span className="font-bold">Book A Clarity Call</span>
 
         <div className="transition-all duration-300 group-hover:bg-white group-hover:text-black rounded-full p-1">
           <ArrowUpRight
