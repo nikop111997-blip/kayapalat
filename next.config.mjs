@@ -20,6 +20,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'yjepfzir0vaqgtoy.public.blob.vercel-storage.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'kayakalap.vercel.app',
       }
     ],
