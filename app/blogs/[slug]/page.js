@@ -101,7 +101,7 @@ export async function generateMetadata({ params }) {
     authors: [
       {
         name: "Kayapalat",
-        url: "https://kayapalat.in",
+        url: "https://www.kayapalat.in",
       },
     ],
 
@@ -109,7 +109,7 @@ export async function generateMetadata({ params }) {
 
     other: {
       "article:author": "Kayapalat",
-      "article:section": "Home Inspection",
+      "article:section": "Health",
     },
   };
 }

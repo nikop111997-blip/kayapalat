@@ -34,11 +34,11 @@ export const metadata = {
     title: "Kayapalat Blogs | Wellness & Health Insights",
     description:
       "Read the latest blogs on wellness, health, and lifestyle tips from Kayapalat.",
-    url: "https://kayapalat.in/blogs",
+    url: "https://www.kayapalat.in/blogs",
     siteName: "Kayapalat",
     images: [
       {
-        url: "https://kayapalat.in/blog-header.jpg", // change if needed
+        url: "/logo.webp", // change if needed
         width: 1200,
         height: 630,
         alt: "Kayapalat Blogs",
@@ -53,11 +53,11 @@ export const metadata = {
     title: "Kayapalat Blogs | Wellness & Health Insights",
     description:
       "Stay updated with expert blogs on wellness, health, and lifestyle tips from Kayapalat.",
-    images: ["https://kayapalat.in/default-blog.jpg"],
+    images: ["https://www.kayapalat.in/logo.webp"],
   },
 
   alternates: {
-    canonical: "https://kayapalat.in/blogs",
+    canonical: "https://www.kayapalat.in/blogs",
   },
 };
 export default async function BlogsPage({ searchParams }) {
