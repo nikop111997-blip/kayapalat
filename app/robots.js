@@ -7,8 +7,8 @@ export default function robots() {
       },
     ],
 
-    sitemap: "https://kayapalat.in/sitemap.xml",
+    sitemap: "https://www.kayapalat.in/sitemap.xml",
 
-    host: "https://kayapalat.in",
+    host: "https://www.kayapalat.in",
   };
 }

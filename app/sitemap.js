@@ -3,7 +3,7 @@
 import clientPromise from "@/lib/mongodb";
 
 export default async function sitemap() {
-  const baseUrl = "https://kayapalat.in";
+  const baseUrl = "https://www.kayapalat.in";
 
   // ✅ Static Pages
   const staticPages = [

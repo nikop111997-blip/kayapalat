@@ -29,7 +29,7 @@ export const metadata = {
   authors: [
     {
       name: "Kayapalat",
-      url: "https://kayapalat.in",
+      url: "https://www.kayapalat.in",
     },
   ],
 
@@ -37,7 +37,7 @@ export const metadata = {
 
   publisher: "Kayapalat",
 
-  metadataBase: new URL("https://kayapalat.in"),
+  metadataBase: new URL("https://www.kayapalat.in"),
 
   alternates: {
     canonical: "/pricing",
@@ -50,13 +50,13 @@ export const metadata = {
     description:
       "Compare Kayapalat transformation plans and start your fitness, nutrition, and lifestyle journey with expert guidance.",
 
-    url: "https://kayapalat.in/pricing",
+    url: "https://www.kayapalat.in/pricing",
 
     siteName: "Kayapalat",
 
     images: [
       {
-        url: "/pricing-og.jpg",
+        url: "/logo.webp",
         width: 1200,
         height: 630,
         alt: "Kayapalat Pricing Plans",
@@ -77,7 +77,7 @@ export const metadata = {
     description:
       "Explore flexible transformation plans for fitness, nutrition, and wellness coaching with Kayapalat.",
 
-    images: ["https://kayakalap.vercel.app/_next/image?url=%2Flogo.avif&w=384&q=75"],
+    images: ["/logo.webp"],
   },
 
   robots: {

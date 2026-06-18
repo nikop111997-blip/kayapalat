@@ -42,7 +42,7 @@ export const metadata = {
   authors: [
     {
       name: "Kayapalat",
-      url: "https://kayapalat.in/",
+      url: "https://www.kayapalat.in/",
     },
   ],
 
@@ -50,7 +50,7 @@ export const metadata = {
 
   publisher: "Kayapalat",
 
-  metadataBase: new URL("https://kayapalat.in/"),
+  metadataBase: new URL("https://www.kayapalat.in/"),
 
   alternates: {
     canonical: "https://www.kayapalat.in/",
@@ -63,13 +63,13 @@ export const metadata = {
     description:
       "Join Kayapalat and unlock your best self with expert fitness, nutrition, and lifestyle coaching tailored for sustainable transformation.",
 
-    url: "https://kayapalat.in/",
+    url: "https://www.kayapalat.in/",
 
     siteName: "Kayapalat",
 
     images: [
       {
-        url: "https://kayakalap.vercel.app/_next/image?url=%2Flogo.avif&w=384&q=75",
+        url: "/logo.webp",
         width: 1200,
         height: 630,
         alt: "Kayapalat - Transform Your Health, Transform Your Life",
@@ -90,7 +90,7 @@ export const metadata = {
     description:
       "Experience personalized fitness, nutrition, and mindset coaching with Kayapalat.",
 
-    images: ["https://kayakalap.vercel.app/_next/image?url=%2Flogo.avif&w=384&q=75"],
+    images: ["/logo.webp"],
   },
 
   robots: {
