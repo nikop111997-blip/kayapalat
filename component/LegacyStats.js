@@ -100,11 +100,11 @@ export default function LegacySection() {
   ];
 
   return (
-    <section className="w-full bg-[#F8F7F4] py-10 px-4 sm:px-6 lg:px-8 font-manrope">
+    <section className="w-full bg-[#F8F7F4] py-10 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="mx-auto max-w-[1240px]">
         
         {/* Heading */}
-        <h2 className="mb-14 text-center text-[40px] leading-[1.0] font-semibold tracking-[-1px] text-black md:text-[40px] md:leading-[1.2] font-manrope">
+        <h2 className="mb-14 text-center text-[40px] leading-[1.0] font-extrabold tracking-[-1px] text-black md:text-[40px] md:leading-[1.2] font-manrope">
           Results Speak for Themselves
         </h2>
 

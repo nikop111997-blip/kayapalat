@@ -71,7 +71,7 @@ export default function HeroSection() {
         }
       `}</style>
 
-      <div className="mx-auto max-w-[1240px]">
+      <div className="mx-auto max-w-[1240px] font-sans">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
           
           {/* Left Content Column - Centered content on mobile, left-aligned on desktop */}

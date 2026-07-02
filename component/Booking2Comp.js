@@ -321,7 +321,7 @@ export default function BookingComponent({ pricing = false, navbar=false }) {
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.96 }}
         onClick={() => setIsOpen(true)}
-        className={`group flex items-center cursor-pointer ${navbar?'bg-transparent py-2 border border-white':'bg-[#FFD200] py-4 border-2'}  justify-center gap-3  border-[#FFD200] rounded-full px-7 ${
+        className={`group flex items-center dark:text-black cursor-pointer ${navbar?'bg-transparent py-2 border border-white':'bg-[#FFD200] py-4 border-2'}  justify-center gap-3  border-[#FFD200] rounded-full px-7 ${
           pricing ? "py-3 border-0 bg-[#FFD200]" : ""
         } font-medium hover:bg-black hover:text-white transition-all duration-300`}
       >

@@ -57,11 +57,11 @@ export default function IBW() {
   ];
 
   return (
-    <section className="w-full min-h-screen px-4 md:px-8 py-20 bg-gray-50/50">
+    <section className="w-full min-h-screen px-4 md:px-8 py-20 bg-gray-50/50 font-sans">
       <div className="max-w-[1700px] mx-auto">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-16 mb-16">
-          <div className="flex-1 max-w-2xl">
+          <div className="flex-1 justify-start max-w-2xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white shadow-sm border border-gray-100 mb-6">
               <svg
                 className="w-4 h-4 text-gray-700"
@@ -82,20 +82,20 @@ export default function IBW() {
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-[48px] font-bold text-gray-900 leading-[1.1]">
-              Idol Body Weight
+            <h2 className="text-4xl md:text-5xl lg:text-[48px] text-center font-bold text-gray-900 leading-[1.1] lg:text-left">
+              Idol Body Weight {" "}
               <br className="hidden md:block" />
-              Achiever
+              Achievers
             </h2>
           </div>
 
-          <div className="flex-1 max-w-xl lg:pl-8">
-            <p className="text-gray-800 font-semibold text-md leading-relaxed mb-4">
+          <div className="flex-1 max-w-xl lg:pl-8 items-center text-center lg:text-left">
+            <p className="text-gray-800 font-semibold text-md leading-relaxed mb-8">
               Kayapalat has helped individuals across the globe enhance their
               health performance and achieve their wellness goals.
             </p>
 
-            <Link href={'/pricing'} className="bg-black hover:bg-[#262627] mt-4 text-white font-semibold py-3.5 px-8 rounded-lg shadow-lg shadow-gray-500/30 transition-all duration-300 hover:-translate-y-1">
+            <Link href={'/pricing'} className="bg-black hover:bg-[#262627] mt-8 text-white font-semibold py-3.5 px-8 rounded-lg shadow-lg shadow-gray-500/30 transition-all duration-300 hover:-translate-y-1">
               Connect Now
             </Link>
           </div>

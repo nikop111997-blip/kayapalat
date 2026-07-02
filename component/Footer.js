@@ -118,7 +118,7 @@ export default function Footer() {
             <RolloverLink href="https://kayapalat.in/pricing">
               Programs
             </RolloverLink>
-            <RolloverLink href="https://kayapalat.in/Journal">
+            <RolloverLink href="https://kayapalat.in/journal">
               Journal
             </RolloverLink>
           </div>

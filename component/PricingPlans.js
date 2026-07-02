@@ -94,7 +94,7 @@ export default function PricingPlans() {
 ];
 
   return (
-    <section className="bg-[#F8F9FA] py-16 px-4 md:px-8 font-manrope">
+    <section className="bg-[#F8F9FA] py-16 px-4 md:px-8 font-sans">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Header Section */}
