@@ -241,7 +241,7 @@ const KayapalatJournal = () => {
      <div className="relative w-full h-[400px] md:h-[550px] flex items-center justify-center [perspective:1500px] z-10">
   
   {/* Shrunk the book to w-[280px] h-[360px] on mobile, back to w-[480px] h-[520px] on desktop */}
-  <div onClick={openJournal} className="relative w-65 h-[360px] md:w-[480px] md:h-[520px] cursor-pointer transition-transform duration-700 ease-out -rotate-y-[15deg] rotate-z-[2deg] hover:rotate-y-0 hover:rotate-z-0 hover:-translate-y-2 [transform-style:preserve-3d]">
+  <div onClick={openJournal} className="relative w-60 h-[360px] md:w-[480px] md:h-[520px] cursor-pointer transition-transform duration-700 ease-out -rotate-y-[15deg] rotate-z-[2deg] hover:rotate-y-0 hover:rotate-z-0 hover:-translate-y-2 [transform-style:preserve-3d]">
     <CoverDesign hintText="Click to Open Journal" />
   </div>
 
@@ -301,7 +301,7 @@ const KayapalatJournal = () => {
 
             {/* DESKTOP 3D FLIPPING UI */}
             <div className="hidden md:flex relative w-full h-[550px] items-center justify-center [perspective:1800px] pointer-events-none">
-              <div className={`relative w-[280px] h-[520px] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] pointer-events-auto ${isOpen ? "translate-x-[190px]" : "translate-x-0"}`}>
+              <div className={`relative w-[260px] h-[520px] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] pointer-events-auto ${isOpen ? "translate-x-[190px]" : "translate-x-0"}`}>
                 
                 <div className="absolute inset-0 bg-[#fcfcfc] rounded-r-2xl rounded-l-sm shadow-2xl border-y border-r border-gray-300 z-0 overflow-hidden flex flex-col shadow-[15px_0_30px_-10px_rgba(0,0,0,0.2)_inset]">
                   {renderRightPage(staticRightIndex)}

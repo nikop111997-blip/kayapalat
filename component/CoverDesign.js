@@ -16,7 +16,7 @@ const cinzel = Cinzel({
 
 const CoverDesign = ({ hintText }) => (
 <div
-  className="relative group flex items-stretch w-[320px] h-[400px] md:w-[360px] md:h-[520px]"
+  className="relative group flex items-stretch w-[300px] h-[400px] md:w-[360px] md:h-[520px]"
 >
     {/* Spine */}
     <div
@@ -104,9 +104,8 @@ const CoverDesign = ({ hintText }) => (
       {/* Title */}
       <div className="relative z-10 flex flex-col items-center justify-center flex-1 -mt-4">
         <h2
-          className={`${playfair.className} text-center m-0`}
+          className={`${playfair.className} text-center m-0 text-[48px]`}
           style={{
-            fontSize: "52px",
             fontWeight: 600,
             lineHeight: 1.1,
             letterSpacing: "0.05em",
