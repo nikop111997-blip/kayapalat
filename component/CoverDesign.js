@@ -16,7 +16,7 @@ const cinzel = Cinzel({
 
 const CoverDesign = ({ hintText }) => (
 <div
-  className="relative group flex items-stretch w-[300px] h-[400px] md:w-[360px] md:h-[520px]"
+  className="relative group flex items-stretch w-[280px] h-[400px] md:w-[360px] md:h-[520px]"
 >
     {/* Spine */}
     <div

@@ -301,7 +301,7 @@ const KayapalatJournal = () => {
 
             {/* DESKTOP 3D FLIPPING UI */}
             <div className="hidden md:flex relative w-full h-[550px] items-center justify-center [perspective:1800px] pointer-events-none">
-              <div className={`relative w-[260px] h-[520px] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] pointer-events-auto ${isOpen ? "translate-x-[190px]" : "translate-x-0"}`}>
+              <div className={`relative w-[280px] h-[520px] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] pointer-events-auto ${isOpen ? "translate-x-[190px]" : "translate-x-0"}`}>
                 
                 <div className="absolute inset-0 bg-[#fcfcfc] rounded-r-2xl rounded-l-sm shadow-2xl border-y border-r border-gray-300 z-0 overflow-hidden flex flex-col shadow-[15px_0_30px_-10px_rgba(0,0,0,0.2)_inset]">
                   {renderRightPage(staticRightIndex)}
