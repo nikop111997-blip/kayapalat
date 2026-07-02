@@ -90,7 +90,7 @@ export default function WeightVideoGallery() {
       {/* Header */}
       <div className="text-center mb-10">
         <h2 className="text-4xl font-bold text-gray-50 mb-4 tracking-tight">
-          Milestone Achiever
+          Milestone Achievers
         </h2>
         <p className="text-gray-100 text-lg max-w-2xl mx-auto">
           Explore journeys tailored to your goals. Select a weight category to watch specific transformations.

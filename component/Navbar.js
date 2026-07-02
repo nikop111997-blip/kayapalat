@@ -42,7 +42,7 @@ export default function Navbar() {
               alt="Kayapalat Logo"
               width={140}
               height={36}
-              priority
+              fetchPriority='high'
             />
           </Link>
 

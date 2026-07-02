@@ -14,14 +14,14 @@ export default function AboutAuthor() {
       <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         <div className="order-2 md:order-1 space-y-6">
           <span className="text-[#ffd54c] font-bold text-sm tracking-widest uppercase">The Creator</span>
-          <h2 className="text-4xl font-bold tracking-tight">Mr. Ajay Sethi</h2>
+          <h2 className="text-4xl font-bold tracking-tight"> Ajay Sethi</h2>
           <h3 className="text-xl text-gray-400">Wellness Coach & Author</h3>
           <p className="text-gray-300 leading-relaxed">
             "I created the KP Journal because I couldn't find a system that balanced ruthless execution with mindful reflection. True transformation (Kayapalat) doesn't happen overnight. It happens in the 5 minutes you spend planning your day and the 5 minutes you spend reflecting on it."
           </p>
           <div className="pt-4 flex gap-8 border-t border-gray-800">
             <div>
-              <h4 className="text-3xl font-bold text-[#ffd54c]">10k+</h4>
+              <h4 className="text-3xl font-bold text-[#ffd54c]">40k+</h4>
               <p className="text-xs text-gray-300 uppercase tracking-wide mt-1">Lives Impacted</p>
             </div>
             <div>

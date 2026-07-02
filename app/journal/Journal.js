@@ -161,7 +161,7 @@ export default function KPJournalLanding() {
   const totalPrice = selectedBundle.price * quantity;
 
   return (
-    <div className="min-h-screen font-sans text-[#1a1a1a] selection:bg-[#ff6a3d] selection:text-white pb-20 md:pb-0">
+    <div className="min-h-screen dark:bg-white font-sans text-[#1a1a1a] selection:bg-[#ff6a3d] selection:text-white pb-20 md:pb-0">
       
       <CartDrawer 
         isCartOpen={isCartOpen}

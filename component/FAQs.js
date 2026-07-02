@@ -7,7 +7,7 @@ export default function FAQ() {
   const [openFaq, setOpenFaq] = useState(0);
 
   return (
-    <section id="faq" className="py-24 ">
+    <section id="faq" className="py-24 dark:bg-white ">
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold tracking-tight text-[#1a1a1a] mb-4">Frequently Asked Questions</h2>

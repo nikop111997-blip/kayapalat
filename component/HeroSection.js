@@ -143,7 +143,7 @@ export default function HeroSection() {
                 className="object-cover"
                 priority
               />
-            </div>
+            </div> 
           </div>
           
         </div>

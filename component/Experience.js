@@ -153,7 +153,7 @@ export default function ExperienceDifference({landing=false}) {
           {/* CTA */}
           {!landing &&<ActionButton text="Explore Transformation" 
                           variant="primary" 
-                          href="/pricing" /> }
+                          href="/transformation" /> }
         </div>
       </section>
 
