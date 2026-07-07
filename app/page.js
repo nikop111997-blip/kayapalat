@@ -69,7 +69,7 @@ export const metadata = {
 
     images: [
       {
-        url: "/logo.webp",
+        url: "/logo.png",
         width: 1200,
         height: 630,
         alt: "Kayapalat - Transform Your Health, Transform Your Life",
@@ -90,7 +90,7 @@ export const metadata = {
     description:
       "Experience personalized fitness, nutrition, and mindset coaching with Kayapalat.",
 
-    images: ["/logo.webp"],
+    images: ["/logo.png"],
   },
 
   robots: {
