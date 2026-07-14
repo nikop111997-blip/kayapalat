@@ -25,13 +25,13 @@ export default function AboutFounder({landing=false}) {
               <strong>Ajay Sethi</strong> is a transformation specialist, wellness coach, and founder of Kayapalat Wellness, with over 30 years of experience in health, fitness, running and lifestyle coaching.
             </p>
           <p>
-  An MBA from XLRI Jamshedpur and a former professional basketball player, Ajay has personally trained more than <strong className='font-bold text-gray-700'>40,000 people</strong>, built a thriving community of over <strong className='font-bold text-gray-700'>12,000+ active members</strong>, and mentored <strong className='font-bold text-gray-700'>1,000+ coaches</strong>, including doctors, dieticians, physiotherapists, yoga trainers, and fitness professionals.
+  An MBA from XLRI Jamshedpur and a former professional basketball player, Ajay has personally trained more than <strong className='font-bold text-gray-700'>40,000 people</strong>, built a thriving community of over <strong className='font-bold text-gray-700'>12,115+ active members</strong>, and mentored <strong className='font-bold text-gray-700'>1,000+ coaches</strong>, including doctors, dieticians, physiotherapists, yoga trainers, and fitness professionals.
 </p>
             <p>
               Known as India's <strong className='font-bold text-gray-700'>Fitness Lifestyle Coach</strong>, Ajay has helped clients lose up to <strong className='font-bold text-gray-700'>65+ kilos of weight</strong>, break <strong className='font-bold text-gray-700'>50K and 100K course records</strong>, and even run <strong className='font-bold text-gray-700'>200+ km in 24 hours</strong>. His students have won bodybuilding competitions and beauty pageants, proving that transformation can look different for everyone, but the foundation is always the same: sustainable results.
             </p>
             <p>
-              Today, through Kayapalat, Ajay leads a thriving global community across <strong className='font-bold text-gray-700'>478 cities</strong> and <strong className='font-bold text-gray-700'>21+ countries</strong>, with members collectively losing over <strong className='font-bold text-gray-700'>73K+ kilos</strong> in just 72+ months.
+              Today, through Kayapalat, Ajay leads a thriving global community across <strong className='font-bold text-gray-700'>482+ cities</strong> and <strong className='font-bold text-gray-700'>21+ countries</strong>, with members collectively losing over <strong className='font-bold text-gray-700'>74K+ kilos</strong> in just 73+ months.
             </p>
            
             <p className="italic font-medium text-gray-700">
