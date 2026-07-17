@@ -233,8 +233,8 @@ const readingTime = Math.max(
         <header className="mb-10 max-w-7xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-4 font-bold">
-               <span className="bg-[#f9cf01] text-white text-[10px] px-2.5 py-1 rounded uppercase tracking-widest">
-                 Kayapalat Blog
+               <span className="bg-[#f9cf01] text-gray-800 text-[10px] px-2.5 py-1 rounded uppercase tracking-widest">
+                 {blog?.category?.name}
                </span>
                <div className="flex items-center text-gray-400 text-xs gap-3">
                  <span className="flex items-center gap-1">

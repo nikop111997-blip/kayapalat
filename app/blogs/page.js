@@ -66,7 +66,7 @@ const page = Number(resolvedParams?.page) || 1;
   const blogs = await getBlogs(page);
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] font-manrope">
+    <div className="min-h-screen bg-[#FAF8F5] font-manrope pb-24">
       
       {/* Header */}
       <BlogHeader />

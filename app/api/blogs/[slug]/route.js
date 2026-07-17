@@ -1,5 +1,6 @@
 import clientPromise from "@/lib/mongodb";
 import { NextResponse } from "next/server";
+import { ObjectId } from "mongodb";
 
 export async function GET(req, { params }) {
   try {
@@ -14,11 +15,13 @@ export async function GET(req, { params }) {
 
     const client = await clientPromise;
     const db = client.db("kayakalap");
-    const collection = db.collection("blogs");
+
+    const blogCollection = db.collection("blogs");
+    const categoryCollection = db.collection("categories");
 
     // Find blog by slug
-    const blog = await collection.findOne({
-      slug: slug,
+    const blog = await blogCollection.findOne({
+      slug,
       status: "published",
     });
 
@@ -27,6 +30,22 @@ export async function GET(req, { params }) {
         { success: false, message: "Blog not found" },
         { status: 404 }
       );
+    }
+
+    // Fetch category
+    let category = null;
+
+    if (blog.category) {
+      try {
+        category = await categoryCollection.findOne({
+          _id: new ObjectId(blog.category),
+        });
+      } catch {
+        // In case category is stored as a string instead of ObjectId
+        category = await categoryCollection.findOne({
+          slug: blog.category,
+        });
+      }
     }
 
     return NextResponse.json({
@@ -40,6 +59,12 @@ export async function GET(req, { params }) {
         metaDescription: blog.metaDescription,
         featuredImage: blog.featuredImage,
         createdAt: blog.createdAt,
+
+        category: {
+          id: category?._id || null,
+          name: category?.name || null,
+          slug: category?.slug || null,
+        },
       },
     });
   } catch (error) {
