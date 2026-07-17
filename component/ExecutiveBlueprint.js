@@ -1,5 +1,6 @@
 
 import clientPromise from "@/lib/mongodb";
+import Image from "next/image";
 import Link from "next/link";
 
 async function getBlogs() {
@@ -42,14 +43,15 @@ export default async function ExecutiveBlueprint() {
             <Link
               key={article._id}
               href={`/blogs/${article.slug}`}
-              className="relative w-full h-[400px] rounded-2xl overflow-hidden group cursor-pointer"
+              className="relative w-full h-[300px] rounded-2xl overflow-hidden group cursor-pointer"
             >
-              <img
+              <Image
                 src={
                   article.featuredImage ||
                   article.image ||
                   "/placeholder-blog.jpg"
                 }
+                fill
                 alt={article.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
