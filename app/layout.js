@@ -6,6 +6,7 @@ import Footer from "@/component/Footer";
 import { Toaster } from "react-hot-toast";
 import CookieConsent from "@/component/CookieConsent";
 import AnalyticsScripts from "@/component/AnalyticsScripts"; // <-- Import the new wrapper
+import GoogleTranslate from "@/component/GoogleTranslate";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,6 +60,7 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${montserrat.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col">
+        <GoogleTranslate />
         <Toaster />
         <Navbar />
 

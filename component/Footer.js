@@ -214,6 +214,83 @@ export default function Footer() {
 
 </svg>
             </a>
+
+            <a
+  href="https://x.com/kayapalatWL"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-white hover:-translate-y-1 transition-all duration-200"
+  aria-label="X"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <rect
+      x="2"
+      y="2"
+      width="20"
+      height="20"
+      rx="5"
+      stroke="currentColor"
+      strokeWidth="2"
+    />
+    <path
+      d="M8 7L16 17M16 7L8 17"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+</a>
+
+<a
+  href="https://www.linkedin.com/company/kayapalat-wellness/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-white hover:-translate-y-1 transition-all duration-200"
+  aria-label="LinkedIn"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <rect
+      x="2"
+      y="2"
+      width="20"
+      height="20"
+      rx="5"
+      stroke="currentColor"
+      strokeWidth="2"
+    />
+    <path
+      d="M8 10V16"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <circle
+      cx="8"
+      cy="7.5"
+      r="1"
+      fill="currentColor"
+    />
+    <path
+      d="M12 16V10M12 11.5C12.8 10.4 13.9 10 15 10C16.7 10 17.5 11.1 17.5 13V16"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+</a>
           </div>
         </div>
 
