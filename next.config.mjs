@@ -33,6 +33,10 @@ const nextConfig = {
   allowedDevOrigins: [
     "*.ngrok-free.app",
   ],
+  serverExternalPackages: [
+    "puppeteer-core",
+    "@sparticuz/chromium-min",
+  ],
 }
 
 export default nextConfig;

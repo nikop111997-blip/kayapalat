@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
+import chromium from "@sparticuz/chromium-min";
 import clientPromise from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 export async function GET(req, { params }) {
   let browser;
@@ -11,14 +13,15 @@ export async function GET(req, { params }) {
   try {
     const { id } = await params;
 
+    // -----------------------------
+    // Get report
+    // -----------------------------
     const client = await clientPromise;
-
     const db = client.db("kayakalap");
 
-    const reportDoc =
-      await db.collection("health_reports").findOne({
-        _id: new ObjectId(id),
-      });
+    const reportDoc = await db.collection("health_reports").findOne({
+      _id: new ObjectId(id),
+    });
 
     if (!reportDoc) {
       return NextResponse.json(
@@ -31,39 +34,64 @@ export async function GET(req, { params }) {
       );
     }
 
-    /*
-     * Open browser
-     */
+    // -----------------------------
+    // Chromium
+    // -----------------------------
+    const chromiumPackUrl =
+      "https://github.com/Sparticuz/chromium/releases/download/v141.0.0/chromium-v141.0.0-pack.x64.tar";
+
+    const executablePath = await chromium.executablePath(
+      chromiumPackUrl
+    );
+
+    console.log("Chromium executable:", executablePath);
+
+    // -----------------------------
+    // Launch browser
+    // -----------------------------
     browser = await puppeteer.launch({
-      headless: true,
+      executablePath,
+
       args: [
+        ...chromium.args,
         "--no-sandbox",
         "--disable-setuid-sandbox",
       ],
+
+      defaultViewport: chromium.defaultViewport,
+
+      headless: true,
     });
 
+    // -----------------------------
+    // Create page
+    // -----------------------------
     const page = await browser.newPage();
 
-    /*
-     * Open your report-print page
-     */
+    // -----------------------------
+    // Report URL
+    // -----------------------------
     const baseUrl =
       process.env.NEXT_PUBLIC_APP_URL ||
       "https://www.kayapalat.in";
 
-    await page.goto(
-      `${baseUrl}/report/print/${id}`,
-      {
-        waitUntil: "networkidle0",
-      }
-    );
+    const reportUrl = `${baseUrl}/report/print/${id}`;
 
-    /*
-     * Generate A4 PDF
-     */
+    console.log("Opening:", reportUrl);
+
+    await page.goto(reportUrl, {
+      waitUntil: "networkidle0",
+      timeout: 60000,
+    });
+
+    // -----------------------------
+    // Generate PDF
+    // -----------------------------
     const pdf = await page.pdf({
       format: "A4",
+
       printBackground: true,
+
       preferCSSPageSize: true,
 
       margin: {
@@ -73,8 +101,6 @@ export async function GET(req, { params }) {
         left: "0",
       },
     });
-
-    await browser.close();
 
     return new NextResponse(pdf, {
       status: 200,
@@ -87,24 +113,28 @@ export async function GET(req, { params }) {
         "Content-Length": pdf.length.toString(),
       },
     });
-
   } catch (error) {
-    console.error(
-      "PDF generation error:",
-      error
-    );
-
-    if (browser) {
-      await browser.close();
-    }
+    console.error("PDF generation error:", error);
 
     return NextResponse.json(
       {
         error: "Failed to generate PDF",
+        message: error?.message,
       },
       {
         status: 500,
       }
     );
+  } finally {
+    if (browser) {
+      try {
+        await browser.close();
+      } catch (closeError) {
+        console.error(
+          "Browser close error:",
+          closeError
+        );
+      }
+    }
   }
 }
