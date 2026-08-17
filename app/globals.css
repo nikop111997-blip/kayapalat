@@ -76,4 +76,58 @@ iframe.goog-te-banner-frame {
 
 .notranslate * {
   translate: no;
+} 
+@page {
+  size: A4;
+  margin: 0;
+}
+
+.report-page {
+  width: 210mm;
+  min-height: 297mm;
+
+  box-sizing: border-box;
+
+  break-after: page;
+  page-break-after: always;
+}
+
+.report-page:last-child {
+  break-after: auto;
+  page-break-after: auto;
+}
+
+/* Don't allow cards to be broken across pages */
+.report-page .bg-white,
+.report-page .bg-emerald-50 {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+@media print {
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+ .print\:hidden {
+    display: none !important;
+  }
+  .report-page {
+    width: 210mm;
+    min-height: 297mm;
+
+    margin: 0 !important;
+
+    box-sizing: border-box;
+
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .report-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
 }

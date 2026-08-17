@@ -76,7 +76,7 @@ export default function LanguageSwitcher() {
       <button
         onClick={() => setOpen(true)}
         translate="no"
-        className="flex items-center gap-2 rounded-full border border-gray-200 px-3 py-2 hover:bg-gray-100 notranslate"
+        className="flex items-center gap-2  text-white rounded-full border border-gray-300 px-4 py-2 sm:px-12 sm:py-2 hover:bg-white hover:text-black cursor-pointer transition-colors notranslate"
       >
         <svg
           width="18"
@@ -90,7 +90,7 @@ export default function LanguageSwitcher() {
           <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
         </svg>
 
-        <span className="text-sm font-medium notranslate" translate="no">
+        <span className="text-xs sm:text-sm font-medium notranslate" translate="no">
           {selected}
         </span>
       </button>

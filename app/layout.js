@@ -1,11 +1,11 @@
-// app/layout.js
 import { Geist, Geist_Mono, Manrope, Montserrat } from "next/font/google";
 import "./globals.css";
+
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 import { Toaster } from "react-hot-toast";
 import CookieConsent from "@/component/CookieConsent";
-import AnalyticsScripts from "@/component/AnalyticsScripts"; // <-- Import the new wrapper
+import AnalyticsScripts from "@/component/AnalyticsScripts";
 import GoogleTranslate from "@/component/GoogleTranslate";
 
 const geistSans = Geist({
@@ -19,18 +19,19 @@ const geistMono = Geist_Mono({
 });
 
 const manrope = Manrope({
-  subsets: ['latin'],
-  variable: '--font-manrope',
+  subsets: ["latin"],
+  variable: "--font-manrope",
 });
 
 const montserrat = Montserrat({
-  subsets: ['latin'],
-  variable: '--font-montserrat',
-})
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+});
 
 export const metadata = {
   title: "Kayapalat Wellness",
-  description: "Transform your well-being with Kayapalat Wellness - Your ultimate destination for holistic health solutions. Discover personalized wellness programs, expert guidance, and a supportive community dedicated to helping you achieve optimal health and vitality. Join us on a journey to a healthier, happier you with Kayapalat Wellness.",
+  description:
+    "Transform your well-being with Kayapalat Wellness - Your ultimate destination for holistic health solutions.",
   verification: {
     google: "JHwZTFGpNjsXmKKQM7xa6hQoTMstdNrwMG1VxjiO-z0",
   },
@@ -49,8 +50,8 @@ const organizationSchema = {
   sameAs: [
     "https://www.instagram.com/kayapalat",
     "https://www.facebook.com/kayapalat",
-    "https://www.youtube.com/@kayapalat"
-  ]
+    "https://www.youtube.com/@kayapalat",
+  ],
 };
 
 export default function RootLayout({ children }) {
@@ -60,20 +61,23 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${montserrat.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col">
-        <GoogleTranslate />
-        <Toaster />
-        <Navbar />
 
-        {/* Removed the hardcoded Pixel script from here */}
+        {/* Website only */}
+        <div className="print:hidden">
+          <GoogleTranslate />
+          <Toaster />
+          <Navbar />
+        </div>
 
         {children}
-        
-        {/* Added the new Analytics wrapper here */}
-        <AnalyticsScripts /> 
-        
-        <CookieConsent />
-        <Footer />
-        
+
+        {/* Website only */}
+        <div className="print:hidden">
+          <AnalyticsScripts />
+          <CookieConsent />
+          <Footer />
+        </div>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

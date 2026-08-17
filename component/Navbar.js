@@ -6,6 +6,7 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import BookingComponent from './Booking2Comp';
+import LanguageSwitcher from './Health/LanguageSelector';
 
 const navLinks = [
   { name: 'Why Kayapalat', href: 'https://kayapalat.in/#why-kayapalat' },
@@ -67,6 +68,8 @@ export default function Navbar() {
               </div>
 
               {/* Desktop Button */}
+              <div className='flex gap-2'>
+                <LanguageSwitcher />
               <div className="hidden lg:block">
                 <button
                   onClick={() => router.push('/pricing')}
@@ -82,6 +85,7 @@ export default function Navbar() {
                     <ArrowRight className="h-4 w-4 opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
                   </span>
                 </button>
+              </div>
               </div>
 
               {/* Mobile Menu Button */}
