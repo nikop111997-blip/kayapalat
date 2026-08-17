@@ -11,6 +11,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^4.0.27",
     "@next/third-parties": "^16.2.7",
+    "@sparticuz/chromium-min": "^149.0.0",
     "ai": "^7.0.48",
     "clsx": "^2.1.1",
     "dompurify": "^3.4.8",
@@ -22,6 +23,7 @@
     "mongodb": "^7.2.0",
     "next": "16.2.4",
     "openai": "^7.4.0",
+    "puppeteer-core": "^25.7.0",
     "qrcode.react": "^4.2.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
