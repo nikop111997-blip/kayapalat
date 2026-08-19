@@ -1,11 +1,13 @@
 import { MapPin, HeartPulse, Sparkles, User, Calendar } from "lucide-react";
 
-export default function CoverPage({ report }) {
+export default function CoverPage({ report, name }) {
   const today = new Date().toLocaleDateString("en-IN", {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
+
+  const displayName = name || report.name || "Valued Member";
 
   const scoreColor =
     report.score >= 80
@@ -67,7 +69,7 @@ export default function CoverPage({ report }) {
         {/* Eyebrow + Headline */}
         <div className="mt-4">
           <p className="uppercase tracking-[4px] text-[11px] font-semibold text-emerald-700">
-            Prepared Exclusively For You
+            Prepared Exclusively For {displayName.split(" ")[0]}
           </p>
 
           <h1 className="mt-4 text-gray-900 leading-[0.95]">
@@ -120,7 +122,7 @@ export default function CoverPage({ report }) {
               <span className="text-[12.5px] font-semibold text-gray-900">Prepared For</span>
             </div>
 
-            <h3 className="text-lg font-semibold text-gray-900">User</h3>
+            <h3 className="text-lg font-semibold text-gray-900">{displayName}</h3>
 
             <div className="flex items-center gap-2 mt-4">
               <Calendar className="text-gray-400" size={14} />
@@ -133,7 +135,7 @@ export default function CoverPage({ report }) {
         <div className="grid grid-cols-5 gap-3 mt-6">
           <MiniMetric title="BMI" value={report.bmi} />
           <MiniMetric title="WHtR" value={report.whtr} />
-          <MiniMetric title="Body Fat" value={`${report.bodyFat.value}%`} />
+          <MiniMetric title="Body Fat" value={report.bodyFat?.value != null ? `${report.bodyFat.value}%` : "—"} />
           <MiniMetric title="Biological Age" value={`${report.biologicalAge} yrs`} />
           <MiniMetric title="Potential" value={`+${report.healthPotential.possibleGain}`} />
         </div>

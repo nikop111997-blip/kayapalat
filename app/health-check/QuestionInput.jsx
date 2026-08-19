@@ -153,7 +153,7 @@ validation.status==="warning" && (
           onKeyDown={(e) => e.key === "Enter" && submit()}
           
           placeholder={step.placeholder || "Enter value..."}
-          className={`w-full rounded-lg px-3 py-2 text-[15px] outline-none transition-colors
+          className={`w-full rounded-lg px-3 py-2 text-[15px] dark:text-gray-800 outline-none transition-colors
 ${
   validation.status === "error"
     ? "bg-red-50 border border-red-500"
@@ -161,7 +161,7 @@ ${
 }`}
         />
       
-        {step.unit && <span className="pr-2 text-sm text-ink/40">{step.unit}</span>}
+        {step.unit && <span className="pr-2 text-sm text-ink/40 dark:text-gray-800">{step.unit}</span>}
       </div>
       
       <button className="flex h-10 w-10 items-center justify-center text-ink/40 hover:text-ink/70">
@@ -239,7 +239,7 @@ function ChoiceInput({ step, onAnswer }) {
         <button
           key={opt}
           onClick={() => onAnswer(opt, opt)}
-          className="rounded-full border border-sagedeep/50 bg-white px-5 py-3 text-sm font-medium text-ink shadow-sm transition hover:border-forest hover:bg-sage/20 active:scale-[0.98]"
+          className="rounded-full border border-sagedeep/50 bg-white px-5 py-3 text-sm dark:text-gray-900 font-medium text-ink shadow-sm transition hover:border-forest hover:bg-sage/20 active:scale-[0.98]"
         >
           {opt}
         </button>
@@ -264,7 +264,7 @@ function MultiInput({ step, onAnswer }) {
               className={`rounded-full border px-4 py-2.5 text-sm font-medium transition active:scale-[0.98] ${
                 active
                   ? "border-[#e77074] bg-gradient-to-br from-[#e77074] via-[#e382c5] to-[#dc8bc3] text-white shadow-md"
-                  : "border-gray-200 bg-white text-ink hover:border-gray-300"
+                  : "border-gray-200 bg-white text-ink hover:border-gray-300 dark:text-gray-800"
               }`}
             >
               {opt}
@@ -275,7 +275,7 @@ function MultiInput({ step, onAnswer }) {
       <button
         disabled={selected.length === 0}
         onClick={() => onAnswer(selected, selected.join(", "))}
-        className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-forest px-4 py-3.5 text-sm font-semibold text-cream transition hover:bg-forestdark disabled:opacity-30"
+        className="mt-4 flex w-full items-center justify-center gap-2 dark:text-gray-800 rounded-full bg-forest px-4 py-3.5 text-sm font-semibold text-cream transition hover:bg-forestdark disabled:opacity-30"
       >
         Continue
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -291,7 +291,7 @@ function SliderInput({ step, onAnswer }) {
   const [val, setVal] = useState(Math.round(((step.min ?? 1) + (step.max ?? 10)) / 2));
   return (
     <div className="animate-rise w-full rounded-3xl bg-white p-5 shadow-lg ring-1 ring-black/5">
-      <div className="mb-4 flex items-center justify-between px-2">
+      <div className="mb-4 flex items-center justify-between px-2 dark:text-gray-800">
         <span className="text-xs text-ink/50">Low</span>
         <span className="font-mono text-3xl font-semibold text-forest">{val}</span>
         <span className="text-xs text-ink/50">High</span>
@@ -363,17 +363,17 @@ function ContactInput({ step, onAnswer }) {
         <input
           value={name} onChange={(e) => setName(e.target.value)}
           placeholder="Full name"
-          className="w-full rounded-xl border-none bg-gray-50 px-4 py-3.5 text-[15px] outline-none ring-1 ring-gray-200 focus:ring-forest"
+          className="w-full rounded-xl border-none bg-gray-50 dark:text-gray-800 placeholder:text-gray-700 px-4 py-3.5 text-[15px] outline-none ring-1 ring-gray-200 focus:ring-forest"
         />
         <input
           value={email} onChange={(e) => setEmail(e.target.value)}
           placeholder="Email address" type="email"
-          className="w-full rounded-xl border-none bg-gray-50 px-4 py-3.5 text-[15px] outline-none ring-1 ring-gray-200 focus:ring-forest"
+          className="w-full rounded-xl border-none bg-gray-50 px-4 py-3.5 text-[15px] outline-none dark:text-gray-800 placeholder:text-gray-700 ring-1 ring-gray-200 focus:ring-forest"
         />
         <input
           value={mobile} onChange={(e) => setMobile(e.target.value)}
           placeholder="Mobile number" type="tel"
-          className="w-full rounded-xl border-none bg-gray-50 px-4 py-3.5 text-[15px] outline-none ring-1 ring-gray-200 focus:ring-forest"
+          className="w-full rounded-xl border-none bg-gray-50 px-4 py-3.5 text-[15px] outline-none dark:text-gray-800 placeholder:text-gray-700 ring-1 ring-gray-200 focus:ring-forest"
         />
       </div>
       <button

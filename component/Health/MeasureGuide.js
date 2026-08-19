@@ -43,7 +43,7 @@ export default function MeasureGuide({forType="height"}) {
               className="text-[#d55559]" size={14}
             />
 
-            <span className="text-sm font-medium">
+            <span className="text-sm font-medium dark:text-gray-800">
               {step}
             </span>
 
@@ -77,14 +77,14 @@ export default function MeasureGuide({forType="height"}) {
           <motion.div
             key={step}
             
-            className="flex items-center gap-3 border-b border-gray-300 bg-white p-4"
+            className="flex items-center gap-3 border-b border-gray-300 bg-white p-4 "
           >
 
             <CheckCircle2
               className="text-[#d55559]" size={14}
             />
 
-            <span className="text-sm font-medium">
+            <span className="text-sm font-medium dark:text-gray-800">
               {step}
             </span>
 

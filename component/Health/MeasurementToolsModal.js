@@ -40,7 +40,7 @@ export default function MeasurementToolsModal({
 
             {/* Header */}
             <div className="px-6 pb-3">
-              <h2 className="text-xl font-bold">
+              <h2 className="text-xl font-bold dark:text-gray-900">
                 Measurement Tools
               </h2>
 

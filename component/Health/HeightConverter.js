@@ -51,7 +51,7 @@ tab==="guide"
 :"text-gray-500"
 }`}
 >
-<span className="flex items-center justify-center  gap-2">
+<span className="flex items-center justify-center  gap-2 ">
 <VideoIcon/> How to Measure</span>
 
 </button>
@@ -66,7 +66,7 @@ tab==="guide"
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold">
+          <h3 className="text-lg font-semibold dark:text-gray-800">
             Height Converter
           </h3>
 

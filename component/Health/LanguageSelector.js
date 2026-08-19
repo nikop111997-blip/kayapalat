@@ -104,16 +104,16 @@ export default function LanguageSwitcher() {
             onClick={() => setOpen(false)}
           >
             <div
-              className="w-full max-w-md rounded-2xl bg-white shadow-2xl mx-3"
+              className="w-full max-w-md rounded-2xl bg-white dark:bg-gray-900 shadow-2xl mx-3"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="border-b border-gray-200 p-5 flex items-center gap-3 rounded-t-2xl">
+              <div className="border-b border-gray-200 dark:border-gray-200/20 p-5 flex items-center gap-3 rounded-t-2xl">
                 <div className="text-white p-2 rounded-full bg-gradient-to-br from-[#e77074] via-[#e382c5] to-[#dc8bc3]">
                   <LanguagesIcon />
                 </div>
                 <h2 className="text-lg font-semibold">Choose Language</h2>
               </div>
-           <div className="border-b border-gray-200 p-4">
+           <div className="border-b border-gray-200 dark:border-gray-200/20 p-4">
   <div className="relative">
     <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
     <input
@@ -121,7 +121,7 @@ export default function LanguageSwitcher() {
       placeholder="Search language..."
       value={search}
       onChange={(e) => setSearch(e.target.value)}
-      className="w-full rounded-xl border border-gray-300 py-3 pl-10 pr-4 outline-none focus:border-blue-500"
+      className="w-full rounded-xl border border-gray-300 dark:border-gray-200/40 py-3 pl-10 pr-4 outline-none focus:border-blue-500"
     />
   </div>
 </div>
@@ -130,7 +130,7 @@ export default function LanguageSwitcher() {
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className="flex w-full items-center justify-between rounded-xl px-4 py-3 transition hover:bg-gray-100"
+                    className="flex w-full items-center justify-between rounded-xl px-4 py-3 transition hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
                   >
                     <span>{lang.name}</span>
 

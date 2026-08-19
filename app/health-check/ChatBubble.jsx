@@ -16,7 +16,7 @@ export function BotBubble({ children }) {
 export function UserBubble({ children }) {
   return (
     <div className="flex justify-end animate-rise">
-      <div className="max-w-[82%] rounded-2xl rounded-br-sm px-4 py-3 text-[15px] leading-relaxed border border-gray-200 shadow-sm">
+      <div className="max-w-[82%] rounded-2xl rounded-br-sm px-4 py-3 text-[15px] leading-relaxed border border-gray-200 shadow-sm dark:text-gray-700">
         {children}
       </div>
     </div>

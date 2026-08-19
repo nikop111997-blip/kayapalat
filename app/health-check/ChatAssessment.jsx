@@ -454,11 +454,11 @@ export default function ChatAssessment({ onClose }) {
             </div>
 
             <div>
-              <p className="text-xl sm:text-2xl font-bold font-sans">
+              <p className="text-xl sm:text-2xl font-bold font-sans dark:text-gray-900">
                 Kayapalat
               </p>
 
-              <p className="mt-0.5 text-[9px] sm:text-[11px] uppercase text-ink/50">
+              <p className="mt-0.5 text-[9px] sm:text-[11px] uppercase text-ink/50 dark:text-gray-600">
                 Health Reality Check
               </p>
             </div>
@@ -490,7 +490,7 @@ export default function ChatAssessment({ onClose }) {
               />
             </svg>
 
-            <span className="absolute text-[9px] font-bold text-forest">
+            <span className="absolute text-[9px] font-bold dark:text-gray-900 text-forest">
               {progressPct}%
             </span>
 
@@ -678,7 +678,7 @@ export default function ChatAssessment({ onClose }) {
                     ? "Preparing your report..."
                     : "Assessment complete"
                 }
-                className="h-10 w-full cursor-not-allowed bg-transparent px-2 text-[15px] outline-none"
+                className="h-10 w-full cursor-not-allowed bg-transparent px-2 text-[15px] dark:text-gray-800 outline-none"
               />
 
             </div>
@@ -703,7 +703,7 @@ export default function ChatAssessment({ onClose }) {
 
           ) : (
 
-            <div className="flex w-full animate-pulse items-center gap-3 rounded-full bg-white px-3 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.08)] ring-1 ring-black/5 opacity-60 transition-all">
+            <div className="flex w-full animate-pulse items-center gap-3 rounded-xl bg-white px-3 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.08)] ring-1 ring-black/5 opacity-60 transition-all">
 
               <button
                 disabled
@@ -753,7 +753,7 @@ export default function ChatAssessment({ onClose }) {
                         ]
                       : "Kayapalat AI is thinking..."
                   }
-                  className="w-full bg-transparent text-[15px] outline-none"
+                  className="w-full bg-transparent text-[15px] dark:text-gray-800 outline-none"
                 />
 
               </div>

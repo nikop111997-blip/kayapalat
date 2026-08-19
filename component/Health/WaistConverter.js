@@ -67,7 +67,7 @@ export default function WaistConverter({ onUse }) {
 
             <div>
 
-              <h3 className="text-lg font-semibold">
+              <h3 className="text-lg font-semibold dark:text-gray-800">
                 Waist Converter
               </h3>
 
