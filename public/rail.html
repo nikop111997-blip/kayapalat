@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Indian Railways — UPA vs NDA Data Comparison</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--ink:#172033;--muted:#64748b;--line:#e2e8f0;--accent:#d97706;--green:#15803d;--red:#b91c1c;--blue:#1d4ed8}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(135deg,#111827,#26344d);color:#fff;padding:52px 6%}
+header h1{font-size:42px;margin:8px 0 12px}header p{max-width:900px;color:#dbe3ef;line-height:1.7}
+.container{width:88%;max-width:1450px;margin:30px auto}.nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px}.nav button{border:1px solid var(--line);background:#fff;padding:10px 15px;border-radius:9px;cursor:pointer}.nav button:hover{background:#f1f5f9}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.card,.panel{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px;box-shadow:0 5px 18px #0f172a0a}.card small,.muted{color:var(--muted)}.value{font-size:30px;font-weight:800;margin:8px 0}.delta{font-weight:700;color:var(--green)}
+.section{margin:42px 0}.section h2{font-size:28px;margin-bottom:5px}.section>p{color:var(--muted)}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:18px}.chart{height:330px}.tablewrap{overflow:auto;border-radius:15px}.data{width:100%;border-collapse:collapse;background:#fff}.data th,.data td{padding:14px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}.data th{background:#f8fafc;font-size:13px}.source{font-size:12px;color:var(--muted);white-space:normal}.source a{color:var(--blue);font-weight:700;text-decoration:none}.source a:hover{text-decoration:underline}
+.badge{display:inline-block;padding:5px 9px;border-radius:20px;background:#fff7ed;color:#9a3412;font-size:11px;font-weight:700}.note{padding:17px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;line-height:1.6}.warning{padding:17px;background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;line-height:1.6}
+footer{background:#111827;color:#cbd5e1;padding:35px 6%;line-height:1.7;margin-top:50px}
+@media(max-width:850px){header h1{font-size:30px}.container{width:94%}.charts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+<span class="badge">DATA-FIRST / OFFICIAL SOURCES</span>
+<h1>Indian Railways: UPA vs NDA</h1>
+<p>
+A source-linked comparison dashboard covering infrastructure, electrification,
+safety, track quality, capacity, passenger service, technology, investment and
+modernisation. UPA is defined as FY2004-05 to FY2013-14; NDA begins FY2014-15.
+Figures are labelled with their exact reference period so annual, cumulative and
+partial-year figures are not mixed.
+</p>
+</header>
+
+<div class="container">
+
+<div class="nav">
+<button onclick="document.getElementById('infrastructure').scrollIntoView()">Infrastructure</button>
+<button onclick="document.getElementById('electrification').scrollIntoView()">Electrification</button>
+<button onclick="document.getElementById('safety').scrollIntoView()">Safety</button>
+<button onclick="document.getElementById('quality').scrollIntoView()">Quality & Speed</button>
+<button onclick="document.getElementById('passenger').scrollIntoView()">Passenger</button>
+<button onclick="document.getElementById('technology').scrollIntoView()">Technology</button>
+<button onclick="document.getElementById('budget').scrollIntoView()">Budget</button>
+<button onclick="document.getElementById('sources').scrollIntoView()">All Sources</button>
+</div>
+
+<div class="grid">
+<div class="card"><small>Electrified route km — 2014</small><div class="value">21,801</div><div class="muted">Broad-gauge route km</div></div>
+<div class="card"><small>Electrified route km — Mar 2026</small><div class="value">69,873</div><div class="delta">99.6% of BG network</div></div>
+<div class="card"><small>New track commissioned</small><div class="value">34,428 km</div><div class="muted">2014–25</div></div>
+<div class="card"><small>Consequential accidents</small><div class="value">16</div><div class="muted">FY2025-26</div></div>
+<div class="card"><small>Safety expenditure</small><div class="value">₹1.20L Cr</div><div class="muted">2026-27 budget</div></div>
+<div class="card"><small>Vande Bharat services</small><div class="value">162</div><div class="muted">Operational, Apr 2026</div></div>
+<div class="card"><small>Amrit Bharat services</small><div class="value">60</div><div class="muted">Operational, 2026 source</div></div>
+<div class="card"><small>Railway budgetary support</small><div class="value">₹2.78L Cr</div><div class="muted">FY2026-27</div></div>
+</div>
+
+<div class="section" id="electrification">
+<h2>1. Electrification & Energy Efficiency</h2>
+<p>Scale, coverage, operating economy and environmental effect.</p>
+<div class="tablewrap"><table class="data">
+<tr><th>Parameter</th><th>Before / 2014</th><th>Latest</th><th>Change / Context</th><th>Official source</th></tr>
+<tr><td>Electrified BG route km</td><td>21,801 km (2014)</td><td>69,873 km (Mar 2026)</td><td>+48,072 km</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2252124">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>Electrification coverage</td><td>~20% before 2014</td><td>99.6% of BG network</td><td>Near-complete BG electrification</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158187">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>Diesel saved</td><td>—</td><td>~180 crore litres</td><td>2024-25 saving</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158187">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>Electric traction economy</td><td>—</td><td>~70% more economical</td><td>Compared with diesel traction</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158187">PIB / Ministry of Railways ↗</a></td></tr>
+</table></div>
+</div>
+
+<div class="section" id="infrastructure">
+<h2>2. Track & Network Expansion</h2>
+<p>Capacity creation and physical network work.</p>
+<div class="tablewrap"><table class="data">
+<tr><th>Parameter</th><th>Earlier period</th><th>NDA period</th><th>Result</th><th>Official source</th></tr>
+<tr><td>New track commissioned</td><td>7,599 km (2009–14)</td><td>34,428 km (2014–25)</td><td>8.6 vs 4.2 km/day; >2× pace</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2239704">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>ROBs / RUBs constructed</td><td>4,148 (2004–14)</td><td>14,024 (2014–26, up to Jan 2026)</td><td>More than 3×</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2248001">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>New track commissioned in 2025</td><td>—</td><td>900+ km (Apr–Nov 2025)</td><td>Partial-year figure</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2209199">PIB Year End Review 2025 ↗</a></td></tr>
+<tr><td>New line / GC / doubling projects</td><td>—</td><td>308 projects worth ₹2.93 lakh crore over 5 years</td><td>Capacity expansion</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2239704">PIB / Ministry of Railways ↗</a></td></tr>
+</table></div>
+</div>
+
+<div class="section" id="quality">
+<h2>3. Track Quality, Speed & Maintenance</h2>
+<p>Quality should be measured through track standards, renewal and speed potential—not just kilometres laid.</p>
+<div class="tablewrap"><table class="data">
+<tr><th>Parameter</th><th>2004–14</th><th>2014–25</th><th>Comparison</th><th>Official source</th></tr>
+<tr><td>60 kg high-quality rails</td><td>57,450 km</td><td>1.43 lakh km</td><td>Major increase</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2202873">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>260m longer rail panels</td><td>9,917 km</td><td>77,522 km</td><td>Major increase</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2202873">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>Track renewal</td><td>Historical annual data</td><td>6,851 track km in 2024-25</td><td>Maintenance intensity</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2215807">PIB, Jan 2026 ↗</a></td></tr>
+<tr><td>High-speed-capable track</td><td>31,445 km (2014)</td><td>84,244 km (2026 source)</td><td>Nearly doubled</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2215807">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>Track capable of 110 kmph+</td><td>2014 baseline</td><td>78%+ by 2025</td><td>Higher speed potential</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2148364">PIB, Jul 2025 ↗</a></td></tr>
+</table></div>
+</div>
+
+<div class="section" id="safety">
+<h2>4. Safety & Accidents</h2>
+<p>Use consequential accidents and accident index separately from total minor incidents.</p>
+<div class="charts"><div class="panel"><div class="chart"><canvas id="acc"></canvas></div></div><div class="panel"><div class="chart"><canvas id="safety"></canvas></div></div></div>
+<div class="tablewrap" style="margin-top:18px"><table class="data">
+<tr><th>Period</th><th>Consequential accidents</th><th>Deaths</th><th>Injuries</th><th>Official source</th></tr>
+<tr><td>2004-05 to 2013-14</td><td>1,711</td><td>904</td><td>3,155</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2287638">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>2014-15 to 2023-24</td><td>678</td><td>748</td><td>2,087</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2287638">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>2024-25</td><td>31</td><td>18</td><td>92</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2287638">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>2025-26</td><td>16</td><td>17</td><td>27</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2287638">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>Accident index</td><td>0.11 (2014-15)</td><td>0.01 (2025-26)</td><td>91% lower</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291000">PIB, Jul 2026 ↗</a></td></tr>
+</table></div>
+</div>
+
+<div class="section" id="technology">
+<h2>5. Safety Technology & Signalling</h2>
+<div class="tablewrap"><table class="data">
+<tr><th>Parameter</th><th>Earlier</th><th>Latest</th><th>Official source</th></tr>
+<tr><td>Electronic/electrical interlocking</td><td>837 stations (2004–14 comparison source)</td><td>6,671 stations up to Jun 2026</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2287638">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>Interlocked level crossings</td><td>Historical baseline</td><td>10,395 gates up to Jun 2026</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2287638">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>Complete track circuiting</td><td>Historical baseline</td><td>6,671 stations up to Jun 2026</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2287638">PIB / Ministry of Railways ↗</a></td></tr>
+<tr><td>Kavach 4.0</td><td>Not available</td><td>2,569 route km commissioned by Jul 2026</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291000">PIB, Jul 2026 ↗</a></td></tr>
+<tr><td>Automatic Block Signalling</td><td>Historical baseline</td><td>6,625 route km up to Dec 2025</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2227488">PIB / Ministry of Railways ↗</a></td></tr>
+</table></div>
+</div>
+
+<div class="section" id="passenger">
+<h2>6. Passenger Service & Punctuality</h2>
+<div class="tablewrap"><table class="data">
+<tr><th>Parameter</th><th>Value</th><th>Period</th><th>Official source</th></tr>
+<tr><td>Mail/Express punctuality</td><td>73.62%</td><td>2023-24</td><td class="source"><a target="_blank" href="https://indianrailways.gov.in/railwayboard/uploads/directorate/stat_econ/2025/Indian%20Railways%20Annual%20Report%20%20Accounts%202023-24-English.pdf">Indian Railways Annual Report 2023-24 ↗</a></td></tr>
+<tr><td>Passenger kilometres</td><td>10,64,700 million</td><td>2023-24</td><td class="source"><a target="_blank" href="https://indianrailways.gov.in/railwayboard/uploads/directorate/stat_econ/2025/Indian%20Railways%20Annual%20Report%20%20Accounts%202023-24-English.pdf">Indian Railways Annual Report 2023-24 ↗</a></td></tr>
+<tr><td>Passenger revenue</td><td>₹70,693.33 crore</td><td>2023-24</td><td class="source"><a target="_blank" href="https://indianrailways.gov.in/railwayboard/uploads/directorate/stat_econ/2025/Indian%20Railways%20Annual%20Report%20%20Accounts%202023-24-English.pdf">Indian Railways Annual Report 2023-24 ↗</a></td></tr>
+<tr><td>Passenger fare change</td><td>No increase</td><td>2023-24</td><td class="source"><a target="_blank" href="https://indianrailways.gov.in/railwayboard/uploads/directorate/stat_econ/2025/Indian%20Railways%20Annual%20Report%20%20Accounts%202023-24-English.pdf">Indian Railways Annual Report 2023-24 ↗</a></td></tr>
+</table></div>
+</div>
+
+<div class="section">
+<h2>7. New Train Categories & Passenger Modernisation</h2>
+<div class="tablewrap"><table class="data">
+<tr><th>Parameter</th><th>Before 2014</th><th>Latest</th><th>Official source</th></tr>
+<tr><td>Vande Bharat services</td><td>Not available</td><td>162 operational (Apr 2026)</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158838">PIB Railways 2026 ↗</a></td></tr>
+<tr><td>Vande Bharat Sleeper</td><td>Not available</td><td>Launched Jan 2026</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158838">PIB Railways 2026 ↗</a></td></tr>
+<tr><td>Amrit Bharat services</td><td>Not available</td><td>60 operational</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158838">PIB Railways 2026 ↗</a></td></tr>
+<tr><td>Amrit Bharat trains introduced during 2025</td><td>Not available</td><td>13</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2209199">PIB Year End Review 2025 ↗</a></td></tr>
+<tr><td>Special train trips during 2025</td><td>—</td><td>43,000+</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2209199">PIB Year End Review 2025 ↗</a></td></tr>
+</table></div>
+</div>
+
+<div class="section" id="budget">
+<h2>8. Budget, Investment & Financial Performance</h2>
+<div class="tablewrap"><table class="data">
+<tr><th>Parameter</th><th>Value</th><th>Period</th><th>Official source</th></tr>
+<tr><td>Railway budgetary support</td><td>~₹32,000 crore</td><td>2014-15</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158838">PIB / Government of India ↗</a></td></tr>
+<tr><td>Railway budgetary support</td><td>₹2.78 lakh crore</td><td>2026-27</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158838">PIB / Government of India ↗</a></td></tr>
+<tr><td>Capital expenditure incl. EBR</td><td>₹2,62,216.93 crore</td><td>2024-25 / 2025-26 budget document</td><td class="source"><a target="_blank" href="https://www.indiabudget.gov.in/budget2025-26/doc/eb/railstat2.pdf">Union Budget / Railways Expenditure Profile ↗</a></td></tr>
+<tr><td>2025-26 capital expenditure</td><td>₹2,65,200 crore</td><td>BE 2025-26</td><td class="source"><a target="_blank" href="https://www.indiabudget.gov.in/budget2025-26/doc/eb/sbe85.pdf">Union Budget / Ministry of Railways ↗</a></td></tr>
+</table></div>
+</div>
+
+<div class="section">
+<h2>9. Safety Spending</h2>
+<div class="charts"><div class="panel"><div class="chart"><canvas id="spend"></canvas></div></div></div>
+</div>
+
+<div class="section" id="sources">
+<h2>10. Source Register</h2>
+<p>Every displayed metric above links back to an official government or Indian Railways source. Use this register as the audit trail.</p>
+<div class="tablewrap"><table class="data">
+<tr><th>#</th><th>Source</th><th>What it supports</th></tr>
+<tr><td>1</td><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2252124">PIB — Railway Electrification 2026 ↗</a></td><td>21,801 km in 2014; 69,873 km in Mar 2026; 99.6% BG coverage</td></tr>
+<tr><td>2</td><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2239704">PIB — Track Projects 2026 ↗</a></td><td>New track commissioned; 2009-14 vs 2014-25 pace; projects</td></tr>
+<tr><td>3</td><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2287638">PIB — Rail Safety 2026 ↗</a></td><td>Accidents, deaths, injuries, safety spending, interlocking</td></tr>
+<tr><td>4</td><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291000">PIB — Rail Safety Technology Jul 2026 ↗</a></td><td>Accident index and Kavach 4.0</td></tr>
+<tr><td>5</td><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2215807">PIB — Track Modernisation Jan 2026 ↗</a></td><td>Track renewal and high-speed-capable track</td></tr>
+<tr><td>6</td><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2148364">PIB — Track Speed Upgradation Jul 2025 ↗</a></td><td>110 kmph+ track and track quality measures</td></tr>
+<tr><td>7</td><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2227488">PIB — Signalling/Kavach ↗</a></td><td>ABS, Kavach, track circuiting</td></tr>
+<tr><td>8</td><td><a target="_blank" href="https://indianrailways.gov.in/railwayboard/uploads/directorate/stat_econ/2025/Indian%20Railways%20Annual%20Report%20%20Accounts%202023-24-English.pdf">Indian Railways Annual Report 2023-24 ↗</a></td><td>Punctuality, passenger km, revenue and passenger statistics</td></tr>
+<tr><td>9</td><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2209199">PIB Year End Review 2025 ↗</a></td><td>New trains, special services, track renewal</td></tr>
+<tr><td>10</td><td><a target="_blank" href="https://www.indiabudget.gov.in/budget2025-26/doc/eb/railstat2.pdf">Union Budget Railways Expenditure Profile ↗</a></td><td>Capital expenditure and railway financial data</td></tr>
+<tr><td>11</td><td><a target="_blank" href="https://www.indiabudget.gov.in/budget2025-26/doc/eb/sbe85.pdf">Union Budget — Ministry of Railways ↗</a></td><td>2025-26 railway capex and receipts</td></tr>
+<tr><td>12</td><td><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158838">PIB — Railways 2026 Overview ↗</a></td><td>Budgetary support, Vande Bharat, Amrit Bharat, electrification</td></tr>
+</table></div>
+</div>
+
+<div class="warning">
+<strong>Editorial rule:</strong> Do not label a partial-year figure as a full-year figure. For example,
+2025-26 figures must say whether they are final or up to a specific date. Also do not compare a
+10-year cumulative number directly with a single-year number. The dashboard deliberately preserves
+the source period beside every figure.
+</div>
+
+</div>
+
+<footer>
+<strong>Indian Railways Data Comparison</strong><br>
+This dashboard is designed as a source-linked factual comparison. It should be updated whenever
+new official Railway Board, PIB, Union Budget or Indian Railways Annual Report data becomes available.
+For political comparisons, preserve the exact definitions and reference periods instead of presenting
+selective figures without context.
+</footer>
+
+<script>
+new Chart(document.getElementById("acc"),{
+ type:"bar",
+ data:{labels:["2004-05 to 2013-14","2014-15 to 2023-24","2024-25","2025-26"],
+ datasets:[{label:"Consequential accidents",data:[1711,678,31,16]}]},
+ options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true}}}
+});
+new Chart(document.getElementById("safety"),{
+ type:"bar",
+ data:{labels:["2014-15","2025-26"],datasets:[{label:"Accident index",data:[0.11,0.01]}]},
+ options:{responsive:true,maintainAspectRatio:false}
+});
+new Chart(document.getElementById("spend"),{
+ type:"line",
+ data:{labels:["2013-14","2022-23","2023-24","2024-25","2025-26","2026-27"],
+ datasets:[{label:"Safety expenditure / budget (₹ crore)",data:[39200,87336,101662,114022,117693,120389],tension:.25}]},
+ options:{responsive:true,maintainAspectRatio:false}
+});
+</script>
+</body>
+</html>

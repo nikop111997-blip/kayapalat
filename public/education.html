@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>India Education: 2014 Baseline → 2026 | What Changed?</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--ink:#172033;--muted:#64748b;--line:#dfe6ef;--blue:#1d4ed8;--green:#15803d;--red:#b91c1c;--orange:#c2410c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Arial,sans-serif}
+header{background:linear-gradient(135deg,#0f172a,#263a59);color:#fff;padding:58px 6% 48px}header h1{font-size:clamp(36px,5vw,62px);line-height:1.03;margin:12px 0}header p{max-width:1050px;color:#dbe5f0;line-height:1.75}
+.container{width:91%;max-width:1500px;margin:auto}.timeline{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}.era{border-radius:18px;padding:24px;color:#fff}.base{background:linear-gradient(135deg,#9a3412,#ea580c)}.current{background:linear-gradient(135deg,#1e3a8a,#2563eb)}.era h2{margin:0 0 6px}
+nav{position:sticky;top:0;z-index:10;background:#ffffffef;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:10px 4%;display:flex;gap:8px;overflow:auto}nav a{white-space:nowrap;text-decoration:none;color:#334155;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:9px;font-size:12px}
+.section{margin:44px 0}.section h2{font-size:30px;margin:0 0 6px}.section>p{color:var(--muted);line-height:1.65}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}.card,.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 7px 25px #0f172a0a}.label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}.value{font-size:29px;font-weight:900;margin:8px 0}.sub{font-size:13px;color:var(--muted);line-height:1.5}.source{font-size:11px;margin-top:12px;line-height:1.5}.source a{color:var(--blue);text-decoration:none;font-weight:750}.source a:hover{text-decoration:underline}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:18px}.chart{height:350px}.panel h3{margin:0 0 15px}
+.tablewrap{overflow:auto;border-radius:16px}.data{width:100%;border-collapse:collapse;background:#fff}.data th,.data td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.data th{background:#f8fafc;font-size:11px;color:#475569;text-transform:uppercase;letter-spacing:.04em}.data td{font-size:13px}.data tr:hover td{background:#fafafa}
+.pos{color:var(--green);font-weight:850}.neg{color:var(--red);font-weight:850}.mixed{color:#b45309;font-weight:850}.tag{display:inline-block;padding:4px 8px;border-radius:999px;font-size:10px;font-weight:850}.tag.pos{background:#dcfce7}.tag.neg{background:#fee2e2}.tag.mixed{background:#fef3c7}
+.note{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:14px;padding:18px;line-height:1.65}.warn{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;border-radius:14px;padding:18px;line-height:1.65}
+footer{background:#111827;color:#cbd5e1;margin-top:55px;padding:40px 6%;line-height:1.7;font-size:13px}
+@media(max-width:900px){.timeline,.charts{grid-template-columns:1fr}.container{width:95%}}
+</style>
+</head>
+<body>
+<header>
+<div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#cbd5e1;font-weight:800">India Education | Evidence Dashboard</div>
+<h1>2014 Baseline → 2026</h1>
+<p>
+This is the comparison you asked for: <strong>where Indian education stood when UPA ended in 2014</strong>
+versus <strong>where the system stands under NDA using the latest official data available in 2025-26</strong>.
+The main table does not compare 2004 with 2026. 2014 is the starting line.
+</p>
+</header>
+
+<nav>
+<a href="#score">Scorecard</a><a href="#schools">Schools</a><a href="#quality">Quality</a><a href="#higher">Higher Ed</a>
+<a href="#institutes">IIT/IIM/AIIMS</a><a href="#skills">Skills</a><a href="#budget">Budget</a><a href="#negative">Negative/Mixed</a><a href="#sources">Sources</a>
+</nav>
+
+<main class="container">
+<div class="timeline">
+<div class="era base"><h2>UPA ending point / 2014 baseline</h2><div>FY2013-14 / 2014-15, depending on indicator</div><small>This is the benchmark.</small></div>
+<div class="era current"><h2>NDA latest</h2><div>2024-25 / 2025-26, depending on latest official release</div><small>Change is measured from the 2014 baseline.</small></div>
+</div>
+
+<section id="score" class="section">
+<h2>1. The actual 2014 → latest scorecard</h2>
+<p>Green means the indicator moved in a direction normally considered positive; red means a negative movement or an unresolved problem; amber means the number alone cannot establish whether the change is good or bad.</p>
+<div class="tablewrap"><table class="data">
+<tr><th>Area</th><th>2014 baseline</th><th>Latest official data</th><th>Change</th><th>Assessment</th><th>Source</th></tr>
+<tr><td>Higher-education institutions</td><td>51,534 (2014-15)</td><td>70,018 (June 2025)</td><td class="pos">+18,484 / +35.9%</td><td><span class="tag pos">Positive capacity</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219936">PIB/Economic Survey ↗</a></td></tr>
+<tr><td>Universities</td><td>760</td><td>1,338 (June 2025)</td><td class="pos">+578 / +76.1%</td><td><span class="tag pos">Positive capacity</span></td><td class="source"><a target="_blank" href="https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jun/doc2025621574801.pdf">PIB/AISHE ↗</a></td></tr>
+<tr><td>Colleges</td><td>38,498</td><td>52,081 (June 2025)</td><td class="pos">+13,583 / +35.3%</td><td><span class="tag pos">Positive capacity</span></td><td class="source"><a target="_blank" href="https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jun/doc2025621574801.pdf">PIB/AISHE ↗</a></td></tr>
+<tr><td>IITs</td><td>16</td><td>23 (2025)</td><td class="pos">+7 / +43.8%</td><td><span class="tag pos">Positive</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=154714">PIB ↗</a></td></tr>
+<tr><td>IIMs</td><td>13</td><td>21 (June 2025)</td><td class="pos">+8 / +61.5%</td><td><span class="tag pos">Positive</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=154714">PIB ↗</a></td></tr>
+<tr><td>AIIMS</td><td>7</td><td>20 (June 2025)</td><td class="pos">+13 / +185.7%</td><td><span class="tag pos">Positive capacity</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=154714">PIB ↗</a></td></tr>
+<tr><td>Medical colleges</td><td>431 (2014)</td><td>818 (2025-26)</td><td class="pos">+387 / +89.8%</td><td><span class="tag pos">Positive capacity</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158887">PIB ↗</a></td></tr>
+<tr><td>MBBS seats</td><td>~51,348</td><td>1,28,976 (2025-26)</td><td class="pos">~+77,628 / +151%</td><td><span class="tag pos">Positive capacity</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158887">PIB ↗</a></td></tr>
+<tr><td>PG medical seats</td><td>~31,185</td><td>85,822 (2025-26)</td><td class="pos">~+54,637 / +175%</td><td><span class="tag pos">Positive capacity</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158887">PIB ↗</a></td></tr>
+<tr><td>IIT student strength</td><td>~65,000</td><td>~1.35 lakh (2025-26)</td><td class="pos">~+108%</td><td><span class="tag pos">Positive capacity</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2268223">PIB ↗</a></td></tr>
+<tr><td>Higher-ed enrolment</td><td>3.42 crore (2014-15)</td><td>4.46 crore (2022-23)</td><td class="pos">+1.04 crore / +30.4%</td><td><span class="tag pos">Positive access</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158887">PIB ↗</a></td></tr>
+<tr><td>School students</td><td>~24.8 crore around current UDISE series*</td><td>24.69 crore (2024-25)</td><td class="mixed">Not cleanly comparable</td><td><span class="tag mixed">Definition/year issue</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2268223">PIB/UDISE+ ↗</a></td></tr>
+<tr><td>Schools</td><td>2014 UDISE series requires vintage extraction</td><td>14.71 lakh (2024-25)</td><td class="mixed">Do not infer closure without vintage UDISE IDs</td><td><span class="tag mixed">Needs exact series</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2268223">PIB/UDISE+ ↗</a></td></tr>
+<tr><td>Primary dropout</td><td>4.13% (2014-15)</td><td>1.9% (2023-24)</td><td class="pos">-2.23 pp</td><td><span class="tag pos">Positive</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097864">PIB/Economic Survey ↗</a></td></tr>
+<tr><td>Upper-primary dropout</td><td>4.03% (2014-15)</td><td>5.2% (2023-24)</td><td class="neg">+1.17 pp</td><td><span class="tag neg">Negative</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097864">PIB/Economic Survey ↗</a></td></tr>
+<tr><td>Secondary dropout</td><td>~17% (2014-15 series)</td><td>14.1% (2023-24)</td><td class="pos">Lower</td><td><span class="tag pos">Positive</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097864">PIB/Economic Survey ↗</a></td></tr>
+<tr><td>Schools with computers</td><td>No clean 2014 comparable series</td><td>57.2% (2023-24)</td><td class="pos">Digital access expanded</td><td><span class="tag pos">Positive</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097864">PIB/Economic Survey ↗</a></td></tr>
+<tr><td>Schools with internet</td><td>No clean 2014 comparable series</td><td>53.9% (2023-24)</td><td class="mixed">Major gap remains</td><td><span class="tag mixed">Mixed</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097864">PIB/Economic Survey ↗</a></td></tr>
+<tr><td>Grade III maths proficiency</td><td>No 2014 comparable PARAKH series</td><td>65% in PARAKH 2024</td><td class="mixed">Outcome series differs</td><td><span class="tag mixed">Need baseline</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219936">Economic Survey 2025-26 ↗</a></td></tr>
+<tr><td>Youth 15-29 vocational training</td><td>7.1% (2017-18, not 2014)</td><td>26.1% (2023-24)</td><td class="pos">+19.0 pp</td><td><span class="tag pos">Positive</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200373">PIB/MSDE ↗</a></td></tr>
+<tr><td>ITIs</td><td>9,776 (2014)</td><td>14,682 (2025)</td><td class="pos">+4,906 / +50.2%</td><td><span class="tag pos">Positive capacity</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200373">PIB/MSDE ↗</a></td></tr>
+</table></div>
+</section>
+
+<section id="schools" class="section">
+<h2>2. School system — what improved and what did not</h2>
+<div class="charts">
+<div class="panel"><h3>Dropout change from the 2014 baseline</h3><div class="chart"><canvas id="drop"></canvas></div></div>
+<div class="panel"><h3>Digital infrastructure: 2019-20 → 2023-24</h3><div class="chart"><canvas id="digital"></canvas></div></div>
+</div>
+<div class="grid" style="margin-top:18px">
+<div class="card"><div class="label">Positive</div><div class="value">1.9%</div><div class="sub">Primary dropout in 2023-24 vs 4.13% in 2014-15.</div></div>
+<div class="card"><div class="label">Negative</div><div class="value">5.2%</div><div class="sub">Upper-primary dropout in 2023-24 vs 4.03% in 2014-15.</div></div>
+<div class="card"><div class="label">Positive</div><div class="value">57.2%</div><div class="sub">Schools with computers in 2023-24.</div></div>
+<div class="card"><div class="label">Still a gap</div><div class="value">53.9%</div><div class="sub">Schools with internet in 2023-24 — almost half still lacked internet.</div></div>
+</div>
+</section>
+
+<section id="quality" class="section">
+<h2>3. Quality and learning — don't confuse capacity with outcomes</h2>
+<div class="grid">
+<div class="card"><div class="label">Government claim / positive</div><div class="value">65%</div><div class="sub">Grade III students proficient in mathematics in PARAKH 2024.</div><div class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219936">Economic Survey 2025-26 ↗</a></div></div>
+<div class="card"><div class="label">Government claim / positive</div><div class="value">57%</div><div class="sub">Grade III language proficiency in PARAKH 2024.</div><div class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219936">Economic Survey 2025-26 ↗</a></div></div>
+<div class="card"><div class="label">COVID / learning warning</div><div class="value">Recovery</div><div class="sub">Economic Survey says Grade III outcomes rebounded versus NAS 2021, but this is not a 2014 apples-to-apples comparison.</div><div class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219936">Economic Survey ↗</a></div></div>
+<div class="card"><div class="label">School-to-skill gap</div><div class="value">~92%</div><div class="sub">14-18 year-olds with no institutional skilling in PLFS 2023-24.</div><div class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219936">Economic Survey ↗</a></div></div>
+</div>
+<div class="warn" style="margin-top:18px"><strong>Negative / unresolved:</strong> A large institutional expansion does not prove learning improved relative to 2014. The site should show a separate outcome series (NAS/ASER/PARAKH) and never substitute institute counts for learning quality.</div>
+</section>
+
+<section id="higher" class="section">
+<h2>4. Higher education — 2014 starting line</h2>
+<div class="charts">
+<div class="panel"><h3>Higher-education institutions</h3><div class="chart"><canvas id="hei"></canvas></div></div>
+<div class="panel"><h3>Higher-ed enrolment</h3><div class="chart"><canvas id="enrol"></canvas></div></div>
+</div>
+<div class="note">The official 2014-15 baseline is unusually strong here: 51,534 HEIs, 760 universities, 38,498 colleges and 3.42 crore higher-education enrolment. By June 2025, the government reports 70,018 HEIs, 1,338 universities and 52,081 colleges; higher-ed enrolment reached 4.46 crore in 2022-23. citeturn0search0turn0search12turn0search11</div>
+</section>
+
+<section id="institutes" class="section">
+<h2>5. IIT, IIM, AIIMS and medical education</h2>
+<div class="charts">
+<div class="panel"><h3>2014 → latest: premier institutes</h3><div class="chart"><canvas id="premier"></canvas></div></div>
+<div class="panel"><h3>Medical capacity expansion</h3><div class="chart"><canvas id="medical"></canvas></div></div>
+</div>
+<div class="tablewrap" style="margin-top:18px"><table class="data">
+<tr><th>Indicator</th><th>2014</th><th>Latest</th><th>Change</th><th>Assessment</th></tr>
+<tr><td>IITs</td><td>16</td><td>23</td><td class="pos">+43.8%</td><td><span class="tag pos">Positive</span></td></tr>
+<tr><td>IIMs</td><td>13</td><td>21</td><td class="pos">+61.5%</td><td><span class="tag pos">Positive</span></td></tr>
+<tr><td>AIIMS</td><td>7</td><td>20</td><td class="pos">+185.7%</td><td><span class="tag pos">Positive</span></td></tr>
+<tr><td>Medical colleges</td><td>431</td><td>818</td><td class="pos">+89.8%</td><td><span class="tag pos">Positive</span></td></tr>
+<tr><td>MBBS seats</td><td>~51,348</td><td>1,28,976</td><td class="pos">~+151%</td><td><span class="tag pos">Positive capacity</span></td></tr>
+<tr><td>PG seats</td><td>~31,185</td><td>85,822</td><td class="pos">~+175%</td><td><span class="tag pos">Positive capacity</span></td></tr>
+</table></div>
+<div class="warn" style="margin-top:18px"><strong>Critical interpretation:</strong> These are capacity indicators. They do not automatically prove better teaching quality, lower fees, better placement, or better patient outcomes.</div>
+</section>
+
+<section id="skills" class="section">
+<h2>6. Skill development — positive numbers + the remaining problem</h2>
+<div class="charts">
+<div class="panel"><h3>ITIs: 2014 → 2025</h3><div class="chart"><canvas id="iti"></canvas></div></div>
+<div class="panel"><h3>Vocational training: 2017-18 → 2023-24</h3><div class="chart"><canvas id="voc"></canvas></div></div>
+</div>
+<div class="grid" style="margin-top:18px">
+<div class="card"><div class="label">Positive</div><div class="value">14,682</div><div class="sub">ITIs in 2025 vs 9,776 in 2014.</div><div class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200373">PIB/MSDE ↗</a></div></div>
+<div class="card"><div class="label">Positive</div><div class="value">26.1%</div><div class="sub">Youth aged 15-29 with vocational training in 2023-24, vs 7.1% in 2017-18.</div><div class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200373">PIB/MSDE ↗</a></div></div>
+<div class="card"><div class="label">Negative / gap</div><div class="value">~92%</div><div class="sub">14-18 year-olds with no institutional skilling in PLFS 2023-24.</div><div class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219936">Economic Survey ↗</a></div></div>
+<div class="card"><div class="label">Important</div><div class="value">Training ≠ job</div><div class="sub">PMKVY counts should be separated into trained, certified, assessed and placed.</div></div>
+</div>
+</section>
+
+<section id="budget" class="section">
+<h2>7. Budget — compare the same department</h2>
+<p>Do not compare the total Ministry of Education in 2014 with a later number without accounting for ministry restructuring. The Department of Higher Education series is cleaner.</p>
+<div class="charts">
+<div class="panel"><h3>Department of Higher Education budget estimates</h3><div class="chart"><canvas id="budget"></canvas></div></div>
+<div class="panel"><h3>Recent Department of Higher Education allocation</h3><div class="chart"><canvas id="recentBudget"></canvas></div></div>
+</div>
+<div class="tablewrap" style="margin-top:18px"><table class="data">
+<tr><th>Year</th><th>Higher Education Department budget estimate / allocation</th><th>Source</th></tr>
+<tr><td>2013-14</td><td>₹16,210 Cr</td><td class="source"><a target="_blank" href="https://www.indiabudget.gov.in/budget2013-2014/ub2013-14/eb/po.pdf">Union Budget ↗</a></td></tr>
+<tr><td>2014-15</td><td>₹16,900 Cr Plan outlay; broader annual-plan outlay also reported separately</td><td class="source"><a target="_blank" href="https://www.education.gov.in/sites/upload_files/mhrd/files/document-reports/Part2.pdf">MHRD Annual Report ↗</a></td></tr>
+<tr><td>2025-26</td><td>₹50,077.95 Cr allocation</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/newsite/erelcontent.aspx?lang=2&reg=48&relid=266854">PIB ↗</a></td></tr>
+<tr><td>2026-27</td><td>₹55,727.22 Cr</td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2221734">PIB ↗</a></td></tr>
+</table></div>
+</section>
+
+<section id="negative" class="section">
+<h2>8. The negative / mixed side — deliberately included</h2>
+<div class="tablewrap"><table class="data">
+<tr><th>Issue</th><th>Evidence</th><th>Why it matters</th><th>Verdict</th><th>Source</th></tr>
+<tr><td>Upper-primary dropout</td><td>4.03% in 2014-15 → 5.2% in 2023-24</td><td>It moved upward, unlike primary dropout.</td><td><span class="tag neg">Negative</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097864">PIB/Economic Survey ↗</a></td></tr>
+<tr><td>Internet access</td><td>53.9% of schools had internet in 2023-24</td><td>Nearly half of schools still lacked internet.</td><td><span class="tag mixed">Unresolved gap</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097864">PIB ↗</a></td></tr>
+<tr><td>School-to-skill pipeline</td><td>~92% of 14-18 year-olds had no institutional skilling in PLFS 2023-24</td><td>Large gap despite national skilling programmes.</td><td><span class="tag neg">Negative gap</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219936">Economic Survey ↗</a></td></tr>
+<tr><td>Learning outcomes</td><td>PARAKH 2024 reports 65% maths / 57% language proficiency for Grade III</td><td>Cannot be directly compared to 2014 without a matched assessment series.</td><td><span class="tag mixed">Not proven</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219936">Economic Survey ↗</a></td></tr>
+<tr><td>School count</td><td>Latest 14.71 lakh schools</td><td>Without the exact 2014 UDISE vintage and school IDs, a national “closed schools” claim is unsafe.</td><td><span class="tag mixed">Needs audit</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2268223">PIB/UDISE+ ↗</a></td></tr>
+<tr><td>Capacity vs quality</td><td>HEIs, IITs, IIMs and AIIMS increased sharply</td><td>More institutions do not by themselves establish better learning or employment.</td><td><span class="tag mixed">Mixed</span></td><td class="source"><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=154714">PIB ↗</a></td></tr>
+</table></div>
+</section>
+
+<section id="sources" class="section">
+<h2>9. Source register</h2>
+<div class="tablewrap"><table class="data">
+<tr><th>Source</th><th>What it supports</th></tr>
+<tr><td><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=154714">PIB — Strengthening India's Educational Landscape ↗</a></td><td>2014-15 → 2025 HEIs, universities, colleges, IITs, IIMs, AIIMS, PM SHRI and related reforms.</td></tr>
+<tr><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219936">Economic Survey 2025-26 / PIB ↗</a></td><td>Current school/higher education, GER, PARAKH, skill gaps and NEP-era reforms.</td></tr>
+<tr><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097864">Economic Survey 2024-25 / PIB ↗</a></td><td>24.8 crore students, 14.72 lakh schools, 98 lakh teachers, dropout and digital infrastructure.</td></tr>
+<tr><td><a target="_blank" href="https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=158887">PIB — 2026 higher-education expansion ↗</a></td><td>2014 → 2025-26 enrolment, medical colleges, MBBS/PG seats, IIT capacity.</td></tr>
+<tr><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200373">PIB / MSDE — Skill India ↗</a></td><td>ITIs and vocational training.</td></tr>
+<tr><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097864">PIB / UDISE+ ↗</a></td><td>School dropout and digital infrastructure.</td></tr>
+<tr><td><a target="_blank" href="https://www.indiabudget.gov.in/budget2013-2014/ub2013-14/eb/po.pdf">Union Budget 2013-14 ↗</a></td><td>UPA-end higher education allocation baseline.</td></tr>
+<tr><td><a target="_blank" href="https://www.education.gov.in/sites/upload_files/mhrd/files/document-reports/Part2.pdf">MHRD Annual Report 2014-15 ↗</a></td><td>2014-15 plan outlay and education-sector baseline.</td></tr>
+<tr><td><a target="_blank" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2294032">PIB — 2026 institutional funding ↗</a></td><td>Recent IIT/IIM/IISER/CU funding and higher-education infrastructure.</td></tr>
+</table></div>
+</section>
+
+<div class="note">
+<strong>Method used:</strong> 2014 is the baseline. Every metric is presented as <strong>2014 → latest</strong>.
+Where a 2014 number is not available under the same definition, the dashboard says so instead of using a
+different year and pretending it is a 2014 comparison. Positive and negative indicators are kept separate.
+</div>
+</main>
+<footer><strong>India Education — 2014 baseline comparison</strong><br>
+This dashboard is intended for evidence-based political/public-policy comparison. Education is a Concurrent List subject,
+so Union and State governments both influence outcomes. A change in a national indicator is not automatically attributable
+to the Union government alone.</footer>
+
+<script>
+const opts={responsive:true,maintainAspectRatio:false};
+new Chart(document.getElementById("drop"),{type:"bar",data:{labels:["Primary dropout","Upper-primary dropout","Secondary dropout"],datasets:[{label:"2014-15",data:[4.13,4.03,17]},{label:"2023-24",data:[1.9,5.2,14.1]}]},options:opts});
+new Chart(document.getElementById("digital"),{type:"bar",data:{labels:["Computers","Internet"],datasets:[{label:"2019-20",data:[38.5,22.3]},{label:"2023-24",data:[57.2,53.9]}]},options:opts});
+new Chart(document.getElementById("hei"),{type:"bar",data:{labels:["HEIs","Universities","Colleges"],datasets:[{label:"2014-15",data:[51534,760,38498]},{label:"June 2025",data:[70018,1338,52081]}]},options:opts});
+new Chart(document.getElementById("enrol"),{type:"bar",data:{labels:["2014-15","2022-23"],datasets:[{label:"Higher-ed enrolment (crore)",data:[3.42,4.46]}]},options:opts});
+new Chart(document.getElementById("premier"),{type:"bar",data:{labels:["IITs","IIMs","AIIMS"],datasets:[{label:"2014",data:[16,13,7]},{label:"2025",data:[23,21,20]}]},options:opts});
+new Chart(document.getElementById("medical"),{type:"bar",data:{labels:["Medical colleges","MBBS seats","PG seats"],datasets:[{label:"2014",data:[431,51348,31185]},{label:"2025-26",data:[818,128976,85822]}]},options:opts});
+new Chart(document.getElementById("iti"),{type:"bar",data:{labels:["2014","2025"],datasets:[{label:"ITIs",data:[9776,14682]}]},options:opts});
+new Chart(document.getElementById("voc"),{type:"bar",data:{labels:["2017-18","2023-24"],datasets:[{label:"Youth 15-29 with vocational training (%)",data:[7.1,26.1]}]},options:opts});
+new Chart(document.getElementById("budget"),{type:"line",data:{labels:["2013-14","2014-15","2025-26","2026-27"],datasets:[{label:"Higher Education Department ₹ crore",data:[16210,16900,50077.95,55727.22],tension:.25}]},options:opts});
+new Chart(document.getElementById("recentBudget"),{type:"bar",data:{labels:["2024-25","2025-26","2026-27"],datasets:[{label:"Higher Education Department ₹ crore",data:[47619.77,50077.95,55727.22]}]},options:opts});
+</script>
+</body></html>

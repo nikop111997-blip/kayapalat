@@ -69,7 +69,7 @@ export default async function ReportPrintPage({
         }
       `}</style>
 
-      <Report report={reportDoc.report} />
+      <Report report={reportDoc.report} answers={reportDoc.answers} />
     </>
   );
 }

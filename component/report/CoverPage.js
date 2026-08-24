@@ -1,13 +1,13 @@
 import { MapPin, HeartPulse, Sparkles, User, Calendar } from "lucide-react";
 
-export default function CoverPage({ report, name }) {
+export default function CoverPage({ report, answers }) {
   const today = new Date().toLocaleDateString("en-IN", {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
 
-  const displayName = name || report.name || "Valued Member";
+  const displayName = answers.name || report.name || "Valued Member";
 
   const scoreColor =
     report.score >= 80

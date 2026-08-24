@@ -12,6 +12,7 @@
     "@ai-sdk/openai": "^4.0.27",
     "@next/third-parties": "^16.2.7",
     "@sparticuz/chromium-min": "^149.0.0",
+    "@vercel/blob": "^2.8.0",
     "ai": "^7.0.48",
     "clsx": "^2.1.1",
     "dompurify": "^3.4.8",

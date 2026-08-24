@@ -9,30 +9,20 @@ export default function ExecutiveSummaryPage({ report }) {
 
   return (
     <PageContainer title="Executive Health Assessment" subtitle="Understanding Your Current Health">
-      {/* Top Metric Cards */}
-      <div className="grid grid-cols-4 gap-4 mb-7">
-        <MetricCard icon={Activity} title="Health Score" value={report.score} subtitle={report.scoreLabel} color="emerald" />
-        <MetricCard icon={Heart} title="BMI" value={report.bmi} subtitle={report.bmiCategory} color="red" />
-        <MetricCard icon={TrendingUp} title="WHtR" value={report.whtr} subtitle={report.whtrRisk} color="orange" />
-        <MetricCard
-          icon={Sparkles}
-          title="Body Fat"
-          value={report.bodyFat?.value != null ? `${report.bodyFat.value}%` : "—"}
-          subtitle="Estimated"
-          color="violet"
-        />
-      </div>
+    
 
       {/* Main Layout */}
       <div className="grid grid-cols-12 gap-6">
         {/* LEFT */}
-        <div className="col-span-8 space-y-4">
+        <div className="col-span-12 space-y-4">
           <Section icon={ClipboardList} title="Executive Summary" content={ai.executiveSummary} />
           <ScoreDrivers drivers={report.scoreDrivers} />
         </div>
 
         {/* RIGHT */}
-        <div className="col-span-4 space-y-4">
+       
+      </div>
+       <div className="mt-4 space-y-4">
           <div className="rounded-md bg-emerald-50 border border-emerald-100 p-5">
             <div className="flex items-center gap-2.5 mb-3">
               <Brain className="text-emerald-700" size={17} />
@@ -43,8 +33,6 @@ export default function ExecutiveSummaryPage({ report }) {
 
           
         </div>
-      </div>
-      
           <QuoteCard title="Coach's Observation" text={ai.coachSummary} />
     </PageContainer>
   );

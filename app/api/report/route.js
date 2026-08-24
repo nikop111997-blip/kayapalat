@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
 import { generateReport } from "@/lib/rulesEngine";
 import { generateHealthNarrative } from "@/lib/ai/generateHealthNarrative";
+import { analyzeBodyPhotos } from "@/lib/ai/analyzeBodyPhotos";
 
 export async function POST(req) {
   try {
@@ -59,10 +60,34 @@ export async function POST(req) {
     // Generate calculated report
     // -----------------------------
     const report = generateReport(answers);
+ let bodyAnalysis = {
+      available: false,
+      reason: "No photos uploaded.",
+    };
+
+    const frontPhoto =
+      answers?.photos?.front;
+
+    const sidePhoto =
+      answers?.photos?.side;
+
+
+    if (frontPhoto || sidePhoto) {
+      bodyAnalysis =
+        await analyzeBodyPhotos({
+          frontUrl: frontPhoto,
+          sideUrl: sidePhoto,
+          answers,
+        });
+    }
+
 
     // -----------------------------
-    // Generate AI narrative
+    // Add body analysis to report
     // -----------------------------
+
+    report.bodyAnalysis =
+      bodyAnalysis;
     report.ai = await generateHealthNarrative(report);
 
     // -----------------------------

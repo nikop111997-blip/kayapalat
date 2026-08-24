@@ -12,6 +12,7 @@ const ANSWERABLE_TYPES = new Set([
   "choice",
   "multi",
   "slider",
+  "photo",
   "contact",
 ]);
 
@@ -83,15 +84,6 @@ export default function ChatAssessment({ onClose }) {
    * Skip photo questions completely
    * ----------------------------------------
    */
-  useEffect(() => {
-    if (stepIndex >= steps.length) return;
-
-    const step = steps[stepIndex];
-
-    if (step.type === "photo") {
-      setStepIndex((i) => i + 1);
-    }
-  }, [stepIndex]);
 
   /*
    * ----------------------------------------
@@ -125,8 +117,7 @@ export default function ChatAssessment({ onClose }) {
 
     const step = steps[stepIndex];
 
-    // Photo steps are handled by the skip effect above
-    if (step.type === "photo") return;
+   
 
     hasRunStep.current.add(stepIndex);
 

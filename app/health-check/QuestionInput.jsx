@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { upload } from "@vercel/blob/client";
 import { validators } from "@/lib/validators";
 import { validateNumber } from "@/lib/validateNumber";
 import MeasurementToolsModal from "@/component/Health/MeasurementToolsModal";
@@ -315,42 +316,516 @@ function SliderInput({ step, onAnswer }) {
 }
 
 function PhotoInput({ step, onAnswer }) {
-  // Existing PhotoInput logic remains identical; applying wrapper styling
-  const frontRef = useRef(null);
-  const sideRef = useRef(null);
+  const frontCameraRef = useRef(null);
+  const frontGalleryRef = useRef(null);
+  const sideCameraRef = useRef(null);
+  const sideGalleryRef = useRef(null);
+
   const [front, setFront] = useState(null);
   const [side, setSide] = useState(null);
 
-  const readFile = (file, set) => {
-    const reader = new FileReader();
-    reader.onload = () => set(reader.result);
-    reader.readAsDataURL(file);
+  const [frontUploading, setFrontUploading] = useState(false);
+  const [sideUploading, setSideUploading] = useState(false);
+
+  const [error, setError] = useState("");
+
+  // ----------------------------------------
+  // UPLOAD PHOTO
+  // ----------------------------------------
+
+  const uploadPhoto = async (file, type) => {
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      setError("Please select an image.");
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      setError("Image must be smaller than 10 MB.");
+      return;
+    }
+
+    setError("");
+
+    try {
+      if (type === "front") {
+        setFrontUploading(true);
+      } else {
+        setSideUploading(true);
+      }
+
+      const blob = await upload(
+        `health-assessment/${type}-${Date.now()}-${file.name}`,
+        file,
+        {
+          access: "public",
+          handleUploadUrl: "/api/upload",
+        }
+      );
+
+      console.log(`${type} photo uploaded:`, blob.url);
+
+      if (type === "front") {
+        setFront(blob.url);
+      } else {
+        setSide(blob.url);
+      }
+    } catch (err) {
+      console.error("Photo upload failed:", err);
+
+      setError(
+        err?.message || "Photo upload failed. Please try again."
+      );
+    } finally {
+      if (type === "front") {
+        setFrontUploading(false);
+      } else {
+        setSideUploading(false);
+      }
+    }
   };
 
-  return (
-    <div className="animate-rise w-full rounded-3xl bg-white p-5 shadow-lg ring-1 ring-black/5">
-      {/* Grid rendering remains unchanged internally */}
-      <div className="grid grid-cols-2 gap-3">
-         {/* ... mapped photo buttons ... */}
+  // ----------------------------------------
+  // DELETE PHOTO
+  // ----------------------------------------
+
+  const deletePhoto = async (url, type) => {
+    if (!url) return;
+
+    try {
+      await fetch("/api/upload", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url,
+        }),
+      });
+    } catch (err) {
+      console.error("Failed to delete blob:", err);
+    }
+
+    if (type === "front") {
+      setFront(null);
+
+      if (frontCameraRef.current) {
+        frontCameraRef.current.value = "";
+      }
+
+      if (frontGalleryRef.current) {
+        frontGalleryRef.current.value = "";
+      }
+    }
+
+    if (type === "side") {
+      setSide(null);
+
+      if (sideCameraRef.current) {
+        sideCameraRef.current.value = "";
+      }
+
+      if (sideGalleryRef.current) {
+        sideGalleryRef.current.value = "";
+      }
+    }
+  };
+
+  // ----------------------------------------
+  // CONTINUE
+  // ----------------------------------------
+
+  const submit = () => {
+    onAnswer(
+      {
+        front: front || null,
+        side: side || null,
+      },
+      front || side
+        ? "Uploaded my photos"
+        : "Skipped photo upload"
+    );
+  };
+
+  const uploading = frontUploading || sideUploading;
+
+  // ----------------------------------------
+  // PHOTO BOX
+  // ----------------------------------------
+
+  const PhotoBox = ({
+    type,
+    image,
+    uploading,
+    cameraRef,
+    galleryRef,
+  }) => {
+    const title =
+      type === "front"
+        ? "Front View"
+        : "Side View";
+
+    return (
+      <div className="min-w-0">
+
+        {/* TITLE */}
+        <h3 className="mb-2 text-[14px] font-semibold text-gray-800 sm:text-[15px]">
+          {title}
+        </h3>
+
+        {/* -------------------------------- */}
+        {/* CAMERA INPUT */}
+        {/* -------------------------------- */}
+
+        <input
+          ref={cameraRef}
+          type="file"
+          accept="image/*"
+          capture="environment"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+
+            if (file) {
+              uploadPhoto(file, type);
+            }
+          }}
+          className="hidden"
+        />
+
+        {/* -------------------------------- */}
+        {/* GALLERY INPUT */}
+        {/* -------------------------------- */}
+
+        <input
+          ref={galleryRef}
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+
+            if (file) {
+              uploadPhoto(file, type);
+            }
+          }}
+          className="hidden"
+        />
+
+        {/* -------------------------------- */}
+        {/* UPLOADED IMAGE */}
+        {/* -------------------------------- */}
+
+        {image ? (
+          <div className="relative">
+
+            <div className="overflow-hidden rounded-xl bg-gray-100">
+              <img
+                src={image}
+                alt={`${title} uploaded`}
+                className="aspect-square w-full object-cover"
+              />
+            </div>
+
+            {/* DELETE BUTTON */}
+
+            <button
+              type="button"
+              onClick={() =>
+                deletePhoto(image, type)
+              }
+              className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-red-500 shadow-md transition hover:bg-red-50"
+              aria-label={`Delete ${title}`}
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  d="M3 6h18"
+                  strokeLinecap="round"
+                />
+
+                <path
+                  d="M8 6V4h8v2"
+                  strokeLinecap="round"
+                />
+
+                <path
+                  d="M19 6l-1 14H6L5 6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+
+                <path
+                  d="M10 11v5M14 11v5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+
+            {/* UPLOADED STATUS */}
+
+            <div className="mt-1.5 flex items-center justify-center gap-1 text-[11px] font-medium text-green-600">
+
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                />
+
+                <path
+                  d="m8 12 2.5 2.5L16 9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+
+              Photo uploaded
+
+            </div>
+
+          </div>
+        ) : (
+
+          /* -------------------------------- */
+          /* EMPTY PHOTO BOX */
+          /* -------------------------------- */
+
+          <div className="flex aspect-square flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 px-2">
+
+            {uploading ? (
+              <>
+                <div className="h-6 w-6 animate-spin rounded-full border-2 border-gray-300 border-t-[#e77074]" />
+
+                <span className="mt-2 text-[11px] text-gray-500">
+                  Uploading...
+                </span>
+              </>
+            ) : (
+              <>
+
+                {/* CAMERA ICON */}
+
+                <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm">
+
+                  <svg
+                    width="19"
+                    height="19"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                  >
+                    <path
+                      d="M4 7a2 2 0 0 1 2-2h2l1-2h6l1 2h2a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z"
+                      strokeLinejoin="round"
+                    />
+
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="3"
+                    />
+                  </svg>
+
+                </div>
+
+                <p className="mb-2 text-center text-[10px] text-gray-500 sm:text-[11px]">
+                  Upload a {type} photo
+                </p>
+
+                {/* -------------------------------- */}
+                {/* CAMERA + GALLERY */}
+                {/* -------------------------------- */}
+
+                <div className="flex w-full gap-1.5">
+
+                  {/* CAMERA */}
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      cameraRef.current?.click()
+                    }
+                    className="flex h-9 flex-1 items-center justify-center gap-1 rounded-lg bg-[#1A1A1A] px-1.5 text-[10px] font-semibold text-white transition hover:bg-black sm:text-[11px]"
+                  >
+
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        d="M4 7a2 2 0 0 1 2-2h2l1-2h6l1 2h2a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z"
+                        strokeLinejoin="round"
+                      />
+
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="3"
+                      />
+                    </svg>
+
+                    Camera
+
+                  </button>
+
+                  {/* GALLERY */}
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      galleryRef.current?.click()
+                    }
+                    className="flex h-9 flex-1 items-center justify-center gap-1 rounded-lg border border-gray-200 bg-white px-1.5 text-[10px] font-semibold text-gray-800 transition hover:bg-gray-50 sm:text-[11px]"
+                  >
+
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <rect
+                        x="3"
+                        y="3"
+                        width="18"
+                        height="18"
+                        rx="2"
+                      />
+
+                      <circle
+                        cx="8.5"
+                        cy="8.5"
+                        r="1.5"
+                      />
+
+                      <path
+                        d="m21 15-5-5L5 21"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+
+                    Gallery
+
+                  </button>
+
+                </div>
+
+              </>
+            )}
+
+          </div>
+        )}
+
       </div>
-      <div className="mt-4 flex gap-2">
+    );
+  };
+
+  // ----------------------------------------
+  // MAIN
+  // ----------------------------------------
+
+  return (
+    <div className="animate-rise w-full max-w-2xl rounded-2xl bg-white p-3 shadow-lg ring-1 ring-black/5 sm:p-4">
+
+      {/* ERROR */}
+
+      {error && (
+        <div className="mb-2 rounded-lg bg-red-50 px-3 py-2 text-[11px] text-red-600">
+          {error}
+        </div>
+      )}
+
+      {/* -------------------------------- */}
+      {/* FRONT + SIDE */}
+      {/* -------------------------------- */}
+
+      <div className="grid grid-cols-2 gap-3">
+
+        <PhotoBox
+          type="front"
+          image={front}
+          uploading={frontUploading}
+          cameraRef={frontCameraRef}
+          galleryRef={frontGalleryRef}
+        />
+
+        <PhotoBox
+          type="side"
+          image={side}
+          uploading={sideUploading}
+          cameraRef={sideCameraRef}
+          galleryRef={sideGalleryRef}
+        />
+
+      </div>
+
+      {/* -------------------------------- */}
+      {/* BOTTOM ACTIONS */}
+      {/* -------------------------------- */}
+
+      <div className="mt-3 grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+
+        {/* SKIP */}
+
         <button
-          onClick={() => onAnswer({ front: null, side: null }, "Skipped photo upload")}
-          className="flex-1 rounded-full border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-ink/70 transition hover:bg-gray-50"
+          type="button"
+          disabled={uploading}
+          onClick={() =>
+            onAnswer(
+              {
+                front: null,
+                side: null,
+              },
+              "Skipped photo upload"
+            )
+          }
+          className="h-10 rounded-xl border border-gray-200 bg-white px-3 text-xs font-semibold text-gray-700 transition hover:bg-gray-50 disabled:opacity-40 sm:text-sm"
         >
           Skip
+          <span className="ml-1 text-[10px] font-normal text-gray-400">
+            (Optional)
+          </span>
         </button>
+
+        {/* CONTINUE */}
+
         <button
-          onClick={() => onAnswer({ front, side }, front || side ? "Uploaded my photos" : "Skipped")}
-          className="flex-1 cursor-pointer rounded-full bg-gradient-to-br from-[#e77074] via-[#e382c5] to-[#dc8bc3] px-4 py-3 text-sm font-medium text-white transition hover:bg-gradient-to-br hover:from-[#e77074] hover:via-[#e382c5] hover:to-[#dc8bc3]"
+          type="button"
+          disabled={uploading}
+          onClick={submit}
+          className="h-10 rounded-xl bg-gradient-to-r from-[#e77074] via-[#e382c5] to-[#dc8bc3] px-3 text-xs font-semibold text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40 sm:text-sm"
         >
-          Continue
+          {uploading
+            ? "Uploading..."
+            : "Continue"}
         </button>
+
       </div>
+
     </div>
   );
 }
-
 function ContactInput({ step, onAnswer }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

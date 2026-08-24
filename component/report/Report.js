@@ -6,8 +6,9 @@ import FutureOutlookPage from "./Futureoutlookpage";
 import JourneyPage from "./Journeypage";
 import CoachLetterPage from "./CoachLetterPage";
 import ClosingPage from "./ClosingPage";
+import MembershipPage from "./MembershipPage";
 
-export default function Report({ report, name }) {
+export default function Report({ report, answers }) {
   // Combine every actionable item we have and split it across the two new
   // "Priority Action" / "Future Outlook" pages so neither page is overloaded.
   const allActions = [
@@ -23,13 +24,13 @@ export default function Report({ report, name }) {
     <div className="bg-gray-50 pb-16 font-sans">
       <div className="max-w-[1000px] mx-auto">
         {/* Page 1 */}
-        <CoverPage report={report} name={name} />
+        <CoverPage report={report} answers={answers} />
 
         {/* Page 2 */}
         <ExecutiveSummaryPage report={report} />
 
         {/* Page 3 */}
-        <BodyBalancePage report={report} />
+        <BodyBalancePage report={report} answers={answers} />
 
         {/* Page 4 */}
         <PriorityActionPage report={report} actions={actionsA} />
@@ -41,8 +42,8 @@ export default function Report({ report, name }) {
         <JourneyPage report={report} />
 
         {/* Page 7 — unchanged */}
-        <CoachLetterPage report={report} />
-
+        <CoachLetterPage report={report} name={answers.name} />
+<MembershipPage />
         {/* Page 8 — unchanged */}
         <ClosingPage report={report} />
       </div>
