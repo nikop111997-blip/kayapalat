@@ -425,7 +425,7 @@ export default function ChatAssessment({ onClose }) {
     : null;
 
   return (
-    <div className="flex h-[90vh] w-full sm:min-w-2xl mx-auto border border-gray-300 shadow-sm flex-col overflow-hidden bg-[#FAFAFA] font-sans">
+    <div className="flex h-[100dvh] sm:h-[90vh] w-full sm:min-w-2xl mx-auto border border-gray-300 shadow-sm flex-col overflow-hidden bg-[#FAFAFA] font-sans">
 
       {/* -------------------------------- */}
       {/* HEADER */}
