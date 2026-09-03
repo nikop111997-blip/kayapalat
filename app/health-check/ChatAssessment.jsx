@@ -396,7 +396,7 @@ export default function ChatAssessment({ onClose }) {
    */
   const handleCTA = (type) => {
     if (type === "continue") {
-      closeChat();
+      window.location.href = "/";
       return;
     }
 
@@ -653,9 +653,8 @@ export default function ChatAssessment({ onClose }) {
       {/* INPUT */}
       {/* -------------------------------- */}
 
-      <div className="relative z-20 flex min-h-[85px] shrink-0 items-end bg-white px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
-
-        <div className="mx-auto w-full max-w-2xl transition-all duration-300">
+     <div className="relative z-20 flex min-h-[85px] max-h-[50dvh] shrink-0 flex-col justify-end overflow-y-auto bg-white px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+  <div className="mx-auto w-full max-w-2xl transition-all duration-300">
 
           {stepIndex >= steps.length ||
           currentStep?.type === "report" ? (

@@ -87,7 +87,7 @@ export default function BodyBalancePage({ report, answers }) {
               ["Overall", "overall"],
               ["Upper Body", "upperBody"]
             ].map(([label, key]) => {
-              const value = report.bodyAnalysis.bodyShape?.[key];
+              const value = report.bodyAnalysis?.bodyShape?.[key];
 
               if (!value) return null;
 

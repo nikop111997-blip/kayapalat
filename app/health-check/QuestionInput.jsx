@@ -235,7 +235,7 @@ validation.status==="error"
 // Adapted standard block components (Choice, Multi, Contact, Slider) to blend with floating dock style
 function ChoiceInput({ step, onAnswer }) {
   return (
-    <div className="animate-rise flex flex-wrap justify-center gap-2">
+    <div className="animate-rise flex max-h-[45dvh] overflow-y-auto p-1 flex-wrap justify-center gap-2">
       {step.options?.map((opt) => (
         <button
           key={opt}
@@ -253,36 +253,46 @@ function MultiInput({ step, onAnswer }) {
   const [selected, setSelected] = useState([]);
   const toggle = (opt) =>
     setSelected((s) => (s.includes(opt) ? s.filter((o) => o !== opt) : [...s, opt]));
+    
   return (
-    <div className="animate-rise w-full rounded-3xl bg-white p-4 shadow-lg ring-1 ring-black/5">
-      <div className="flex flex-wrap justify-center gap-2">
-        {step.options?.map((opt) => {
-          const active = selected.includes(opt);
-          return (
-            <button
-              key={opt}
-              onClick={() => toggle(opt)}
-              className={`rounded-full border px-4 py-2.5 text-sm font-medium transition active:scale-[0.98] ${
-                active
-                  ? "border-[#e77074] bg-gradient-to-br from-[#e77074] via-[#e382c5] to-[#dc8bc3] text-white shadow-md"
-                  : "border-gray-200 bg-white text-ink hover:border-gray-300 dark:text-gray-800"
-              }`}
-            >
-              {opt}
-            </button>
-          );
-        })}
+    <div className="animate-rise w-full flex flex-col max-h-[45dvh] rounded-3xl bg-white p-2 shadow-lg ring-1 ring-black/5">
+      
+      {/* Scrollable Options List */}
+      <div className="flex-1 overflow-y-auto p-2">
+        <div className="flex flex-wrap justify-center gap-2">
+          {step.options?.map((opt) => {
+            const active = selected.includes(opt);
+            return (
+              <button
+                key={opt}
+                onClick={() => toggle(opt)}
+                className={`rounded-full border px-4 py-2.5 text-sm font-medium transition active:scale-[0.98] ${
+                  active
+                    ? "border-[#e77074] bg-gradient-to-br from-[#e77074] via-[#e382c5] to-[#dc8bc3] text-white shadow-md"
+                    : "border-gray-200 bg-white text-ink hover:border-gray-300 dark:text-gray-800"
+                }`}
+              >
+                {opt}
+              </button>
+            );
+          })}
+        </div>
       </div>
-      <button
-        disabled={selected.length === 0}
-        onClick={() => onAnswer(selected, selected.join(", "))}
-        className="mt-4 flex w-full items-center justify-center gap-2 dark:text-gray-800 rounded-full bg-forest px-4 py-3.5 text-sm font-semibold text-cream transition hover:bg-forestdark disabled:opacity-30"
-      >
-        Continue
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-          <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </button>
+
+      {/* Sticky Bottom Button */}
+      <div className="mt-2 shrink-0 border-t border-gray-50 px-2 pb-1 pt-3">
+        <button
+          disabled={selected.length === 0}
+          onClick={() => onAnswer(selected, selected.join(", "))}
+          className="flex w-full items-center justify-center gap-2 dark:text-gray-800 rounded-full bg-forest px-4 py-3.5 text-sm font-semibold text-cream transition hover:bg-forestdark disabled:opacity-30"
+        >
+          Continue
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
     </div>
   );
 }
