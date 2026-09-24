@@ -29,7 +29,7 @@ export default function HeightConverter({ onUse }) {
 
 <button
 onClick={()=>setTab("convert")}
-className={`flex-1 rounded-full py-3 text-sm font-semibold transition
+className={`flex-1 rounded-full py-2 text-sm font-semibold transition
 ${
 tab==="convert"
 ?"bg-white shadow text-[#d55559]"
@@ -44,7 +44,7 @@ tab==="convert"
 
 <button
 onClick={()=>setTab("guide")}
-className={`flex-1 rounded-full py-3 text-sm font-semibold transition
+className={`flex-1 rounded-full py-2 text-sm font-semibold transition
 ${
 tab==="guide"
 ?"bg-white shadow text-[#d55559]"
@@ -66,7 +66,7 @@ tab==="guide"
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold dark:text-gray-800">
+          <h3 className="text-sm font-semibold dark:text-gray-800">
             Height Converter
           </h3>
 
@@ -77,7 +77,7 @@ tab==="guide"
         </div>
          <button
         onClick={() => onUse(Number(cm))}
-        className="h-14 w-fit px-12 cursor-pointer rounded-full bg-gradient-to-br from-[#e77074] via-[#e382c5] to-[#dc8bc3] font-semibold text-white"
+        className="h-12 w-fit px-6 text-xs cursor-pointer rounded-full bg-gradient-to-br from-[#e77074] via-[#e382c5] to-[#dc8bc3] font-semibold text-white"
       >
         Use this Height
       </button>
@@ -143,13 +143,13 @@ tab==="guide"
 
       {/* Result */}
 
-      <div className="rounded-2xl bg-gradient-to-br from-[#d55559] via-[#e382c5] to-[#dc8bc3] p-6 text-center">
+      <div className="rounded-2xl bg-gradient-to-br from-[#d55559] via-[#e382c5] to-[#dc8bc3] px-6 py-2 text-center">
 
         <p className="text-sm text-white">
           Converted Height
         </p>
 
-        <p className="mt-2 text-6xl font-bold text-white">
+        <p className="mt-2 text-4xl font-bold text-white">
           {cm}
         </p>
 

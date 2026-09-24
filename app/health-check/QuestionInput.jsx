@@ -20,9 +20,9 @@ export default function QuestionInput({ step, onAnswer }) {
 // Wrapping layout mimicking the pill-shaped floating bar
 function FloatingDock({ children, helper }) {
   return (
-    <div className="animate-rise w-full">
+    <div className="animate-rise w-full ">
       {helper && <p className="mb-3 text-center text-xs text-ink/50">{helper}</p>}
-      <div className="flex w-full items-center gap-3 rounded-full bg-white px-3 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.08)] ring-1 ring-black/5 transition-all">
+      <div className="flex w-full items-e gap-3 rounded-full bg-white px-3 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.08)] ring-1 ring-black/5 transition-all">
         {children}
       </div>
     </div>
@@ -70,22 +70,7 @@ validation.status==="warning" && (
     <FloatingDock helper={step.helper}>
      <div className="relative inline-flex flex-col items-center">
   {/* The Popover Menu */}
- {canUseTools && (
-  <div className="absolute bottom-full mb-3 w-max max-w-[250px] origin-bottom animate-in fade-in zoom-in-95 rounded-xl bg-gray-900 p-1.5 shadow-xl ring-1 ring-gray-800 z-50 sm:whitespace-nowrap">
-    <button
-      onClick={() => {
-        // Add your logic here to toggle between inches and cm
-        setShowTools(false);
-      }}
-      className="w-full rounded-lg px-4 py-1 text-xs font-medium text-slate-50 transition active:bg-gray-800"
-    >
-      Click to convert inch to cm
-    </button>
-    
-    {/* Popover Arrow/Pointer */}
-    <div className="absolute -bottom-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-b border-r border-gray-800 bg-gray-900" />
-  </div>
-)}
+
 
   {/* Your Original Button (Modified to toggle showTools) */}
   <button
@@ -154,7 +139,7 @@ validation.status==="warning" && (
           onKeyDown={(e) => e.key === "Enter" && submit()}
           
           placeholder={step.placeholder || "Enter value..."}
-          className={`w-full rounded-lg px-3 py-2 text-[15px] dark:text-gray-800 outline-none transition-colors
+          className={`w-full rounded-lg px-3 py-2 text-base sm:text-[15px] dark:text-gray-800 outline-none transition-colors
 ${
   validation.status === "error"
     ? "bg-red-50 border border-red-500"
@@ -251,26 +236,97 @@ function ChoiceInput({ step, onAnswer }) {
 
 function MultiInput({ step, onAnswer }) {
   const [selected, setSelected] = useState([]);
-  const toggle = (opt) =>
-    setSelected((s) => (s.includes(opt) ? s.filter((o) => o !== opt) : [...s, opt]));
-    
+
+  const toggle = (opt) => {
+    setSelected((current) =>
+      current.includes(opt)
+        ? current.filter((item) => item !== opt)
+        : [...current, opt]
+    );
+  };
+
+  const handleContinue = () => {
+    if (selected.length === 0) return;
+
+    onAnswer(selected, selected.join(", "));
+  };
+
   return (
-    <div className="animate-rise w-full flex flex-col max-h-[45dvh] rounded-3xl bg-white p-2 shadow-lg ring-1 ring-black/5">
-      
-      {/* Scrollable Options List */}
-      <div className="flex-1 overflow-y-auto p-2">
-        <div className="flex flex-wrap justify-center gap-2">
+    <div
+      className="
+        animate-rise
+        flex
+        w-full
+        min-h-0
+        flex-col
+        overflow-hidden
+        rounded-3xl
+        bg-white
+        p-2
+        shadow-lg
+        ring-1
+        ring-black/5
+        max-h-[55dvh]
+        sm:max-h-[60dvh]
+      "
+    >
+      {/* ================================
+          SCROLLABLE OPTIONS
+      ================================= */}
+      <div
+        className="
+          min-h-0
+          flex-1
+          overflow-y-auto
+          overscroll-contain
+          px-2
+          pt-16
+          pb-2
+          touch-pan-y
+          [-webkit-overflow-scrolling:touch]
+        "
+      >
+        <div className="flex flex-wrap justify-center gap-2 pb-4">
           {step.options?.map((opt) => {
             const active = selected.includes(opt);
+
             return (
               <button
                 key={opt}
+                type="button"
                 onClick={() => toggle(opt)}
-                className={`rounded-full border px-4 py-2.5 text-sm font-medium transition active:scale-[0.98] ${
-                  active
-                    ? "border-[#e77074] bg-gradient-to-br from-[#e77074] via-[#e382c5] to-[#dc8bc3] text-white shadow-md"
-                    : "border-gray-200 bg-white text-ink hover:border-gray-300 dark:text-gray-800"
-                }`}
+                className={`
+                  shrink-0
+                  rounded-full
+                  border
+                  px-4
+                  py-2.5
+                  text-sm
+                  font-medium
+                  transition-all
+                  duration-200
+                  active:scale-[0.98]
+
+                  ${
+                    active
+                      ? `
+                        border-[#e77074]
+                        bg-gradient-to-br
+                        from-[#e77074]
+                        via-[#e382c5]
+                        to-[#dc8bc3]
+                        text-white
+                        shadow-md
+                      `
+                      : `
+                        border-gray-200
+                        bg-white
+                        text-ink
+                        hover:border-gray-300
+                        dark:text-gray-800
+                      `
+                  }
+                `}
               >
                 {opt}
               </button>
@@ -279,20 +335,65 @@ function MultiInput({ step, onAnswer }) {
         </div>
       </div>
 
-      {/* Sticky Bottom Button */}
-      <div className="mt-2 shrink-0 border-t border-gray-50 px-2 pb-1 pt-3">
+      {/* ================================
+          STICKY CONTINUE BUTTON
+      ================================= */}
+      <div
+        className="
+          shrink-0
+          border-t
+          border-gray-100
+          bg-white
+          px-2
+          pb-1
+          pt-3
+        "
+      >
         <button
+          type="button"
           disabled={selected.length === 0}
-          onClick={() => onAnswer(selected, selected.join(", "))}
-          className="flex w-full items-center justify-center gap-2 dark:text-gray-800 rounded-full bg-forest px-4 py-3.5 text-sm font-semibold text-cream transition hover:bg-forestdark disabled:opacity-30"
+          onClick={handleContinue}
+          className="
+            flex
+            min-h-[48px]
+            w-full
+            items-center
+            justify-center
+            gap-2
+            rounded-full
+            bg-forest
+            px-4
+            py-3
+            text-sm
+            font-semibold
+            text-cream
+            transition-all
+            dark:text-black
+            duration-200
+            hover:bg-forestdark
+            active:scale-[0.99]
+            disabled:cursor-not-allowed
+            disabled:opacity-30
+          "
         >
           Continue
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+          >
+            <path
+              d="M5 12h14M12 5l7 7-7 7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>
-
     </div>
   );
 }
@@ -628,7 +729,7 @@ function PhotoInput({ step, onAnswer }) {
 
                 {/* CAMERA ICON */}
 
-                <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm">
+                <div className="mb-2 flex flex-col sm h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm">
 
                   <svg
                     width="19"

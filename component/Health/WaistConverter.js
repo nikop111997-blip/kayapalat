@@ -28,7 +28,7 @@ export default function WaistConverter({ onUse }) {
 
         <button
           onClick={() => setTab("convert")}
-          className={`flex-1 rounded-full py-3 text-sm font-semibold transition ${
+          className={`flex-1 rounded-full py-2 text-sm font-semibold transition ${
             tab === "convert"
               ? "bg-white text-[#d55559] shadow"
               : "text-gray-500"
@@ -40,7 +40,7 @@ export default function WaistConverter({ onUse }) {
 
         <button
           onClick={() => setTab("guide")}
-          className={`flex-1 rounded-full py-3 text-sm font-semibold transition ${
+          className={`flex-1 rounded-full py-2 text-sm font-semibold transition ${
             tab === "guide"
               ? "bg-white text-[#d55559] shadow"
               : "text-gray-500"
@@ -59,24 +59,27 @@ export default function WaistConverter({ onUse }) {
 
           {/* Header */}
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between gap-3">
 
-            <div className="rounded-full bg-gradient-to-br from-[#d55559] via-[#e382c5] to-[#dc8bc3] p-3">
-              <Ruler className="text-white" />
-            </div>
+         
 
             <div>
 
-              <h3 className="text-lg font-semibold dark:text-gray-800">
+              <h3 className="text-sm font-semibold dark:text-gray-800">
                 Waist Converter
               </h3>
 
-              <p className="text-sm text-gray-500">
+              <p className="text-xs text-gray-500">
                 Inches → Centimeters
               </p>
 
             </div>
-
+ <button
+            onClick={() => onUse(Number(cm))}
+            className="h-12 w-60 rounded-full bg-gradient-to-br from-[#d55559] via-[#e382c5] to-[#dc8bc3] font-semibold text-white transition hover:bg-green-800"
+          >
+            Use this Waist
+          </button>
           </div>
 
           {/* Picker */}
@@ -125,13 +128,13 @@ export default function WaistConverter({ onUse }) {
 
           {/* Result */}
 
-          <div className="rounded-3xl bg-gray-50 p-6 text-center">
+          <div className="rounded-3xl bg-gray-50 px-6 py-2 text-center">
 
             <p className="text-sm text-gray-700">
               Converted Waist
             </p>
 
-            <p className="mt-2 text-6xl font-bold text-green-950">
+            <p className="mt-2 text-4xl font-bold text-green-950">
               {cm}
             </p>
 
@@ -141,12 +144,7 @@ export default function WaistConverter({ onUse }) {
 
           </div>
 
-          <button
-            onClick={() => onUse(Number(cm))}
-            className="h-14 w-full rounded-full bg-gradient-to-br from-[#d55559] via-[#e382c5] to-[#dc8bc3] font-semibold text-white transition hover:bg-green-800"
-          >
-            Use this Waist
-          </button>
+         
 
         </>
       )}

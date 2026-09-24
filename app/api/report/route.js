@@ -99,7 +99,7 @@ export async function POST(req) {
       answers,
 
       report,
-
+ reportUnlocked: false,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
