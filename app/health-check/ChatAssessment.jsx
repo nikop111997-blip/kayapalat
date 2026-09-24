@@ -862,7 +862,7 @@ const reportData = reportResponseData.report;
 
   return (
     <>
-      <div className="mx-auto flex h-[100dvh] w-full flex-col overflow-hidden border border-gray-300 bg-[#FAFAFA] font-sans shadow-sm sm:h-[90vh] sm:min-w-2xl">
+      <div className="mx-auto flex h-[94dvh] w-full flex-col overflow-hidden border border-gray-300 bg-[#FAFAFA] font-sans shadow-sm sm:h-[90vh] sm:min-w-2xl">
 
         {/* HEADER */}
 
@@ -1238,7 +1238,7 @@ const reportData = reportResponseData.report;
 
       {showPayment && (
         <PaymentModal
-          amount={10}
+          amount={299}
           onClose={() =>
             setShowPayment(false)
           }
