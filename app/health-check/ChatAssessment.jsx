@@ -1238,7 +1238,7 @@ const reportData = reportResponseData.report;
 
       {showPayment && (
         <PaymentModal
-          amount={1}
+          amount={10}
           onClose={() =>
             setShowPayment(false)
           }
