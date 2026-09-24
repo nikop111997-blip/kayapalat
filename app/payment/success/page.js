@@ -98,7 +98,7 @@ export default function PaymentSuccessPage() {
 
   const handleViewReport = () => {
     if (!reportId) return;
-    window.location.href = `api/report/${encodeURIComponent(reportId)}/download`;
+    window.location.href = `https://www.kayapalat.in/api/report/6ab51660dc879f050fc173dc/download`;
   };
 
   return (
