@@ -98,7 +98,7 @@ export default function PaymentSuccessPage() {
 
   const handleViewReport = () => {
     if (!reportId) return;
-    window.location.href = `/report/print/${encodeURIComponent(reportId)}`;
+    window.location.href = `api/report/${encodeURIComponent(reportId)}/download`;
   };
 
   return (
