@@ -107,7 +107,7 @@ export default function ClosingPage({ report }) {
 
             <div className="flex items-center gap-2.5 text-[13px] text-gray-600">
               <Globe size={15} className="text-gray-400" />
-              <span>www.kayapalat.com</span>
+              <span>www.kayapalat.in</span>
             </div>
           </div>
         </div>
