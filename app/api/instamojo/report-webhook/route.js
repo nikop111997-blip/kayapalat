@@ -75,9 +75,17 @@ export async function POST(req) {
      * purpose = Health Report-9876543210
      */
 
-    let mobile = String(
-      buyerPhone || ""
-    ).replace(/\D/g, "");
+  let mobile = String(buyerPhone || "").replace(/\D/g, "");
+
+// Normalize Indian numbers to the 10-digit format
+if (mobile.startsWith("91") && mobile.length === 12) {
+  mobile = mobile.slice(2);
+}
+
+// Handle 0XXXXXXXXXX format as well
+if (mobile.startsWith("0") && mobile.length === 11) {
+  mobile = mobile.slice(1);
+}
 
     if (!mobile && purpose) {
       const match =
