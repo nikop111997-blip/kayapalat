@@ -14,9 +14,7 @@ import {
   HeadsetIcon,
   X,
   LockKeyhole,
-  Trash2,
 } from "lucide-react";
-import Link from "next/link";
 
 const STORAGE_KEY = "kayapalat_health_reality_check_v1";
 
@@ -806,41 +804,39 @@ const reportData = reportResponseData.report;
    */
 
   const resetAssessment = () => {
-  try {
-    // Remove assessment data
-    window.localStorage.removeItem(STORAGE_KEY);
+    try {
+      window.localStorage.removeItem(
+        STORAGE_KEY
+      );
+    } catch (err) {
+      console.error(
+        "Failed to clear assessment:",
+        err
+      );
+    }
 
-    // Remove saved report link
-    window.localStorage.removeItem("kayapalat_report_link");
-  } catch (err) {
-    console.error("Failed to clear assessment:", err);
-  }
+    hasRunStep.current = new Set();
 
-  // Reset internal step tracking
-  hasRunStep.current = new Set();
+    setStepIndex(0);
+    setAnswers({});
+    setMessages([]);
 
-  // Reset assessment
-  setStepIndex(0);
-  setAnswers({});
-  setMessages([]);
+    setError("");
+    setInputVisible(false);
 
-  // Reset UI state
-  setError("");
-  setInputVisible(false);
-  setEmailSent(false);
+    setEmailSent(false);
 
-  // Reset report/payment state
-  setReportUnlocked(false);
-  setShowPayment(false);
-  setReportId(null);
-  setReport(null);
-  setReportLink(null);
+    setReportUnlocked(false);
+    setShowPayment(false);
 
-  // Reset loading state
-  setReportGenerating(false);
-  setReportLoadingIndex(0);
-  setIsTyping(false);
-};
+    setReportId(null);
+    setReport(null);
+
+    setReportGenerating(false);
+    setReportLoadingIndex(0);
+
+    setIsTyping(false);
+  };
 
   /*
    * ----------------------------------------------------
@@ -895,58 +891,34 @@ const reportData = reportResponseData.report;
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-  {/* Start New Assessment */}
-  <button
-    type="button"
-    onClick={() => {
-      const confirmed = window.confirm(
-        "Start a new assessment? Your current answers will be cleared."
-      );
+            <div className="relative flex h-10 w-10 items-center justify-center">
+              <svg
+                className="h-full w-full -rotate-90 transform"
+                viewBox="0 0 36 36"
+              >
+                <path
+                  className="text-black/10"
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                />
 
-      if (confirmed) {
-        resetAssessment();
-      }
-    }}
-    className="flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-600 shadow-sm transition hover:border-red-200 hover:bg-red-50 hover:text-red-600"
-    title="Start a new assessment"
-  >
-    <Trash2 size={14} />
-    <span className="hidden sm:inline">
-      New Assessment
-    </span>
-  </button>
+                <path
+                  className="text-forest transition-all duration-700 ease-out"
+                  strokeDasharray={`${progressPct}, 100`}
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
 
-  {/* Progress */}
-  <div className="relative flex h-10 w-10 items-center justify-center">
-    <svg
-      className="h-full w-full -rotate-90 transform"
-      viewBox="0 0 36 36"
-    >
-      <path
-        className="text-black/10"
-        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3"
-      />
-
-      <path
-        className="text-forest transition-all duration-700 ease-out"
-        strokeDasharray={`${progressPct}, 100`}
-        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-    </svg>
-
-    <span className="absolute text-[9px] font-bold text-forest dark:text-gray-900">
-      {progressPct}%
-    </span>
-  </div>
-</div>
+              <span className="absolute text-[9px] font-bold text-forest dark:text-gray-900">
+                {progressPct}%
+              </span>
+            </div>
           </div>
         </header>
 
@@ -988,7 +960,6 @@ const reportData = reportResponseData.report;
                           answers={answers}
                           report={message.report}
                           onUnlock={handleUnlock}
-                          id={reportId}
                         />
                       ))}
 
@@ -1287,7 +1258,6 @@ const reportData = reportResponseData.report;
 function BasicReport({
   report,
   answers,
-  id,
   onUnlock,
 }) {
   if (!report) return null;
@@ -1495,13 +1465,17 @@ function BasicReport({
               your personalised action plan.
             </p>
 
-            <Link
-              href={`/report/print/${id}`}
+            <button
+              type="button"
+              onClick={onUnlock}
               className="mt-5 flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#e77074] via-[#e382c5] to-[#dc8bc3] px-5 py-3.5 text-sm font-bold text-white shadow-lg transition hover:shadow-xl active:scale-[0.98]"
             >
-              Unlock Full Report
-            </Link>
+              Unlock Full Report - 299
+            </button>
 
+            <p className="mt-3 text-[11px] text-slate-400">
+              One-time payment
+            </p>
 
           </div>
 
