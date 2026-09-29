@@ -83,7 +83,7 @@ export default function IBW() {
             </div>
 
             <h2 className="text-4xl md:text-5xl lg:text-[48px] text-center font-bold text-gray-900 leading-[1.1] lg:text-left">
-              Idol Body Weight {" "}
+              Ideal Body Weight {" "}
               <br className="hidden md:block" />
               Achievers
             </h2>
