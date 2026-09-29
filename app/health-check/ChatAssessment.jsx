@@ -35,6 +35,7 @@ const REPORT_LOADING_MESSAGES = [
   "Calculating your personalized health score...",
   "Preparing your personalized health insights...",
   "Your report is almost ready...",
+  "Please Do not Refresh and Close the Screen",
 ];
 
 const BRAND_GRADIENT =
