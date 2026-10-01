@@ -91,8 +91,8 @@ export default async function BlogsPage({ searchParams }) {
 
   const all = blogs?.data || [];
   const featured = all[0];
-  const latest = all.slice(1, 6);
-  const founders = all.slice(6);
+  const latest = all.slice(1, 5);
+  const founders = all.slice(5);
   const totalPages = blogs?.pagination?.totalPages || 1;
 
   return (
@@ -105,7 +105,7 @@ export default async function BlogsPage({ searchParams }) {
           <section className="grid grid-cols-1 lg:grid-cols-[1.75fr_1fr] gap-8">
             <Link
               href={`/blogs/${featured.slug}`}
-              className="relative block h-[380px] md:h-[460px] overflow-hidden rounded-3xl"
+              className="relative block h-[380px] md:h-[360px] overflow-hidden rounded-3xl"
             >
               <img
                 src={img(featured)}
