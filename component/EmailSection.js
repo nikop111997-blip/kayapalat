@@ -74,9 +74,9 @@ export default function HeroEmailSection({
         <div className="p-8 md:p-14 order-2">
 
           {/* Heading */}
-          <h1 className="text-[42px] md:text-[48px] leading-[1.1] font-semibold text-black tracking-tight">
+          <h3 className="text-[42px] md:text-[48px] leading-[1.1] font-bold text-black tracking-tight">
             Become 1% Better Every Day
-          </h1>
+          </h3>
 
           {/* Description */}
           <p className="mt-5 text-[15px] md:text-[16px] font-semibold leading-[1.7] text-black/70 max-w-xl">
