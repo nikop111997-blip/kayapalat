@@ -79,12 +79,12 @@ export default function HeroSection() {
             
             {/* The heading text with the specified animation */}
             <h1 className="animate-reveal-ease-in mb-6 text-[40px] font-bold lg:tracking-[-2px] leading-[110%] text-[#0E1728] lg:text-[48px]">
-              Reclaim Your Body's <br className='hidden sm:block'/> True Vitality and<br className='hidden sm:block'/>  Strength with <br className='hidden sm:block'/> Kayapalat.
+             Ready to Become a Healthier, Happier<br className='hidden sm:block'/> Version of<br className='hidden sm:block'/> Yourself?<br className='hidden sm:block'/>
             </h1>
             
             {/* Paragraph appears statically */}
             <p className="mb-10 max-w-lg text-md font-medium leading-relaxed text-gray-600">
-              Stop fighting daily burnout and a stalling metabolism. A clinical, 3-pillar wellness protocol designed to help driven individuals lose stubborn weight, restore natural energy, and build lifelong physical resilience.
+              No extreme diets or exhausting routines. Just personalised guidance, practical lifestyle changes, and consistent support to help you achieve your wellness goals and build habits that last.
             </p>
 
             {/* The action buttons with the specified animation, delayed slightly */}

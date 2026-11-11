@@ -10,6 +10,7 @@ import HeroSection from "@/component/LandHero";
 import PricingPlans from "@/component/LandPrice";
 import LandTestimonial from "@/component/LandTesti";
 import LegacySection from "@/component/LegacyStats";
+import LifestyleSection from "@/component/LifestyleSection";
 import StruggleSection from "@/component/Struggle2";
 import StrugglesSection from "@/component/StrugglesSection";
 import Timeline from "@/component/Timeline";
@@ -118,7 +119,7 @@ export default function Home() {
       <HeroSection />
       <LegacySection />
       <LandTestimonial/>
-      <StrugglesSection />
+      <LifestyleSection />
       <StruggleSection landing={true} />
       <Timeline />
       <AboutFounder landing={true} />
