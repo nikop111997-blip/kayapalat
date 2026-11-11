@@ -119,11 +119,12 @@ export default function Home() {
       <HeroSection />
       <LegacySection />
       <LandTestimonial/>
+      
+      <AboutFounder landing={true} />
+      <TestimonialGrid />
       <LifestyleSection />
       <StruggleSection landing={true} />
       <Timeline />
-      <AboutFounder landing={true} />
-      <TestimonialGrid />
       <HowItWorks />
       <ExperienceDifference landing={true} />
       <PricingPlans />

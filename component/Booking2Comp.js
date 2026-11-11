@@ -335,18 +335,20 @@ export default function BookingComponent({ pricing = false, navbar=false, life=f
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.96 }}
         onClick={() => setIsOpen(true)}
-        className={`group flex items-center dark:text-black cursor-pointer ${navbar?'bg-transparent py-2 border border-white':'bg-[#FFD200] py-4 border-2'} justify-center gap-3  border-[#FFD200] rounded-full px-7 ${
+        className={`group flex items-center dark:text-black cursor-pointer ${navbar?'bg-transparent py-2 text-xs border border-white':'bg-[#FFD200] py-4 border-2'} justify-center gap-3  border-[#FFD200] rounded-full px-7 ${
           pricing ? "py-3 border-0 bg-[#FFD200]" : ""
         } font-medium hover:bg-black hover:text-white transition-all duration-300`}
       >
         <span>Start Transformation</span>
 
-        <div className="transition-all duration-300 group-hover:bg-white group-hover:text-black rounded-full p-1">
-          <ArrowUpRight
-            size={18}
-            className="group-hover:rotate-45 -rotate-0 transition-transform duration-300"
-          />
-        </div>
+        {!navbar && (
+          <div className="transition-all duration-300 group-hover:bg-white group-hover:text-black rounded-full p-1">
+            <ArrowUpRight
+              size={18}
+              className="group-hover:rotate-45 -rotate-0 transition-transform duration-300"
+            />
+          </div>
+        )}
       </motion.button>}
 
       {mounted && createPortal(modalContent, document.body)}
