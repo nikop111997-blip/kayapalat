@@ -91,56 +91,91 @@ export default function BookingComponent({ pricing = false, navbar=false, life=f
     }, 300)
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setSubmitError("")
+ 
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setSubmitError("");
 
-    // Validate phone number before submitting
-    // Must start with 6, 7, 8, or 9 and be exactly 10 digits long
-    const phoneRegex = /^[6-9]\d{9}$/
-    if (!phoneRegex.test(formData.phone)) {
-      setSubmitError("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.")
-      return
-    }
+  // Validate phone number
+  const phoneRegex = /^[6-9]\d{9}$/;
 
-    setIsSubmitting(true)
-    const tracking = getTrackingData()
-    const attribution = getMetaAttribution();
-
-    
-    try {
-      const response = await fetch("/api/lead-ad", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          utm_source: tracking.source,
-          utm_medium: tracking.medium,
-          utm_campaign: tracking.campaign,
-          // UPDATED: Send consent details to backend
-          consentGiven: formData.consent,
-          consentDate: new Date().toISOString(),
-          metaAttribution: attribution,
-        }),
-      })
-
-      if (!response.ok) {
-        throw new Error("Failed to submit booking")
-      }
-
-      setSubmitSuccess(true)
-
-      setTimeout(() => {
-        redirect("/lp/thank-you")
-      }, 1000)
-    } catch (error) {
-      setSubmitError(error.message)
-    } finally {
-      setIsSubmitting(false)
-    }
+  if (!phoneRegex.test(formData.phone)) {
+    setSubmitError(
+      "Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9."
+    );
+    return;
   }
+
+  setIsSubmitting(true);
+
+  const tracking = getTrackingData();
+  const attribution = getMetaAttribution();
+
+  try {
+    const response = await fetch("/api/lead-ad", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...formData,
+
+        utm_source: tracking.source,
+        utm_medium: tracking.medium,
+        utm_campaign: tracking.campaign,
+
+        consentGiven: formData.consent,
+        consentDate: new Date().toISOString(),
+
+        metaAttribution: attribution,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.success) {
+      throw new Error(
+        data.message || "Failed to submit booking"
+      );
+    }
+
+    // ================= META PIXEL LEAD EVENT =================
+
+    if (
+      data.eventId &&
+      typeof window.fbq === "function"
+    ) {
+      window.fbq(
+        "track",
+        "Lead",
+        {},
+        {
+          eventID: data.eventId,
+        }
+      );
+
+      console.log(
+        "Meta Pixel Lead event fired:",
+        data.eventId
+      );
+    }
+
+    // ================= SUCCESS =================
+
+    setSubmitSuccess(true);
+
+    setTimeout(() => {
+      redirect("/lp/thank-you");
+    }, 1000);
+
+  } catch (error) {
+    console.error("Lead submission error:", error);
+    setSubmitError(error.message);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   const goalOptions = [
     "Weight Loss",
