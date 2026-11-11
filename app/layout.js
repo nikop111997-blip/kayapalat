@@ -8,6 +8,7 @@ import CookieConsent from "@/component/CookieConsent";
 import AnalyticsScripts from "@/component/AnalyticsScripts";
 import GoogleTranslate from "@/component/GoogleTranslate";
 import Script from "next/script";
+import MetaAttributionCapture from "@/component/MetaAttributionCapture";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,6 +67,7 @@ export default function RootLayout({ children }) {
         {/* Website only */}
         <div className="print:hidden">
           <GoogleTranslate />
+          <MetaAttributionCapture />
           <Toaster />
           <Navbar />
         </div>

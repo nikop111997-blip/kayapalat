@@ -1,4 +1,7 @@
+
 import clientPromise from "@/lib/mongodb";
+import { sendMetaEvent } from "@/lib/metaCapi";
+import { randomUUID } from "crypto";
 
 export async function POST(req) {
   try {
@@ -13,8 +16,7 @@ export async function POST(req) {
       goal,
       currentWeight,
       source,
-
-      // Tracking
+      metaAttribution,
       utm_source,
       utm_medium,
       utm_campaign,
@@ -22,135 +24,123 @@ export async function POST(req) {
 
     // ================= CLEAN =================
     const trimmedName = fullName?.trim();
-    const trimmedEmail = email?.trim();
+    const trimmedEmail = email?.trim().toLowerCase();
     const trimmedCity = city?.trim();
 
     let cleanedPhone = phone?.replace(/\D/g, "");
 
-    // Remove country code if present
     if (cleanedPhone?.startsWith("91") && cleanedPhone.length > 10) {
       cleanedPhone = cleanedPhone.slice(-10);
     }
 
     // ================= VALIDATION =================
 
-    // Name
     if (!trimmedName) {
       return Response.json(
-        {
-          success: false,
-          message: "Name is required",
-        },
+        { success: false, message: "Name is required" },
         { status: 400 }
       );
     }
 
-    // Email
     if (!trimmedEmail) {
       return Response.json(
-        {
-          success: false,
-          message: "Email is required",
-        },
+        { success: false, message: "Email is required" },
         { status: 400 }
       );
     }
 
-    // Email regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(trimmedEmail)) {
       return Response.json(
-        {
-          success: false,
-          message: "Please enter a valid email address",
-        },
+        { success: false, message: "Please enter a valid email address" },
         { status: 400 }
       );
     }
 
-    // Phone
     if (!cleanedPhone) {
       return Response.json(
-        {
-          success: false,
-          message: "Phone number is required",
-        },
+        { success: false, message: "Phone number is required" },
         { status: 400 }
       );
     }
 
-    // Indian mobile validation
     const phoneRegex = /^[6-9]\d{9}$/;
 
     if (!phoneRegex.test(cleanedPhone)) {
       return Response.json(
         {
           success: false,
-          message:
-            "Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9",
+          message: "Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9",
         },
         { status: 400 }
       );
     }
 
-    // City
     if (!trimmedCity) {
       return Response.json(
-        {
-          success: false,
-          message: "City is required",
-        },
+        { success: false, message: "City is required" },
         { status: 400 }
       );
     }
 
-    // Goal
     if (!goal) {
       return Response.json(
-        {
-          success: false,
-          message: "Please select your goal",
-        },
+        { success: false, message: "Please select your goal" },
         { status: 400 }
       );
     }
 
-    // Source
     if (!source) {
       return Response.json(
-        {
-          success: false,
-          message: "Please select where you heard about us",
-        },
+        { success: false, message: "Please select where you heard about us" },
         { status: 400 }
       );
     }
 
-    // ================= META =================
+    // ================= REQUEST DETAILS =================
+
     const forwarded = req.headers.get("x-forwarded-for");
 
     const ip = forwarded
-      ? forwarded.split(",")[0]
-      : req.headers.get("x-real-ip") || "Unknown";
+      ? forwarded.split(",")[0].trim()
+      : req.headers.get("x-real-ip") || null;
 
-    const userAgent = req.headers.get("user-agent") || "Unknown";
+    const userAgent = req.headers.get("user-agent") || null;
+
+    const eventSourceUrl =
+      req.headers.get("referer") ||
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      null;
+
+    // ================= META ATTRIBUTION =================
+
+    const attribution = {
+      fbclid: metaAttribution?.fbclid || null,
+      fbp: metaAttribution?.fbp || null,
+      fbc: metaAttribution?.fbc || null,
+      capturedAt: new Date(),
+    };
+
+    // Unique event ID shared with browser Pixel for deduplication
+    const eventId = randomUUID();
 
     // ================= DATABASE =================
-    const client = await clientPromise;
 
+    const client = await clientPromise;
     const db = client.db("kayakalap");
 
-    const result = await db.collection("lead_ad").insertOne({
+    const leadDocument = {
       fullName: trimmedName,
       email: trimmedEmail,
       phone: cleanedPhone,
       city: trimmedCity,
-      goal: goal || null,
+      goal,
       currentWeight: currentWeight || null,
-      source: source || null,
+      source,
 
-      // UTM Tracking
+      metaAttribution: attribution,
+
       utm_source: utm_source || "direct",
       utm_medium: utm_medium || "website",
       utm_campaign: utm_campaign || "default",
@@ -158,15 +148,91 @@ export async function POST(req) {
       ip,
       userAgent,
 
+      // Meta conversion tracking
+      metaCapi: {
+        eventId,
+        eventName: "Lead",
+        status: "pending",
+        sentAt: null,
+        response: null,
+      },
+
       createdAt: new Date(),
-    });
+    };
+
+    const result = await db
+      .collection("lead_ad")
+      .insertOne(leadDocument);
+
+    // ================= META CONVERSIONS API =================
+
+    let metaStatus = "pending";
+
+    if (
+      process.env.META_PIXEL_ID &&
+      process.env.META_ACCESS_TOKEN
+    ) {
+      try {
+        const metaResponse = await sendMetaEvent({
+          eventName: "Lead",
+          eventId,
+          lead: {
+            email: trimmedEmail,
+            phone: cleanedPhone,
+          },
+          metaAttribution: attribution,
+          clientIp: ip,
+          userAgent,
+          eventSourceUrl,
+        });
+
+        metaStatus = "sent";
+
+        await db.collection("lead_ad").updateOne(
+          { _id: result.insertedId },
+          {
+            $set: {
+              "metaCapi.status": "sent",
+              "metaCapi.sentAt": new Date(),
+              "metaCapi.response": {
+                events_received: metaResponse.events_received,
+                fbtrace_id: metaResponse.fbtrace_id,
+              },
+            },
+          }
+        );
+
+      } catch (metaError) {
+        console.error(
+          "Meta CAPI delivery failed:",
+          metaError.message
+        );
+
+        metaStatus = "failed";
+
+        await db.collection("lead_ad").updateOne(
+          { _id: result.insertedId },
+          {
+            $set: {
+              "metaCapi.status": "failed",
+              "metaCapi.lastError": metaError.message,
+            },
+          }
+        );
+      }
+    } else {
+      metaStatus = "not_configured";
+    }
 
     // ================= RESPONSE =================
+
     return Response.json(
       {
         success: true,
         message: "Lead submitted successfully",
         insertedId: result.insertedId,
+        eventId,
+        metaStatus,
       },
       { status: 201 }
     );

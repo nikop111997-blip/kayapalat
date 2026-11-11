@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import { motion, AnimatePresence } from "framer-motion"
-
 import {
   ArrowUpRight,
   X,
@@ -12,6 +11,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import { redirect } from "next/navigation"
+import { getMetaAttribution } from "@/lib/metaAttribution"
 
 const getTrackingData = () => {
   const params = new URLSearchParams(window.location.search)
@@ -105,6 +105,8 @@ export default function BookingComponent({ pricing = false, navbar=false, life=f
 
     setIsSubmitting(true)
     const tracking = getTrackingData()
+    const attribution = getMetaAttribution();
+
     
     try {
       const response = await fetch("/api/lead-ad", {
@@ -120,6 +122,7 @@ export default function BookingComponent({ pricing = false, navbar=false, life=f
           // UPDATED: Send consent details to backend
           consentGiven: formData.consent,
           consentDate: new Date().toISOString(),
+          metaAttribution: attribution,
         }),
       })
 
