@@ -11,6 +11,7 @@ import {
   AlertCircle,
 } from "lucide-react"
 import Link from "next/link"
+import { redirect } from "next/navigation"
 
 const getTrackingData = () => {
   const params = new URLSearchParams(window.location.search)
@@ -129,8 +130,8 @@ export default function BookingComponent({ pricing = false, navbar=false, life=f
       setSubmitSuccess(true)
 
       setTimeout(() => {
-        closeModal()
-      }, 3000)
+        redirect("/lp/thank-you")
+      }, 1000)
     } catch (error) {
       setSubmitError(error.message)
     } finally {
